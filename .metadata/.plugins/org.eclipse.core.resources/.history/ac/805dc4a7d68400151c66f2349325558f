@@ -1,0 +1,50 @@
+/**
+  ******************************************************************************
+  * @file    systick.cpp
+  * @author  Dr. Klaus Schaefer
+  * @brief   timer interrupt driver using the SysTick module
+  ******************************************************************************
+*/
+
+#include <stdint.h>
+#include "systick.h"
+#include "stdint.h"
+#include "stm32f4xx_it.h"
+#include "stm32f4xx.h"
+#include <string>
+#include <sstream>
+#include "stm32f429i_discovery_lcd.h"
+/*#include "stm32f4xx_hal.h"
+#include "stm324xg_eval.h"
+#include "button.h"*/
+
+#define TICK_RATE_HZ 1000       //!< SysTick interrupt frequency
+std::stringstream output;
+std::string outputstring;
+const char * chararray;
+
+/** @brief SysTick interrupt service route called @ 1000 Hz */
+extern "C" void SysTick_Handler(void)
+{
+	output.str(std::string());
+	output << "ISR call No " << b;
+	outputstring = "";
+	outputstring = output.str();
+	chararray = "";
+	chararray = outputstring.c_str();
+	LCD_DisplayStringLine(LCD_LINE_11,(uint8_t*) chararray);
+
+#if defined(USE_HAL_DRIVER)
+  HAL_IncTick();
+#endif
+
+  mytimer++;
+  b++;
+}
+
+/** @brief SysTick initialization */
+void SysTick_init( void)
+{
+	LCD_DisplayStringLine(LCD_LINE_12,(uint8_t*)"SysTick_init");
+  SysTick_Config (SystemCoreClock / TICK_RATE_HZ);
+}

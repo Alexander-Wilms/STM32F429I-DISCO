@@ -1,0 +1,11 @@
+21:29:34 **** Build of configuration Debug for project test_stm32f4 ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "test_stm32f4.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 117744	    568	   4548	 122860	  1dfec	test_stm32f4.elf
+Finished building: test_stm32f4.siz
+ 
+
+21:29:34 Build Finished (took 892ms)
+

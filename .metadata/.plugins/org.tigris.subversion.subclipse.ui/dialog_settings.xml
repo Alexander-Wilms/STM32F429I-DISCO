@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="243" key="SetCommitPropertiesDialog.location.y"/>
+	<item value="679" key="SetCommitPropertiesDialog.location.x"/>
+	<item value="https://tools.eit.h-da.de/svn/stfawilm" key="RepositorySelectionPage.lastRepository"/>
+	<item value="180" key="HistoryTableProvider.SVNHistoryPage.Author"/>
+	<item value="226" key="HistoryTableProvider.SVNHistoryPage.Date"/>
+	<item value="451" key="HistoryTableProvider.SVNHistoryPage.Comment"/>
+	<item value="" key="DirectorySelectionPage.lastParent_https://tools.eit.h-da.de/svn/stfawilm"/>
+	<item value="532" key="SetCommitPropertiesDialog.size.x"/>
+	<item value="91" key="HistoryTableProvider.SVNHistoryPage.Revision"/>
+	<item value="318" key="SetCommitPropertiesDialog.size.y"/>
+	<section name="NewLocationWizard">
+		<list key="ConfigurationWizardMainPage.STORE_URL_ID">
+			<item value="https://tools.eit.h-da.de/svn/stfawilm"/>
+		</list>
+	</section>
+</section>

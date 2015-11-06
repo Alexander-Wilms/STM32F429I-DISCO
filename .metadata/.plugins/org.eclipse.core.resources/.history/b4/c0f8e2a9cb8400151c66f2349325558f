@@ -1,0 +1,46 @@
+#include "stm32f4xx.h"
+#include "stm32f4_discovery.h"
+
+void Delay(__IO uint32_t time);
+extern __IO uint32_t TimmingDelay;
+
+int main()
+{
+
+//Enable the GPIOD Clock
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE);
+
+
+// GPIOD Configuration
+  STM_EVAL_LEDInit(LED5);
+
+
+// GPIOD-PIN-15 ON
+  STM_EVAL_LEDOn(LED5);
+
+
+//Systick Configuration
+  SysTick_Config(SystemCoreClock/1000);
+
+
+//LED Toggle
+  while(1)
+  {
+
+// insert a delay of 500ms
+    Delay(500);
+
+
+//Toggle the LED
+    STM_EVAL_LEDToggle(LED5);
+
+  }
+
+  return 0;
+}
+
+void Delay(__IO uint32_t time)
+{
+  TimmingDelay = time;
+  while(TimmingDelay !=0);
+}

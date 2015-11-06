@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommitComments>	<CommitComment>Keep stm32f429i-disco stuff seperate for now</CommitComment>
+	<CommitComment>Keep stm32f429i-deco stuff seperate for now</CommitComment>
+	<CommitComment>Initial import of stm32f429i_disco_hal_lib</CommitComment>
+</CommitComments>

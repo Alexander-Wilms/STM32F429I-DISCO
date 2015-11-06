@@ -1,0 +1,18 @@
+18:52:48 **** Incremental Build of configuration Debug for project test_project_openstm32 ****
+make all 
+Building file: ../startup/startup_stm32f429_439xx.S
+Invoking: MCU GCC Compiler
+arm-none-eabi-gcc -mthumb -mfloat-abi=soft -O0 -g -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"startup/startup_stm32f429_439xx.d" -MT"startup/startup_stm32f429_439xx.o" -o "startup/startup_stm32f429_439xx.o" "../startup/startup_stm32f429_439xx.S"
+Finished building: ../startup/startup_stm32f429_439xx.S
+ 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+arm-none-eabi-gcc -mthumb -mfloat-abi=soft -O0 -g -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c:12:23: fatal error: stm32f4xx.h: No such file or directory
+ #include "stm32f4xx.h"
+                       ^
+compilation terminated.
+make: *** [src/main.o] Error 1
+
+18:52:48 Build Finished (took 400ms)
+

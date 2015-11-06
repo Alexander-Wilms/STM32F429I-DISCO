@@ -1,0 +1,24 @@
+1446773273404	Rename resource 'Test project'
+1446773287596	Delete resource 'test_project/Debug/Test project.elf'
+1446773310628	Delete resource 'test_project/test_stm32f4 Debug.launch'
+1446773959830	Delete resource 'test_project'
+1446774930124	Delete 2 resources
+1446776766115	Delete resource 'test_project/src/HD44780.c'
+1446776769213	Delete resource 'test_project/src/HD44780.h'
+1446776774346	Delete resource 'test_project/src/stm32f4_discovery.h'
+1446776777243	Delete resource 'test_project/src/stm32f4xx_gpio.h'
+1446776780870	Delete resource 'test_project/src/stm32f4xx_it.c'
+1446776783723	Delete resource 'test_project/src/stm32f4xx_it.h'
+1446776839769	Delete resource 'test_project'
+1446779490301	Delete resource 'test_project'
+1446832384798	Delete resource 'test_project_openstm32'
+1446832435356	Delete resource 'test_project'
+1446832523137	Delete resource 'test_project'
+1446832614186	Delete 2 resources
+1446833296795	Delete resource 'test_project'
+1446833454865	Delete resource 'test_project/src/stm32f4xx_it.c'
+1446834266195	Delete 2 resources
+1446834341420	Delete resource 'test_project'
+1446839740064	Delete 2 resources
+1446841760646	Delete resource 'jhb csa'
+1446844596824	Delete resource 'test_project/src/main.cpp'

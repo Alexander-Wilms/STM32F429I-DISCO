@@ -1,0 +1,11 @@
+19:22:37 **** Incremental Build of configuration Debug for project rzs2_stm32f4 ****
+make -j4 all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "rzs2_stm32f4.elf"
+   text	   data	    bss	    dec	    hex	filename
+  36493	    228	  65968	 102689	  19121	rzs2_stm32f4.elf
+Finished building: rzs2_stm32f4.siz
+ 
+
+19:22:38 Build Finished (took 991ms)
+
