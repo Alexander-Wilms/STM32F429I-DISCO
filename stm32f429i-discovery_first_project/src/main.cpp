@@ -60,7 +60,7 @@ int main(void)
 	/* LCD display message */
 	LCD_Clear(LCD_COLOR_BLUE);
 	LCD_SetBackColor(LCD_COLOR_BLUE);
-	LCD_SetTextColor(LCD_COLOR_YELLOW);
+	LCD_SetTextColor(LCD_COLOR_WHITE);
 
 	std::stringstream output;
 	std::string outputstring;
