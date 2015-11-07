@@ -39,6 +39,6 @@ extern "C" void SysTick_Handler(void)
 /** @brief SysTick initialization */
 void SysTick_init( void)
 {
-	LCD_DisplayStringLine(LCD_LINE_12,(uint8_t*)"SysTick_init");
-  SysTick_Config (SystemCoreClock / TICK_RATE_HZ);
+	SysTick_Config (SystemCoreClock / TICK_RATE_HZ);
+	systick_init_done = 1;
 }

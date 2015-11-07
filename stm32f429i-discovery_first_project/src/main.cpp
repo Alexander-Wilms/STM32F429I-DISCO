@@ -20,6 +20,7 @@
 
 volatile int mytimer;
 volatile int b;
+volatile int systick_init_done = 0;
 			
 void delay(int counter)
 {
@@ -97,5 +98,8 @@ int main(void)
 		chararrayISR = "";
 		chararrayISR = outputstringISR.c_str();
 		LCD_DisplayStringLine(LCD_LINE_11,(uint8_t*) chararrayISR);
+
+		if(systick_init_done)
+			LCD_DisplayStringLine(LCD_LINE_12,(uint8_t*) "SysTick_init ok");
 	}
 }
