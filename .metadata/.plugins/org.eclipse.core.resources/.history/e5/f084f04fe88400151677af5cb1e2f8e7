@@ -4,7 +4,6 @@
 // keinen iostream oder stdio.h verwenden, da Funktionen verwqendet werden
 #include <string>
 #include <sstream>
-#include <iomanip>
 using namespace std;
 
 #include "timer.h"
@@ -49,7 +48,7 @@ void Timer::setHun(int hun_input)
 std::string Timer::printtime()
 {
    	std::stringstream output;
-	output << std::setfill('0') << std::setw(2) << min << ":" <<  std::setfill('0') << std::setw(2) << sec << ":" << std::setfill('0') << std::setw(2) << hun;
+	output << min << ":" << sec << ":" << hun;
 	string returnvalue = output.str();
 	return returnvalue;
 	return "";

@@ -4,7 +4,6 @@
 // keinen iostream oder stdio.h verwenden, da Funktionen verwqendet werden
 #include <string>
 #include <sstream>
-#include <iomanip>
 using namespace std;
 
 #include "timer.h"
