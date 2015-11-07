@@ -14,13 +14,17 @@
 #include "stm32f429i_discovery_lcd.h"
 #include "timer.h"
 #include "systick.h"
-//#include "misc.h"
+#include "button.h"
+//#include "button.h"
+//#include "stm32f4xx_hal.h"
 #include <string>
 #include <sstream>
 
 volatile int mytimer;
 volatile int b;
 volatile int systick_init_done = 0;
+volatile int button_pressed = 0;
+volatile bool LED_is_ON;
 			
 void delay(int counter)
 {
@@ -34,6 +38,10 @@ int main(void)
 	LCD_LayerInit();
 
 	SysTick_init ();
+
+	pushbutton_init();
+
+	//HAL_Init();
 
 	/* LTDC reload configuration */
 	//LTDC_ReloadConfig(LTDC_IMReload);
@@ -74,11 +82,17 @@ int main(void)
 		if((mytimer/1000)%2)
 		{
 			STM_EVAL_LEDOn(LED3);
-			STM_EVAL_LEDOff(LED4);
 		} else
 		{
 			STM_EVAL_LEDOff(LED3);
+		}
+
+		if(LED_is_ON)
+		{
 			STM_EVAL_LEDOn(LED4);
+		} else
+		{
+			STM_EVAL_LEDOff(LED4);
 		}
 
 		output.str(std::string());
@@ -91,7 +105,7 @@ int main(void)
 		chararray = "";
 		chararray = outputstring.c_str();
 
-		LCD_DisplayStringLine(LCD_LINE_10, (uint8_t*) chararray);
+		LCD_DisplayStringLine(LCD_LINE_9, (uint8_t*) chararray);
 
 		outputISR.str(std::string());
 		outputISR << "ISR call " << b;
@@ -99,9 +113,12 @@ int main(void)
 		outputstringISR = outputISR.str();
 		chararrayISR = "";
 		chararrayISR = outputstringISR.c_str();
-		LCD_DisplayStringLine(LCD_LINE_11,(uint8_t*) chararrayISR);
+		LCD_DisplayStringLine(LCD_LINE_10,(uint8_t*) chararrayISR);
 
 		if(systick_init_done)
-			LCD_DisplayStringLine(LCD_LINE_12,(uint8_t*) "SysTick_init ok");
+			LCD_DisplayStringLine(LCD_LINE_11,(uint8_t*) "SysTick_init ok");
+
+		if(button_pressed)
+					LCD_DisplayStringLine(LCD_LINE_12,(uint8_t*) "button pressed");
 	}
 }
