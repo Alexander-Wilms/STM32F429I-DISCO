@@ -15,6 +15,7 @@
 #include "timer.h"
 #include "systick.h"
 #include "button.h"
+#include "fsm.h"
 //#include "button.h"
 //#include "stm32f4xx_hal.h"
 #include <string>
@@ -32,6 +33,8 @@ void delay(int counter)
 	while(counter!=0)
 		counter--;
 }
+
+event_type event;
 
 int main(void)
 {
@@ -85,51 +88,68 @@ int main(void)
 	STM_EVAL_LEDInit(LED4);
 	while(1)
 	{
-		if((systick_count/1000)%2)
-		{
-			STM_EVAL_LEDOn(LED3);
-		} else
-		{
-			STM_EVAL_LEDOff(LED3);
+		switch(get_event()){
+		case TICK:
+			if(running)
+				systick_count++;
+
+			if((systick_count/1000)%2)
+			{
+				STM_EVAL_LEDOn(LED3);
+			} else
+			{
+				STM_EVAL_LEDOff(LED3);
+			}
+
+			/*outputISR.str(std::string());
+			outputISR << "SysT ISR " << systick_count;
+			outputstringISR = "";
+			outputstringISR = outputISR.str();
+			chararrayISR = "";
+			chararrayISR = outputstringISR.c_str();
+			LCD_DisplayStringLine(LCD_LINE_10,(uint8_t*) chararrayISR);*/
+
+			output.str(std::string());
+			mytimerobject.setMin(systick_count/1000/60);
+			mytimerobject.setSec(systick_count/1000);
+			mytimerobject.setHun(systick_count/10);
+			output << "Time " << mytimerobject.printtime();
+			outputstring = "";
+			outputstring = output.str();
+			chararray = "";
+			chararray = outputstring.c_str();
+			LCD_DisplayStringLine(LCD_LINE_11, (uint8_t*) chararray);
+			break;
+		case START_STOP:
+			running = !running;
+			/*button_pressed = !button_pressed;
+			running = !running;
+			button_count++;
+
+			if(button_pressed)
+			{
+				STM_EVAL_LEDOn(LED4);
+			} else
+			{
+				STM_EVAL_LEDOff(LED4);
+			}
+
+			outputButton.str(std::string());
+			outputButton << "Btn ISR " << button_count;
+			outputstringButton = "";
+			outputstringButton = outputButton.str();
+			chararrayButton = "";
+			chararrayButton = outputstringButton.c_str();
+			LCD_DisplayStringLine(LCD_LINE_12,(uint8_t*) chararrayButton);
+
+			if(running)
+				LCD_DisplayStringLine(LCD_LINE_8,(uint8_t*) "running");
+			else
+				LCD_DisplayStringLine(LCD_LINE_8,(uint8_t*) "not running");*/
+			break;
 		}
 
-		if(button_pressed)
-		{
-			STM_EVAL_LEDOn(LED4);
-		} else
-		{
-			STM_EVAL_LEDOff(LED4);
-		}
-
-		if(systick_init_done)
-			LCD_DisplayStringLine(LCD_LINE_9,(uint8_t*) "SysT init OK");
-
-		outputISR.str(std::string());
-		outputISR << "SysT ISR " << systick_count;
-		outputstringISR = "";
-		outputstringISR = outputISR.str();
-		chararrayISR = "";
-		chararrayISR = outputstringISR.c_str();
-		LCD_DisplayStringLine(LCD_LINE_10,(uint8_t*) chararrayISR);
-
-		output.str(std::string());
-		mytimerobject.setMin(systick_count/1000/60);
-		mytimerobject.setSec(systick_count/1000);
-		mytimerobject.setHun(systick_count/10);
-		output << "Time " << mytimerobject.printtime();
-		outputstring = "";
-		outputstring = output.str();
-		chararray = "";
-		chararray = outputstring.c_str();
-
-		LCD_DisplayStringLine(LCD_LINE_11, (uint8_t*) chararray);
-
-		outputButton.str(std::string());
-		outputButton << "Btn ISR " << button_count;
-		outputstringButton = "";
-		outputstringButton = outputButton.str();
-		chararrayButton = "";
-		chararrayButton = outputstringButton.c_str();
-		LCD_DisplayStringLine(LCD_LINE_12,(uint8_t*) chararrayButton);
+		//if(systick_init_done)
+		//	LCD_DisplayStringLine(LCD_LINE_9,(uint8_t*) "SysT init OK");
 	}
 }

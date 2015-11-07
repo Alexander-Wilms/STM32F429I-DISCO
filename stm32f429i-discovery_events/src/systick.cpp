@@ -14,6 +14,7 @@
 #include <string>
 #include <sstream>
 #include "stm32f429i_discovery_lcd.h"
+#include "fsm.h"
 /*#include "stm32f4xx_hal.h"
 #include "stm324xg_eval.h"
 #include "button.h"*/
@@ -23,14 +24,10 @@
 /** @brief SysTick interrupt service route called @ 1000 Hz */
 extern "C" void SysTick_Handler(void)
 {
-
-
-#if defined(USE_HAL_DRIVER)
-  HAL_IncTick();
-#endif
-
-  if(running)
-	  systick_count++;
+	#if defined(USE_HAL_DRIVER)
+	  HAL_IncTick();
+	#endif
+	signal_event(TICK);
 }
 
 /** @brief SysTick initialization */

@@ -1,5 +1,6 @@
 #include "stm32f429i_discovery.h" // Für __HAL_GPIO_EXTI_CLEAR_IT
 #include "stm32f429i_discovery_lcd.h"
+#include "fsm.h"
 //#include "stm32f4xx.h"
 //#include "stm32f4xx_hal.h"
 //#include "stm32f4xx_hal_conf.h"
@@ -34,9 +35,7 @@ EXTI0_IRQHandler (void)
 	// LED_is_ON = ! LED_is_ON;
 	// LCD_DisplayStringLine(LCD_LINE_12, (uint8_t*) "Button pressed");
 	EXTI_ClearITPendingBit(USER_BUTTON_EXTI_LINE);
-	button_pressed = !button_pressed;
-	running = !running;
-	button_count++;
+	signal_event(START_STOP);
 }
 
 /** @brief button interrupt initialization */
