@@ -20,10 +20,10 @@
 #include <string>
 #include <sstream>
 
-volatile int mytimer;
-volatile int b;
+volatile int systick_count = 0;
 volatile int systick_init_done = 0;
-volatile int button_pressed = 0;
+volatile bool button_pressed = 0;
+volatile int button_count = 0;
 volatile bool LED_is_ON;
 			
 void delay(int counter)
@@ -68,6 +68,10 @@ int main(void)
 	std::string outputstringISR;
 	const char * chararrayISR;
 
+	std::stringstream outputButton;
+	std::string outputstringButton;
+	const char * chararrayButton;
+
 	Timer mytimerobject(12,34,56);
 
 	LCD_DisplayStringLine(LCD_LINE_2,(uint8_t*)"h_da    ");
@@ -79,7 +83,7 @@ int main(void)
 	STM_EVAL_LEDInit(LED4);
 	while(1)
 	{
-		if((mytimer/1000)%2)
+		if((systick_count/1000)%2)
 		{
 			STM_EVAL_LEDOn(LED3);
 		} else
@@ -96,9 +100,9 @@ int main(void)
 		}
 
 		output.str(std::string());
-		mytimerobject.setMin(mytimer/1000/60);
-		mytimerobject.setSec(mytimer/1000);
-		mytimerobject.setHun(mytimer/10);
+		mytimerobject.setMin(systick_count/1000/60);
+		mytimerobject.setSec(systick_count/1000);
+		mytimerobject.setHun(systick_count/10);
 		output << "Time: " << mytimerobject.printtime();
 		outputstring = "";
 		outputstring = output.str();
@@ -108,7 +112,7 @@ int main(void)
 		LCD_DisplayStringLine(LCD_LINE_9, (uint8_t*) chararray);
 
 		outputISR.str(std::string());
-		outputISR << "ISR call " << b;
+		outputISR << "ISR call " << systick_count;
 		outputstringISR = "";
 		outputstringISR = outputISR.str();
 		chararrayISR = "";
@@ -118,7 +122,18 @@ int main(void)
 		if(systick_init_done)
 			LCD_DisplayStringLine(LCD_LINE_11,(uint8_t*) "SysTick_init ok");
 
-		if(button_pressed)
-					LCD_DisplayStringLine(LCD_LINE_12,(uint8_t*) "button pressed");
+		outputButton.str(std::string());
+		outputButton << "ISR call " << button_count;
+		outputstringButton = "";
+		outputstringButton = outputButton.str();
+		chararrayButton = "";
+		chararrayButton = outputstringButton.c_str();
+		LCD_DisplayStringLine(LCD_LINE_12,(uint8_t*) chararrayButton);
+
+		//if(button_pressed)
+		//	LCD_DisplayStringLine(LCD_LINE_12,(uint8_t*) "button pressed");
+		//else if (!button_pressed)
+		//	LCD_DisplayStringLine(LCD_LINE_12,(uint8_t*) "");
+
 	}
 }

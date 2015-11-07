@@ -19,9 +19,6 @@
 #include "button.h"*/
 
 #define TICK_RATE_HZ 1000       //!< SysTick interrupt frequency
-std::stringstream output;
-std::string outputstring;
-const char * chararray;
 
 /** @brief SysTick interrupt service route called @ 1000 Hz */
 extern "C" void SysTick_Handler(void)
@@ -32,8 +29,7 @@ extern "C" void SysTick_Handler(void)
   HAL_IncTick();
 #endif
 
-  mytimer++;
-  b++;
+  systick_count++;
 }
 
 /** @brief SysTick initialization */

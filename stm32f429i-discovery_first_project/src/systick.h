@@ -8,8 +8,5 @@
 
 void SysTick_init( void);
 void busy_delay( unsigned time);
-extern volatile unsigned tickCount;
-extern volatile int mytimer;
-extern volatile int b;
+extern volatile int systick_count;
 extern volatile int systick_init_done;
-extern volatile int count;
