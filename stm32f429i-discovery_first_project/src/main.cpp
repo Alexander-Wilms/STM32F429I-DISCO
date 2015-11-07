@@ -93,15 +93,13 @@ int main(void)
 			STM_EVAL_LEDOff(LED3);
 		}
 
-		if(LED_is_ON)
+		if(button_pressed)
 		{
 			STM_EVAL_LEDOn(LED4);
 		} else
 		{
 			STM_EVAL_LEDOff(LED4);
 		}
-
-
 
 		if(systick_init_done)
 			LCD_DisplayStringLine(LCD_LINE_9,(uint8_t*) "SysT init OK");
@@ -133,11 +131,5 @@ int main(void)
 		chararrayButton = "";
 		chararrayButton = outputstringButton.c_str();
 		LCD_DisplayStringLine(LCD_LINE_12,(uint8_t*) chararrayButton);
-
-		//if(button_pressed)
-		//	LCD_DisplayStringLine(LCD_LINE_12,(uint8_t*) "button pressed");
-		//else if (!button_pressed)
-		//	LCD_DisplayStringLine(LCD_LINE_12,(uint8_t*) "");
-
 	}
 }
