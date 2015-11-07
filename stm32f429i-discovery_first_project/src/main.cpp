@@ -57,8 +57,9 @@ int main(void)
 	LCD_SetLayer(LCD_BACKGROUND_LAYER);
 
 	/* LCD display message */
-	LCD_Clear(LCD_COLOR_WHITE);
-	//LCD_SetTextColor(LCD_COLOR_WHITE);
+	LCD_Clear(LCD_COLOR_BLUE);
+	LCD_SetBackColor(LCD_COLOR_BLUE);
+	LCD_SetTextColor(LCD_COLOR_YELLOW);
 
 	std::stringstream output;
 	std::string outputstring;
@@ -74,9 +75,9 @@ int main(void)
 
 	Timer mytimerobject(12,34,56);
 
-	LCD_DisplayStringLine(LCD_LINE_2,(uint8_t*)"h_da    ");
-	LCD_DisplayStringLine(LCD_LINE_4,(uint8_t*)"RZS     ");
-	LCD_DisplayStringLine(LCD_LINE_6,(uint8_t*)"WS 15/16     ");
+	LCD_DisplayStringLine(LCD_LINE_0,(uint8_t*)"h_da    ");
+	LCD_DisplayStringLine(LCD_LINE_1,(uint8_t*)"RZS     ");
+	LCD_DisplayStringLine(LCD_LINE_2,(uint8_t*)"WS 15/16     ");
 
 
 	STM_EVAL_LEDInit(LED3);
@@ -99,31 +100,33 @@ int main(void)
 			STM_EVAL_LEDOff(LED4);
 		}
 
-		output.str(std::string());
-		mytimerobject.setMin(systick_count/1000/60);
-		mytimerobject.setSec(systick_count/1000);
-		mytimerobject.setHun(systick_count/10);
-		output << "Time: " << mytimerobject.printtime();
-		outputstring = "";
-		outputstring = output.str();
-		chararray = "";
-		chararray = outputstring.c_str();
 
-		LCD_DisplayStringLine(LCD_LINE_9, (uint8_t*) chararray);
+
+		if(systick_init_done)
+			LCD_DisplayStringLine(LCD_LINE_9,(uint8_t*) "SysT init OK");
 
 		outputISR.str(std::string());
-		outputISR << "ISR call " << systick_count;
+		outputISR << "SysT ISR " << systick_count;
 		outputstringISR = "";
 		outputstringISR = outputISR.str();
 		chararrayISR = "";
 		chararrayISR = outputstringISR.c_str();
 		LCD_DisplayStringLine(LCD_LINE_10,(uint8_t*) chararrayISR);
 
-		if(systick_init_done)
-			LCD_DisplayStringLine(LCD_LINE_11,(uint8_t*) "SysTick_init ok");
+		output.str(std::string());
+		mytimerobject.setMin(systick_count/1000/60);
+		mytimerobject.setSec(systick_count/1000);
+		mytimerobject.setHun(systick_count/10);
+		output << "Time " << mytimerobject.printtime();
+		outputstring = "";
+		outputstring = output.str();
+		chararray = "";
+		chararray = outputstring.c_str();
+
+		LCD_DisplayStringLine(LCD_LINE_11, (uint8_t*) chararray);
 
 		outputButton.str(std::string());
-		outputButton << "ISR call " << button_count;
+		outputButton << "Btn ISR " << button_count;
 		outputstringButton = "";
 		outputstringButton = outputButton.str();
 		chararrayButton = "";
