@@ -1,0 +1,1 @@
+* Add openocd.exe path to Debug As > Debug Configurations... > Debugger > OpenOCD Setup
