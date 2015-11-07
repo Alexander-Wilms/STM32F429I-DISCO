@@ -1,2 +1,2 @@
 eclipse.preferences.version=1
-org.eclipse.core.variables.valueVariables=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<valueVariables>\r\n<valueVariable name\="openocd_executable" readOnly\="false" value\="openocd.exe"/>\r\n<valueVariable name\="openocd_path" readOnly\="false" value\="C\:\\Program Files\\GNU ARM Eclipse\\OpenOCD\\0.10.0-201510281129-dev\\bin"/>\r\n</valueVariables>\r\n
+org.eclipse.core.variables.valueVariables=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<valueVariables>\r\n<valueVariable name\="openocd_executable" readOnly\="false" value\="openocd.exe"/>\r\n<valueVariable description\="" name\="openocd_path" readOnly\="false" value\="C\:\\tools\\ARM\\openocd-0.9.0\\bin-x64"/>\r\n</valueVariables>\r\n

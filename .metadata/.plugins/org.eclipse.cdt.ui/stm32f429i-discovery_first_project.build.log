@@ -1,7 +1,7 @@
-00:54:26 **** Clean-only build of configuration Debug for project stm32f429i-discovery_first_project ****
+17:18:03 **** Clean-only build of configuration Debug for project stm32f429i-discovery_first_project ****
 make clean 
 rm -rf *
  
 
-00:54:27 Build Finished (took 422ms)
+17:18:03 Build Finished (took 625ms)
 
