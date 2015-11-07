@@ -29,7 +29,8 @@ extern "C" void SysTick_Handler(void)
   HAL_IncTick();
 #endif
 
-  systick_count++;
+  if(running)
+	  systick_count++;
 }
 
 /** @brief SysTick initialization */

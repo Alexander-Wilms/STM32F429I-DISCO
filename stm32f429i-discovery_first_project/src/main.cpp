@@ -23,6 +23,7 @@
 volatile int systick_count = 0;
 volatile int systick_init_done = 0;
 volatile bool button_pressed = 0;
+volatile bool running = 1;
 volatile int button_count = 0;
 volatile bool LED_is_ON;
 			

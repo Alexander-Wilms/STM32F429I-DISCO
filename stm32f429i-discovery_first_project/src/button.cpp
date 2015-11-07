@@ -9,6 +9,7 @@
 extern volatile bool LED_is_ON;
 extern volatile int button_count;
 extern volatile int button_pressed;
+extern volatile bool running;
 
 /** @brief  This function handles External line0 interrupt request from KEY
  *
@@ -34,6 +35,7 @@ EXTI0_IRQHandler (void)
 	// LCD_DisplayStringLine(LCD_LINE_12, (uint8_t*) "Button pressed");
 	EXTI_ClearITPendingBit(USER_BUTTON_EXTI_LINE);
 	button_pressed = !button_pressed;
+	running = !running;
 	button_count++;
 }
 
