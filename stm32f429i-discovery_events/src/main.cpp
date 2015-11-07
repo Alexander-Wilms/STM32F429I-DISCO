@@ -83,9 +83,9 @@ int main(void)
 	LCD_DisplayStringLine(LCD_LINE_1,(uint8_t*)"RZS     ");
 	LCD_DisplayStringLine(LCD_LINE_2,(uint8_t*)"WS 15/16     ");
 
-
 	STM_EVAL_LEDInit(LED3);
 	STM_EVAL_LEDInit(LED4);
+
 	while(1)
 	{
 		switch(get_event()){
@@ -101,13 +101,13 @@ int main(void)
 				STM_EVAL_LEDOff(LED3);
 			}
 
-			/*outputISR.str(std::string());
+			outputISR.str(std::string());
 			outputISR << "SysT ISR " << systick_count;
 			outputstringISR = "";
 			outputstringISR = outputISR.str();
 			chararrayISR = "";
 			chararrayISR = outputstringISR.c_str();
-			LCD_DisplayStringLine(LCD_LINE_10,(uint8_t*) chararrayISR);*/
+			LCD_DisplayStringLine(LCD_LINE_10,(uint8_t*) chararrayISR);
 
 			output.str(std::string());
 			mytimerobject.setMin(systick_count/1000/60);
@@ -122,7 +122,7 @@ int main(void)
 			break;
 		case START_STOP:
 			running = !running;
-			/*button_pressed = !button_pressed;
+			button_pressed = !button_pressed;
 			running = !running;
 			button_count++;
 
@@ -145,11 +145,15 @@ int main(void)
 			if(running)
 				LCD_DisplayStringLine(LCD_LINE_8,(uint8_t*) "running");
 			else
-				LCD_DisplayStringLine(LCD_LINE_8,(uint8_t*) "not running");*/
+				LCD_DisplayStringLine(LCD_LINE_8,(uint8_t*) "not running");
+
+			LCD_DisplayStringLine(LCD_LINE_3,(uint8_t*) "START_STOP");
+			break;
+		default:
 			break;
 		}
 
-		//if(systick_init_done)
-		//	LCD_DisplayStringLine(LCD_LINE_9,(uint8_t*) "SysT init OK");
+		if(systick_init_done)
+			LCD_DisplayStringLine(LCD_LINE_9,(uint8_t*) "SysT init OK");
 	}
 }
