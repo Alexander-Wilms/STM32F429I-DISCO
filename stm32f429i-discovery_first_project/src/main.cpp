@@ -69,15 +69,17 @@ int main(void)
 
 	STM_EVAL_LEDInit(LED3);
 	STM_EVAL_LEDInit(LED4);
-	int on = 0;
 	while(1)
 	{
-		/*STM_EVAL_LEDOn(LED3);
-		STM_EVAL_LEDOff(LED4);
-		delay(10000000);
-		STM_EVAL_LEDOff(LED3);
-		STM_EVAL_LEDOn(LED4);
-		delay(10000000);*/
+		if((mytimer/1000)%2)
+		{
+			STM_EVAL_LEDOn(LED3);
+			STM_EVAL_LEDOff(LED4);
+		} else
+		{
+			STM_EVAL_LEDOff(LED3);
+			STM_EVAL_LEDOn(LED4);
+		}
 
 		output.str(std::string());
 		mytimerobject.setMin(mytimer/1000/60);
