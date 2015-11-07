@@ -26,6 +26,16 @@
 *.exe
 *.out
 *.app
+*.elf
+
+# Other files
+*.d
+*.mk
+*.args
+*.list
+*.map
+*.log
+*makefile
 
 # =========================
 # Operating System Files
