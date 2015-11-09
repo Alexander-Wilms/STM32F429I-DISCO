@@ -1,7 +1,6 @@
-00:54:15 **** Clean-only build of configuration Debug for project stm32f429i-disco_hal_lib ****
-make clean 
-rm -rf *
- 
+17:17:59 **** Incremental Build of configuration Debug for project stm32f429i-disco_hal_lib ****
+make all 
+make: Nothing to be done for `all'.
 
-00:54:16 Build Finished (took 572ms)
+17:18:00 Build Finished (took 1s.357ms)
 
