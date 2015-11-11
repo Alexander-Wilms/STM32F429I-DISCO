@@ -1,4 +1,8 @@
-23:40:43 **** Clean-only build of configuration Debug for project stm32f429i-discovery_digitaler-regler ****
+ 
+
+23:35:25 Build Finished (took 4s.360ms)
+
+23:35:25 **** Clean-only build of configuration Debug for project stm32f429i-discovery-digitaler_regler-hal ****
 make clean 
 rm -rf *
  
