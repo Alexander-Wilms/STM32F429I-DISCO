@@ -48,21 +48,23 @@ int main(void)
 	BSP_LCD_SetLayerVisible(1, ENABLE);
 
 	BSP_LCD_SelectLayer(1);
-	BSP_LCD_Clear(LCD_COLOR_WHITE);
-	BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
+	BSP_LCD_Clear(LCD_COLOR_BLACK);
+	BSP_LCD_SetBackColor(LCD_COLOR_BLACK);
 	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
 	BSP_LCD_DisplayOn();
 
 	// BSP_LCD_DisplayStringAtLine((uint16_t) 1, (uint8_t *) "Hallo");
 
-	Point Points[3];
+	/*Point Points[3];
 	Points[0].X = 100;
 	Points[0].Y = 100;
 	Points[1].X = 200;
 	Points[1].Y = 200;
 	Points[2].X = 100;
 	Points[2].Y = 300;
-	BSP_LCD_DrawPolygon(Points, 3);
+	BSP_LCD_DrawPolygon(Points, 3);*/
+
+	//BSP_LCD_DrawLine(50,50,150,200);
 
 	// Eingangssprung
 	double t[320];
@@ -78,10 +80,12 @@ int main(void)
 		else*/
 			e[k] = SCALE;
 	}
-	for (int i = 0; i<sizeof(t)/sizeof(t[0]); i++)
+	BSP_LCD_SetTextColor(LCD_COLOR_RED);
+	for (int i = 1; i<sizeof(t)/sizeof(t[0])-1; i++)
 	{
-		BSP_LCD_DrawPixel((uint16_t) e[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_RED);
+		BSP_LCD_DrawLine(e[i],t[i],e[i+1],t[i+1]);
 	}
+
 
 	// Ausgang PT1-Glied
 	double y[320];
@@ -98,10 +102,10 @@ int main(void)
 			y[i] = ptone(2.,1.,0.1,e[i],y[i-1]);
 
 	}
-
-	for (int i = 0; i<sizeof(t)/sizeof(t[0]); i++)
+	BSP_LCD_SetTextColor(LCD_COLOR_DARKGREEN);
+	for (int i = 1; i<sizeof(t)/sizeof(t[0])-1; i++)
 	{
-		BSP_LCD_DrawPixel((uint16_t) y[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_DARKGREEN);
+		BSP_LCD_DrawLine(y[i],t[i],y[i+1],t[i+1]);
 	}
 
 	// Ausgang PI-Glied
@@ -119,12 +123,14 @@ int main(void)
 			y[i] = pi_stellungsalg(2.,10.,0.1,e[i]);
 
 	}
-
-	for (int i = 0; i<sizeof(t)/sizeof(t[0]); i++)
+	BSP_LCD_SetTextColor(LCD_COLOR_ORANGE);
+	for (int i = 1; i<sizeof(t)/sizeof(t[0])-1; i++)
 	{
 		if(y[i]>240)
-			y[i] = 0;
-		BSP_LCD_DrawPixel((uint16_t) y[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_ORANGE);
+			y[i] = 240;
+		if(y[i+1]>240)
+			y[i+1] = 240;
+		BSP_LCD_DrawLine(y[i],t[i],y[i+1],t[i+1]);
 	}
 
 	double w[320];
@@ -159,10 +165,10 @@ int main(void)
 			e[i+1] =  w[i+1]-x[i];
 		}
 	}
-
-	for (int i = 0; i<sizeof(t)/sizeof(t[0]); i++)
+	BSP_LCD_SetTextColor(LCD_COLOR_DARKGRAY);
+	for (int i = 1; i<sizeof(t)/sizeof(t[0]); i++)
 	{
-		BSP_LCD_DrawPixel((uint16_t) x[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_DARKGRAY);
+		BSP_LCD_DrawLine(x[i],t[i],x[i+1],t[i+1]);
 	}
 
 	for(int l = 0;l<sizeof(t)/sizeof(t[0]);l++)
@@ -181,22 +187,19 @@ int main(void)
 	for (int i = 0;i<sizeof(t)/sizeof(t[0]);i++)
 	{
 		if(i==0)
-			y[i] = pid_schnelligkeitsalg(2,0.01,10,0.1,0,0,0,0);
+			y[i] = pid_schnelligkeitsalg(1,0.1,2,0.1,0,0,0,0);
 		if(i==1)
-			y[i] = pid_schnelligkeitsalg(2,0.01,10,0.1,0,0,0,0);
+			y[i] = pid_schnelligkeitsalg(1,0.1,2,0.1,0,0,0,0);
 		else
-			y[i] = pid_schnelligkeitsalg(2,0.01,10,0.1,e[i],e[i-1],e[i-2],y[i-1]);
+			y[i] = pid_schnelligkeitsalg(1,0.1,2,0.1,e[i],e[i-1],e[i-2],y[i-1]);
 
 	}
-
-	for (int i = 0; i<sizeof(t)/sizeof(t[0]); i++)
+	BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
+	for (int i = 1; i<sizeof(t)/sizeof(t[0])-1; i++)
 	{
-		if(y[i]>240)
-			y[i] = 0;
-		if(y[i]<0)
-			y[i] = 0;
-		BSP_LCD_DrawPixel((uint16_t) y[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_ORANGE);
+		BSP_LCD_DrawLine(y[i]/10,t[i],y[i+1]/10,t[i+1]);
 	}
+
 
 	// double pid_schnelligkeitsalg(double kp, double kd, double ki, double T, double ek, double ekminuseins, double ekminuszwei, double ykminuseins)
 	// double pttwo(double kp, double T1, double T, double ek, double vkminus1, double vkminus2)
@@ -221,18 +224,17 @@ int main(void)
 			e[i+1] =  w[i+1]-x[i];
 		}
 	}
-
-	for (int i = 0; i<sizeof(t)/sizeof(t[0]); i++)
+	BSP_LCD_SetTextColor(LCD_COLOR_BLUE);
+	for (int i = 1; i<sizeof(t)/sizeof(t[0])-1; i++)
 	{
 		if(x[i]>240)
 			x[i] = 0;
-		BSP_LCD_DrawPixel((uint16_t) x[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_DARKBLUE);
+		BSP_LCD_DrawLine(x[i],t[i],x[i+1],t[i+1]);
 	}
 
-	for (int i = 0; i<320; i++)
-	{
-		BSP_LCD_DrawPixel(0, i, LCD_COLOR_BLACK);
-	}
+	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
+	BSP_LCD_DrawRect(0, 0, 240-1, 320-1);
+
 
 	for(;;);
 }
