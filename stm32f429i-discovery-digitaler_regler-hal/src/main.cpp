@@ -48,10 +48,12 @@ int main(void)
 	BSP_LCD_SetLayerVisible(1, ENABLE);
 
 	BSP_LCD_SelectLayer(1);
-	BSP_LCD_Clear(LCD_COLOR_WHITE);
-	//BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
-	//BSP_LCD_SetTextColor(LCD_COLOR_GREEN);
+	BSP_LCD_Clear(LCD_COLOR_BLACK);
+	BSP_LCD_SetBackColor(LCD_COLOR_BLACK);
+	BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
 	BSP_LCD_DisplayOn();
+
+	// BSP_LCD_DisplayStringAtLine((uint16_t) 1, (uint8_t *) "Hallo");
 
 	// Eingangssprung
 	double t[320];
@@ -69,7 +71,7 @@ int main(void)
 	}
 	for (int i = 0; i<sizeof(t)/sizeof(t[0]); i++)
 	{
-		BSP_LCD_DrawPixel((uint16_t) e[i], (uint16_t) t[i], (uint16_t) LCD_COLOR_GREEN);
+		BSP_LCD_DrawPixel((uint16_t) e[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_RED);
 	}
 
 	// Ausgang PT1-Glied
@@ -90,7 +92,7 @@ int main(void)
 
 	for (int i = 0; i<sizeof(t)/sizeof(t[0]); i++)
 	{
-		BSP_LCD_DrawPixel((uint16_t) y[i], (uint16_t) t[i], (uint16_t) LCD_COLOR_GREEN);
+		BSP_LCD_DrawPixel((uint16_t) y[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_GREEN);
 	}
 
 	// Ausgang PI-Glied
@@ -112,8 +114,8 @@ int main(void)
 	for (int i = 0; i<sizeof(t)/sizeof(t[0]); i++)
 	{
 		if(y[i]>240)
-			y[i] = 240;
-		BSP_LCD_DrawPixel((uint16_t) y[i], (uint16_t) t[i], (uint16_t) LCD_COLOR_GREEN);
+			y[i] = 0;
+		BSP_LCD_DrawPixel((uint16_t) y[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_BLUE);
 	}
 
 	double w[320];
@@ -151,7 +153,7 @@ int main(void)
 
 	for (int i = 0; i<sizeof(t)/sizeof(t[0]); i++)
 	{
-		BSP_LCD_DrawPixel((uint16_t) x[i], (uint16_t) t[i], (uint16_t) LCD_COLOR_GREEN);
+		BSP_LCD_DrawPixel((uint16_t) x[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_YELLOW);
 	}
 
 	for(int l = 0;l<sizeof(t)/sizeof(t[0]);l++)
@@ -170,21 +172,21 @@ int main(void)
 	for (int i = 0;i<sizeof(t)/sizeof(t[0]);i++)
 	{
 		if(i==0)
-			y[i] = pid_schnelligkeitsalg(2,0.01,1,0.1,0,0,0,0);
+			y[i] = pid_schnelligkeitsalg(2,0.01,10,0.1,0,0,0,0);
 		if(i==1)
-			y[i] = pid_schnelligkeitsalg(2,0.01,1,0.1,0,0,0,0);
+			y[i] = pid_schnelligkeitsalg(2,0.01,10,0.1,0,0,0,0);
 		else
-			y[i] = pid_schnelligkeitsalg(2,0.01,1,0.1,e[i],e[i-1],e[i-2],y[i-1]);
+			y[i] = pid_schnelligkeitsalg(2,0.01,10,0.1,e[i],e[i-1],e[i-2],y[i-1]);
 
 	}
 
 	for (int i = 0; i<sizeof(t)/sizeof(t[0]); i++)
 	{
 		if(y[i]>240)
-			y[i] = 240;
+			y[i] = 0;
 		if(y[i]<0)
 			y[i] = 0;
-		BSP_LCD_DrawPixel((uint16_t) y[i], (uint16_t) t[i], (uint16_t) LCD_COLOR_GREEN);
+		BSP_LCD_DrawPixel((uint16_t) y[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_ORANGE);
 	}
 
 	// double pid_schnelligkeitsalg(double kp, double kd, double ki, double T, double ek, double ekminuseins, double ekminuszwei, double ykminuseins)
@@ -193,27 +195,34 @@ int main(void)
 	{
 		if (i == 0)
 		{
-			y[i] = pid_schnelligkeitsalg(2,0.01,1,0.1,0,0,0,0);
-			x[i] = pttwo(2,1,0.1,y[i],0,0);
+			y[i] = pid_schnelligkeitsalg(1,0.1,2,0.1,0,0,0,0);
+			x[i] = pttwo(0.5,0.1,0.1,y[i],0,0);
 			e[i+1] = w[i+1]-x[i];
 		}
 		if (i == 1)
 		{
-			y[i] = pid_schnelligkeitsalg(2,0.01,1,0.1,0,0,0,0);
-			x[i] = pttwo(2,1,0.1,y[i],0,0);
+			y[i] = pid_schnelligkeitsalg(1,0.1,2,0.1,0,0,0,0);
+			x[i] = pttwo(0.5,0.1,0.1,y[i],0,0);
 			e[i+1] = w[i+1]-x[i];
 		}
 		else
 		{
-			y[i] = pid_schnelligkeitsalg(2,0.01,1,0.1,e[i],e[i-1],e[i-2],y[i-1]);
-			x[i] = pttwo(2,1,0.1,y[i],x[i-1],x[i-2]);
+			y[i] = pid_schnelligkeitsalg(1,0.1,2,0.1,e[i],e[i-1],e[i-2],y[i-1]);
+			x[i] = pttwo(0.5,0.1,0.1,y[i],x[i-1],x[i-2]);
 			e[i+1] =  w[i+1]-x[i];
 		}
 	}
 
 	for (int i = 0; i<sizeof(t)/sizeof(t[0]); i++)
 	{
-		BSP_LCD_DrawPixel((uint16_t) x[i], (uint16_t) t[i], (uint16_t) LCD_COLOR_GREEN);
+		if(x[i]>240)
+			x[i] = 0;
+		BSP_LCD_DrawPixel((uint16_t) x[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_CYAN);
+	}
+
+	for (int i = 0; i<320; i++)
+	{
+		BSP_LCD_DrawPixel(0, i, LCD_COLOR_BLACK);
 	}
 
 	for(;;);
