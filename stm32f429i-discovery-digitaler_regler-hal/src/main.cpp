@@ -48,12 +48,21 @@ int main(void)
 	BSP_LCD_SetLayerVisible(1, ENABLE);
 
 	BSP_LCD_SelectLayer(1);
-	BSP_LCD_Clear(LCD_COLOR_BLACK);
-	BSP_LCD_SetBackColor(LCD_COLOR_BLACK);
-	BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
+	BSP_LCD_Clear(LCD_COLOR_WHITE);
+	BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
+	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
 	BSP_LCD_DisplayOn();
 
 	// BSP_LCD_DisplayStringAtLine((uint16_t) 1, (uint8_t *) "Hallo");
+
+	Point Points[3];
+	Points[0].X = 100;
+	Points[0].Y = 100;
+	Points[1].X = 200;
+	Points[1].Y = 200;
+	Points[2].X = 100;
+	Points[2].Y = 300;
+	BSP_LCD_DrawPolygon(Points, 3);
 
 	// Eingangssprung
 	double t[320];
@@ -92,7 +101,7 @@ int main(void)
 
 	for (int i = 0; i<sizeof(t)/sizeof(t[0]); i++)
 	{
-		BSP_LCD_DrawPixel((uint16_t) y[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_GREEN);
+		BSP_LCD_DrawPixel((uint16_t) y[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_DARKGREEN);
 	}
 
 	// Ausgang PI-Glied
@@ -115,7 +124,7 @@ int main(void)
 	{
 		if(y[i]>240)
 			y[i] = 0;
-		BSP_LCD_DrawPixel((uint16_t) y[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_BLUE);
+		BSP_LCD_DrawPixel((uint16_t) y[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_ORANGE);
 	}
 
 	double w[320];
@@ -153,7 +162,7 @@ int main(void)
 
 	for (int i = 0; i<sizeof(t)/sizeof(t[0]); i++)
 	{
-		BSP_LCD_DrawPixel((uint16_t) x[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_YELLOW);
+		BSP_LCD_DrawPixel((uint16_t) x[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_DARKGRAY);
 	}
 
 	for(int l = 0;l<sizeof(t)/sizeof(t[0]);l++)
@@ -217,7 +226,7 @@ int main(void)
 	{
 		if(x[i]>240)
 			x[i] = 0;
-		BSP_LCD_DrawPixel((uint16_t) x[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_CYAN);
+		BSP_LCD_DrawPixel((uint16_t) x[i], (uint16_t) t[i], (uint32_t) LCD_COLOR_DARKBLUE);
 	}
 
 	for (int i = 0; i<320; i++)
