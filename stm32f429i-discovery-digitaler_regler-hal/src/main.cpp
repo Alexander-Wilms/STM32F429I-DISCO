@@ -12,12 +12,18 @@
 static void SystemClock_Config(void);
 static volatile int sum;
 
-//y[i] = pi(2.,10.,0.1,e[i]);
-double pi(double kp, double TN, double T, double ek)
+#define SCALE 100
+
+double pi_stellungsalg(double kp, double TN, double T, double ek)
 {
     double returnvalue = (kp*(ek+(T/TN)*sum));
     sum = sum + ek;
     return returnvalue;
+}
+
+double pid_schnelligkeitsalg(double kp, double kd, double ki, double T, double ek, double ekminuseins, double ekminuszwei, double ykminuseins)
+{
+    return ykminuseins+ek*(kp+kd/T)-ekminuseins*(kp+(2*kd)/T-ki*T)+ekminuszwei*kd/T;
 }
 
 double ptone(double kp, double T1, double T, double ek, double vkvorher)
@@ -25,12 +31,9 @@ double ptone(double kp, double T1, double T, double ek, double vkvorher)
 	return (T1/(T1+T))*vkvorher + kp*(T/(T1+T))*ek;
 }
 
-void plot(int x[], int y[])
+double pttwo(double kp, double T1, double T, double ek, double vkminus1, double vkminus2)
 {
-	for (int i = 0; i<sizeof(x)/sizeof(x[0]); i++)
-	{
-		BSP_LCD_DrawPixel((uint16_t) x[i], (uint16_t) y[i], (uint16_t) LCD_COLOR_BLACK);
-	}
+	return (kp*ek-T1*((vkminus2-2*vkminus1)/(T*T))-2*T1*(-vkminus1/T))/(T1/(T*T)+2*T1/T+1);
 }
 
 int main(void)
@@ -41,24 +44,14 @@ int main(void)
 	SystemClock_Config();
 
 	BSP_LCD_Init();
-	BSP_LCD_LayerDefaultInit(0, (uint32_t) LCD_FRAME_BUFFER);
-	// BSP_LCD_SetLayerWindow(0, 0, 0, 240, 160);
-	BSP_LCD_SetLayerVisible(0, ENABLE);
+	BSP_LCD_LayerDefaultInit(1, (uint32_t) LCD_FRAME_BUFFER);
+	BSP_LCD_SetLayerVisible(1, ENABLE);
 
-	BSP_LCD_SelectLayer(0);
+	BSP_LCD_SelectLayer(1);
 	BSP_LCD_Clear(LCD_COLOR_WHITE);
-	BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
-	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
+	//BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
+	//BSP_LCD_SetTextColor(LCD_COLOR_GREEN);
 	BSP_LCD_DisplayOn();
-
-	//int a[] = {10,11,12,13,14,15};
-	//int b[] = {10,11,12,13,14,15};
-	//plot(a,b);
-
-	/*for (int i = 0; i<sizeof(a)/sizeof(a[0]); i++)
-	{
-		BSP_LCD_DrawPixel((uint16_t) a[i], (uint16_t) b[i], (uint16_t) LCD_COLOR_BLACK);
-	}*/
 
 	// Eingangssprung
 	double t[320];
@@ -69,10 +62,10 @@ int main(void)
 	double e[320];
 	for(int k = 0;k<sizeof(t)/sizeof(t[0]);k++)
 	{
-		if(k<20)
+		/*if(k<20)
 			e[k] = 0.;
-		else
-			e[k] = 50.;
+		else*/
+			e[k] = SCALE;
 	}
 	for (int i = 0; i<sizeof(t)/sizeof(t[0]); i++)
 	{
@@ -85,7 +78,6 @@ int main(void)
 	{
 		y[l] = 0.;
 	}
-
 	sum = 0;
 	for (int i = 1;i<sizeof(t)/sizeof(t[0]);i++)
 	{
@@ -111,9 +103,9 @@ int main(void)
 	for (int i = 1;i<sizeof(t)/sizeof(t[0]);i++)
 	{
 		if(i==1)
-			y[i] = pi(2.,10.,0.1,e[i]);
+			y[i] = pi_stellungsalg(2.,10.,0.1,e[i]);
 		else
-			y[i] = pi(2.,10.,0.1,e[i]);
+			y[i] = pi_stellungsalg(2.,10.,0.1,e[i]);
 
 	}
 
@@ -127,10 +119,10 @@ int main(void)
 	double w[320];
 	for(int k = 0;k<sizeof(t)/sizeof(t[0]);k++)
 	{
-		if(k<20)
+		/*if(k<20)
 			w[k] = 0.;
-		else
-			w[k] = 50.;
+		else*/
+			w[k] = SCALE;
 	}
 
 	double x[320];
@@ -139,19 +131,82 @@ int main(void)
 		x[l] = 0.;
 	}
 
+	// double pi_stellungsalg(double kp, double TN, double T, double ek)
 	sum = 0;
 	for (int i = 0; i<(sizeof(t)/sizeof(t[0]))-1; i++)
 	{
 		if (i == 1)
 		{
-			y[i] = pi(2,10,0.1,1);
+			y[i] = pi_stellungsalg(2,10,0.1,1);
 			x[i] = ptone(2,1,0.1,y[i],0);
 			e[i+1] = w[i+1]-x[i];
 		}
 		else
 		{
-			y[i] = pi(2,10,0.1,e[i]);
+			y[i] = pi_stellungsalg(2,10,0.1,e[i]);
 			x[i] = ptone(2,1,0.1,y[i],x[i-1]);
+			e[i+1] =  w[i+1]-x[i];
+		}
+	}
+
+	for (int i = 0; i<sizeof(t)/sizeof(t[0]); i++)
+	{
+		BSP_LCD_DrawPixel((uint16_t) x[i], (uint16_t) t[i], (uint16_t) LCD_COLOR_GREEN);
+	}
+
+	for(int l = 0;l<sizeof(t)/sizeof(t[0]);l++)
+	{
+		x[l] = 0.;
+	}
+
+
+	// Ausgang PID-Glied
+	for(int l = 0;l<sizeof(t)/sizeof(t[0]);l++)
+	{
+		y[l] = 0.;
+	}
+
+	//double pid_schnelligkeitsalg(double kp, double kd, double ki, double T, double ek, double ekminuseins, double ekminuszwei, double ykminuseins)
+	for (int i = 0;i<sizeof(t)/sizeof(t[0]);i++)
+	{
+		if(i==0)
+			y[i] = pid_schnelligkeitsalg(2,0.01,1,0.1,0,0,0,0);
+		if(i==1)
+			y[i] = pid_schnelligkeitsalg(2,0.01,1,0.1,0,0,0,0);
+		else
+			y[i] = pid_schnelligkeitsalg(2,0.01,1,0.1,e[i],e[i-1],e[i-2],y[i-1]);
+
+	}
+
+	for (int i = 0; i<sizeof(t)/sizeof(t[0]); i++)
+	{
+		if(y[i]>240)
+			y[i] = 240;
+		if(y[i]<0)
+			y[i] = 0;
+		BSP_LCD_DrawPixel((uint16_t) y[i], (uint16_t) t[i], (uint16_t) LCD_COLOR_GREEN);
+	}
+
+	// double pid_schnelligkeitsalg(double kp, double kd, double ki, double T, double ek, double ekminuseins, double ekminuszwei, double ykminuseins)
+	// double pttwo(double kp, double T1, double T, double ek, double vkminus1, double vkminus2)
+	for (int i = 0; i<(sizeof(t)/sizeof(t[0]))-1; i++)
+	{
+		if (i == 0)
+		{
+			y[i] = pid_schnelligkeitsalg(2,0.01,1,0.1,0,0,0,0);
+			x[i] = pttwo(2,1,0.1,y[i],0,0);
+			e[i+1] = w[i+1]-x[i];
+		}
+		if (i == 1)
+		{
+			y[i] = pid_schnelligkeitsalg(2,0.01,1,0.1,0,0,0,0);
+			x[i] = pttwo(2,1,0.1,y[i],0,0);
+			e[i+1] = w[i+1]-x[i];
+		}
+		else
+		{
+			y[i] = pid_schnelligkeitsalg(2,0.01,1,0.1,e[i],e[i-1],e[i-2],y[i-1]);
+			x[i] = pttwo(2,1,0.1,y[i],x[i-1],x[i-2]);
 			e[i+1] =  w[i+1]-x[i];
 		}
 	}
