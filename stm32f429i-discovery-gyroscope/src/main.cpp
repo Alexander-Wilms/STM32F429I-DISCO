@@ -59,33 +59,32 @@ int main(void)
 
 	int i = 0;
 	int j = 0;
-	float avgx = 0;
-	float avgy = 0;
-	float avgz = 0;
-	float x[100];
-	float y[100];
-	float z[100];
+	float x_offset = 0;
+	float y_offset = 0;
+	float z_offset = 0;
+	float x[1000];
+	float y[1000];
+	float z[1000];
 	float sumx,sumy,sumz;
+	for(int i = 0;i<1000;i++)
+	{
+		BSP_GYRO_GetXYZ(accel);
+		x_offset += accel[0];
+		y_offset += accel[1];
+		z_offset += accel[2];
+	}
+	x_offset = x_offset/1000;
+	y_offset = y_offset/1000;
+	z_offset = z_offset/1000;
+	printaccel(1,x_offset);
+	printaccel(2,y_offset);
+	printaccel(3,z_offset);
 	while(true)
 	{
 		BSP_GYRO_GetXYZ(accel);
-		x[i] = accel[0];
-		y[i] = accel[1];
-		z[i] = accel[2];
-		sumx = 0; sumy = 0; sumz = 0;
-		for(int i = 0;i<100;i++)
-		{
-			sumx += x[i];
-			sumy += y[i];
-			sumz += z[i];
-		}
-		avgx = sumx/100;
-		avgy = sumy/100;
-		avgz = sumz/100;
-		accel[0]=avgx;
-		printaccel(1,avgx);
-		printaccel(2,avgy);
-		printaccel(3,avgz);
+		printaccel(1,(accel[0]-x_offset)/100);
+		printaccel(2,(accel[1]-y_offset)/100);
+		printaccel(3,(accel[2]-z_offset)/100);
 		i++;
 		if(i==100)
 		{
