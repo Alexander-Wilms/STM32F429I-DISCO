@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include <math.h>
 
+#define PI 3.14159265
+
 static void SystemClock_Config(void);
 
 int main(void)
@@ -27,6 +29,20 @@ int main(void)
 	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
 	BSP_LCD_DisplayOn();
 
+	int x[320];
+	int y[320];
+	int xold[320];
+	int yold[320];
+
+
+	double k = 1;
+	for(int i = 0;i<320;i++)
+	{
+		x[i]=i;
+		y[i]=sin(i*PI/180*k)*30+100;
+	}
+
+
 	BSP_TS_Init(240,320);
 	TS_StateTypeDef tsinput;
 	int i = 0;
@@ -36,6 +52,7 @@ int main(void)
 		BSP_TS_GetState(&tsinput);
 		if(tsinput.TouchDetected)
 		{
+
 			if(i==0)
 				BSP_LCD_DrawPixel(tsinput.X,tsinput.Y,LCD_COLOR_BLACK);
 			else
@@ -43,6 +60,26 @@ int main(void)
 			a = tsinput.X;
 			b = tsinput.Y;
 			i = 1;
+			if(tsinput.Y<160)
+				k -= 0.001;
+			else
+				k += 0.001;
+
+			for(int i = 0;i<320;i++)
+			{
+				xold[i]=x[i];
+				yold[i]=y[i];
+				x[i]=i;
+				y[i]=sin(i*PI/180*k)*30+100;
+			}
+			for(int i = 0;i<320;i++)
+			{
+				BSP_LCD_DrawPixel(yold[i],xold[i],LCD_COLOR_WHITE);
+			}
+		}
+		for(int i = 0;i<320;i++)
+		{
+			BSP_LCD_DrawPixel(y[i],x[i],LCD_COLOR_BLACK);
 		}
 	}
 }
