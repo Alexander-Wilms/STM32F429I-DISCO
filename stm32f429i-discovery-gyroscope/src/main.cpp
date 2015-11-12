@@ -57,16 +57,14 @@ int main(void)
 	float accelx,accely,accelz;
 	BSP_GYRO_Init();
 
-
-
 	int i = 0;
 	int j = 0;
 	float avgx = 0;
 	float avgy = 0;
 	float avgz = 0;
-	float x[1000];
-	float y[1000];
-	float z[1000];
+	float x[100];
+	float y[100];
+	float z[100];
 	float sumx,sumy,sumz;
 	while(true)
 	{
@@ -75,21 +73,27 @@ int main(void)
 		y[i] = accel[1];
 		z[i] = accel[2];
 		sumx = 0; sumy = 0; sumz = 0;
-		for(int i = 0;i<1000;i++)
+		for(int i = 0;i<100;i++)
 		{
 			sumx += x[i];
 			sumy += y[i];
 			sumz += z[i];
 		}
-		avgx = sumx/1000;
-		avgy = sumy/1000;
-		avgz = sumz/1000;
+		avgx = sumx/100;
+		avgy = sumy/100;
+		avgz = sumz/100;
 		accel[0]=avgx;
 		printaccel(1,avgx);
 		printaccel(2,avgy);
 		printaccel(3,avgz);
 		i++;
-		i=i%1000;
+		if(i==100)
+		{
+			BSP_LCD_ClearStringLine(1);
+			BSP_LCD_ClearStringLine(2);
+			BSP_LCD_ClearStringLine(3);
+		}
+		i=i%100;
 	}
 }
 
