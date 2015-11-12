@@ -13,6 +13,7 @@
 #include "stm32f429i_discovery.h"
 #include "stm32f429i_discovery_lcd.h"
 #include "bitmap.h"
+#include "bitmap2.h"
 			
 #include <string>
 #include <sstream>
@@ -40,7 +41,7 @@ int main(void)
 	BSP_LCD_DisplayStringAtLine(1, (uint8_t *) "Hi");
 
 	BSP_LCD_DrawBitmap(120,160,(uint8_t *)bitmap);
-
+	BSP_LCD_DrawBitmap(50,50,(uint8_t *)bitmap2);
 	for(;;);
 }
 
