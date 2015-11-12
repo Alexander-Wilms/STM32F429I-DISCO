@@ -8373,3 +8373,6 @@ org.eclipse.core.runtime.CoreException: Stack data not available
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
 !SUBENTRY 1 org.eclipse.cdt.dsf 4 10002 2015-11-12 16:26:37.595
 !MESSAGE Stack data not available
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-11-12 16:33:03.709
+!MESSAGE Indexed 'stm32f429i-discovery-display-bitmap' (97 sources, 152 headers) in 8,87 sec: 15.025 declarations; 81.551 references; 3 unresolved inclusions; 228 syntax errors; 18.338 unresolved names (16 %)
