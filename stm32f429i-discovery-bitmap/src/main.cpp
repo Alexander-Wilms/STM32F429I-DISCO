@@ -39,7 +39,7 @@ int main(void)
 
 	BSP_LCD_DisplayStringAtLine(1, (uint8_t *) "Hi");
 
-	BSP_LCD_DrawBitmap(100,100,(uint8_t *)stlogo);
+	BSP_LCD_DrawBitmap(120,160,(uint8_t *)bitmap);
 
 	for(;;);
 }
