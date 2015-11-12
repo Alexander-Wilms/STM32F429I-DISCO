@@ -79,6 +79,19 @@ int main(void)
 	printaccel(1,x_offset);
 	printaccel(2,y_offset);
 	printaccel(3,z_offset);
+	uint8_t id = BSP_GYRO_ReadID();
+
+	std::stringstream output;
+	std::string outputstring;
+	const char * chararray;
+	output.str(std::string());
+	output << "Gyro ID: " << (int) id;
+	outputstring = "";
+	outputstring = output.str();
+	chararray = "";
+	chararray = outputstring.c_str();
+	BSP_LCD_DisplayStringAtLine(4,(uint8_t *) chararray);
+
 	while(true)
 	{
 		BSP_GYRO_GetXYZ(accel);
