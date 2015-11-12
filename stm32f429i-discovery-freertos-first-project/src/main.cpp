@@ -27,15 +27,23 @@ int main(void)
 	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
 	BSP_LCD_DisplayOn();
 
-
-
-	BSP_TS_Init(320,240);
+	BSP_TS_Init(240,320);
 	TS_StateTypeDef tsinput;
-
+	int i = 0;
+	int a,b;
 	while(true)
 	{
 		BSP_TS_GetState(&tsinput);
-		BSP_LCD_DrawPixel(tsinput.X,tsinput.Y,LCD_COLOR_BLACK);
+		if(tsinput.TouchDetected)
+		{
+			if(i==0)
+				BSP_LCD_DrawPixel(tsinput.X,tsinput.Y,LCD_COLOR_BLACK);
+			else
+				BSP_LCD_DrawLine(a,b,tsinput.X,tsinput.Y);
+			a = tsinput.X;
+			b = tsinput.Y;
+			i = 1;
+		}
 	}
 }
 
