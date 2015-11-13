@@ -31,9 +31,6 @@ int ptone(int kp, int T1, int T, int ek, int vkvorher)
 	return (T1/(T1+T))*vkvorher + kp*(T/(T1+T))*ek;
 }
 
-static uint32_t CurrentFrameBuffer = LCD_FRAME_BUFFER;
-static uint16_t CurrentTextColor   = 0x0000;
-
 void plot(int x[], int y[])
 {
 	int end = sizeof(x)/sizeof(x[0]);
@@ -42,8 +39,6 @@ void plot(int x[], int y[])
 		LCD_DrawLine((uint16_t) x[i], (uint16_t) y[i], (uint16_t) 1, LCD_DIR_HORIZONTAL);
 	}
 }
-
-
 
 int main(void)
 {

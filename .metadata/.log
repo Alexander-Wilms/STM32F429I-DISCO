@@ -9093,3 +9093,58 @@ java.lang.NullPointerException
 	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
 	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-11-13 20:16:43.557
+!MESSAGE Indexed 'stm32f429i-discovery-touchscreen' (0 sources, 0 headers) in 0 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-13 20:16:43.979
+!MESSAGE Exception in provider org.eclipse.cdt.managedbuilder.core.MBSLanguageSettingsProvider: getSettingEntries(fr.ac6.managedbuild.config.gnu.cross.exe.debug.1172159492, L/stm32f429i-discovery-touchscreen/src/main.cpp, org.eclipse.cdt.core.g++)
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-13 20:16:43.994
+!MESSAGE Exception in provider org.eclipse.cdt.managedbuilder.core.MBSLanguageSettingsProvider: getSettingEntries(fr.ac6.managedbuild.config.gnu.cross.exe.debug.1172159492, L/stm32f429i-discovery-touchscreen/src/main.cpp, org.eclipse.cdt.core.g++)
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-13 20:16:43.994
+!MESSAGE Exception in provider org.eclipse.cdt.managedbuilder.core.MBSLanguageSettingsProvider: getSettingEntries(fr.ac6.managedbuild.config.gnu.cross.exe.debug.1172159492, L/stm32f429i-discovery-touchscreen/src/main.cpp, org.eclipse.cdt.core.g++)
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-13 20:16:43.994
+!MESSAGE Exception in provider org.eclipse.cdt.managedbuilder.core.MBSLanguageSettingsProvider: getSettingEntries(fr.ac6.managedbuild.config.gnu.cross.exe.debug.1172159492, L/stm32f429i-discovery-touchscreen/src/main.cpp, org.eclipse.cdt.core.g++)
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-13 20:16:43.994
+!MESSAGE Exception in provider org.eclipse.cdt.managedbuilder.core.MBSLanguageSettingsProvider: getSettingEntries(fr.ac6.managedbuild.config.gnu.cross.exe.debug.1172159492, L/stm32f429i-discovery-touchscreen/src/main.cpp, org.eclipse.cdt.core.g++)
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY fr.ac6.mcu.debug 4 200 2015-11-13 20:21:50.195
+!MESSAGE OpenOCD Binary not found
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-11-13 20:23:07.420
+!MESSAGE Indexed 'stm32f429i-discovery-first-project' (0 sources, 0 headers) in 0 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+
+!ENTRY fr.ac6.mcu.debug 4 200 2015-11-13 20:25:09.880
+!MESSAGE OpenOCD Binary not found
+
+!ENTRY fr.ac6.mcu.debug 4 200 2015-11-13 20:25:20.782
+!MESSAGE OpenOCD Binary not found
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-11-13 20:29:24.189
+!MESSAGE Indexed 'stm32f429i-discovery-digitaler-regler-hal' (97 sources, 332 headers) in 10,2 sec: 30.881 declarations; 124.624 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-11-13 20:33:43.416
+!MESSAGE Indexed 'stm32f429i-discovery-events' (48 sources, 229 headers) in 4,2 sec: 20.867 declarations; 57.768 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-11-13 20:35:20.959
+!MESSAGE Indexed 'stm32f429i-discovery-digitaler-regler' (44 sources, 222 headers) in 4,74 sec: 20.595 declarations; 57.204 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+
+!ENTRY org.eclipse.core.resources 4 567 2015-11-13 20:36:37.770
+!MESSAGE The project description file (.project) for 'stm32f429i-disco_hal_lib' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+
+!ENTRY org.eclipse.core.resources 4 567 2015-11-13 20:36:47.047
+!MESSAGE The project description file (.project) for 'stm32f429i-disco_hal_lib' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
