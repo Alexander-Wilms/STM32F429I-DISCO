@@ -40,6 +40,8 @@ int main(void)
 
 	BSP_LCD_DisplayStringAtLine(1, (uint8_t *) "Hi");
 
+	// Save image with dimensions that are multiples of 4 as 24 bit bitmap
+	// open in text editor, split into columns of 2 hex digits, add 0x prefix and , between numbers
 	BSP_LCD_DrawBitmap(120,160,(uint8_t *)bitmap);
 	BSP_LCD_DrawBitmap(50,50,(uint8_t *)bitmap2);
 	for(;;);
