@@ -29,7 +29,7 @@ volatile int stuff;
 
 //void init_system (void);
 
-void test_task (void *)
+void test_task_delay (void *)
 {
   BSP_LED_Init (LED3);
   TickType_t xLastWakeTime;
@@ -38,10 +38,23 @@ void test_task (void *)
     {
       BSP_LED_Toggle(LED3);
       // Task wird erst in 100 Ticks weiter ausgeführt
-      //vTaskDelay ((int)1000/3);
+      vTaskDelay ((int)1000/3);
+      BSP_LED_Toggle(LED3);
+      vTaskDelay ((int)2000/3);
+    }
+}
+
+void test_task_delay_until (void *)
+{
+  BSP_LED_Init (LED3);
+  TickType_t xLastWakeTime;
+  xLastWakeTime = xTaskGetTickCount();
+  while (true)
+    {
+      BSP_LED_Toggle(LED3);
+      // Task wird erst in 100 Ticks weiter ausgeführt
       vTaskDelayUntil (&xLastWakeTime, (TickType_t) 1000/3);
       BSP_LED_Toggle(LED3);
-      //vTaskDelay ((int)2000/3);
       vTaskDelayUntil (&xLastWakeTime, (TickType_t) 2000/3);
     }
 }
@@ -67,8 +80,11 @@ int main(void)
 
 	BSP_LCD_DisplayStringAtLine(0, (uint8_t *) "Hello FreeRTOS");
 
-	#define TEST_TASK_PRIORITY ((1 + tskIDLE_PRIORITY) | portPRIVILEGE_BIT)
-	xTaskCreate( (pdTASK_CODE)test_task, 	"test", configMINIMAL_STACK_SIZE, 0, TEST_TASK_PRIORITY, NULL);
+	#define TEST_TASK_DELAY_PRIORITY ((1 + tskIDLE_PRIORITY) | portPRIVILEGE_BIT)
+	//xTaskCreate( (pdTASK_CODE)test_task_delay, 	"test", configMINIMAL_STACK_SIZE, 0, TEST_TASK_DELAY_PRIORITY, NULL);
+
+	#define TEST_TASK_DELAY_UNTIL_PRIORITY ((1 + tskIDLE_PRIORITY) | portPRIVILEGE_BIT)
+	xTaskCreate( (pdTASK_CODE)test_task_delay_until, 	"test", configMINIMAL_STACK_SIZE, 0, TEST_TASK_DELAY_UNTIL_PRIORITY, NULL);
 
 	vTaskStartScheduler ();
 	return 0;
