@@ -109,6 +109,38 @@ void lcd_task (void *)
 	}
 }
 
+void led1_task_timeslicing (void *)
+{
+  BSP_LED_Init (LED3);
+  while (true)
+    {
+	  stuff = 0;
+      BSP_LED_Toggle(LED3);
+      for( volatile long int counter = 0;counter<1000000;counter++)
+  		;
+      BSP_LED_Toggle(LED3);
+      for( volatile long int counter = 0;counter<2000000;counter++)
+        ;
+      taskYIELD();
+    }
+}
+
+void led2_task_timeslicing (void *)
+{
+  BSP_LED_Init (LED4);
+  while (true)
+    {
+	  stuff = 0;
+      BSP_LED_Toggle(LED4);
+      for( volatile long int counter = 0;counter<3000000;counter++)
+  		;
+      BSP_LED_Toggle(LED4);
+      for( volatile long int counter = 0;counter<4000000;counter++)
+        ;
+      taskYIELD();
+    }
+}
+
 int main(void)
 {
 	HAL_Init();
@@ -145,9 +177,12 @@ int main(void)
 	//xTaskCreate( (pdTASK_CODE)test_task_delay, 	"test", configMINIMAL_STACK_SIZE, 0, LED_TASK_PRIORITY, NULL);
 	//xTaskCreate( (pdTASK_CODE)test_task_delay_until, 	"test", configMINIMAL_STACK_SIZE, 0, LED_TASK_PRIORITY, NULL);
 
-	xTaskCreate( (pdTASK_CODE)led1_task, 	"led1", 256, 0, LED_TASK_PRIORITY, NULL);
-	xTaskCreate( (pdTASK_CODE)led2_task, 	"led2", 256, 0, LED_TASK_PRIORITY, NULL);
-	xTaskCreate( (pdTASK_CODE)lcd_task, 	"lcd", 256, 0, LCD_TASK_PRIORITY, NULL);
+	//xTaskCreate( (pdTASK_CODE)led1_task, 	"led1", 256, 0, LED_TASK_PRIORITY, NULL);
+	//xTaskCreate( (pdTASK_CODE)led2_task, 	"led2", 256, 0, LED_TASK_PRIORITY, NULL);
+	//xTaskCreate( (pdTASK_CODE)lcd_task, 	"lcd", 256, 0, LCD_TASK_PRIORITY, NULL);
+
+	xTaskCreate( (pdTASK_CODE)led1_task_timeslicing, 	"led1", 256, 0, LED_TASK_PRIORITY, NULL);
+	xTaskCreate( (pdTASK_CODE)led2_task_timeslicing, 	"led1", 256, 0, LED_TASK_PRIORITY, NULL);
 
 	vTaskStartScheduler ();
 	return 0;
