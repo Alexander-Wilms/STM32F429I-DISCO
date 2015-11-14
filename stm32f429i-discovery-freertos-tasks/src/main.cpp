@@ -15,6 +15,7 @@
 #include "stm32f429i_discovery_ts.h"
 #include "stm32f429i_discovery_lcd.h"
 
+// FreeRTOS can be configured via ./Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOSConfig.h
 #include "FreeRTOS.h"
 #include "task.h"
 
@@ -139,14 +140,14 @@ int main(void)
 	BSP_LCD_DisplayStringAtLine (1, (uint8_t *) chararray);
 
 	#define LED_TASK_PRIORITY ((1 + tskIDLE_PRIORITY) | portPRIVILEGE_BIT)
-	#define LCD_TASK_PRIORITY ((2 + tskIDLE_PRIORITY) | portPRIVILEGE_BIT)
+	#define LCD_TASK_PRIORITY ((1 + tskIDLE_PRIORITY) | portPRIVILEGE_BIT)
 
 	//xTaskCreate( (pdTASK_CODE)test_task_delay, 	"test", configMINIMAL_STACK_SIZE, 0, LED_TASK_PRIORITY, NULL);
 	//xTaskCreate( (pdTASK_CODE)test_task_delay_until, 	"test", configMINIMAL_STACK_SIZE, 0, LED_TASK_PRIORITY, NULL);
 
 	xTaskCreate( (pdTASK_CODE)led1_task, 	"led1", 256, 0, LED_TASK_PRIORITY, NULL);
 	xTaskCreate( (pdTASK_CODE)led2_task, 	"led2", 256, 0, LED_TASK_PRIORITY, NULL);
-	xTaskCreate( (pdTASK_CODE)lcd_task, 	"lcd", 256, 0, LED_TASK_PRIORITY, NULL);
+	xTaskCreate( (pdTASK_CODE)lcd_task, 	"lcd", 256, 0, LCD_TASK_PRIORITY, NULL);
 
 	vTaskStartScheduler ();
 	return 0;
