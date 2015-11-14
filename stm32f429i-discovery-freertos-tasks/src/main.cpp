@@ -15,8 +15,6 @@
 #include "stm32f429i_discovery_ts.h"
 #include "stm32f429i_discovery_lcd.h"
 
-//#include "systick.h"
-
 #include "FreeRTOS.h"
 #include "task.h"
 
@@ -27,17 +25,12 @@ static void SystemClock_Config(void);
 
 volatile int stuff;
 
-//void init_system (void);
-
 void test_task_delay (void *)
 {
   BSP_LED_Init (LED3);
-  TickType_t xLastWakeTime;
-  xLastWakeTime = xTaskGetTickCount();
   while (true)
     {
       BSP_LED_Toggle(LED3);
-      // Task wird erst in 100 Ticks weiter ausgeführt
       vTaskDelay ((int)1000/3);
       BSP_LED_Toggle(LED3);
       vTaskDelay ((int)2000/3);
@@ -46,22 +39,77 @@ void test_task_delay (void *)
 
 void test_task_delay_until (void *)
 {
-  BSP_LED_Init (LED3);
+  BSP_LED_Init (LED4);
   TickType_t xLastWakeTime;
   xLastWakeTime = xTaskGetTickCount();
   while (true)
     {
-      BSP_LED_Toggle(LED3);
-      // Task wird erst in 100 Ticks weiter ausgeführt
+      BSP_LED_Toggle(LED4);
       vTaskDelayUntil (&xLastWakeTime, (TickType_t) 1000/3);
-      BSP_LED_Toggle(LED3);
+      BSP_LED_Toggle(LED4);
       vTaskDelayUntil (&xLastWakeTime, (TickType_t) 2000/3);
     }
 }
 
+void led1_task (void *)
+{
+  BSP_LED_Init (LED4);
+  while (true)
+    {
+	  stuff = 0;
+      BSP_LED_Toggle(LED4);
+      for( volatile long int counter = 0;counter<1000000;counter++)
+  		;
+      BSP_LED_Toggle(LED4);
+      for( volatile long int counter = 0;counter<2000000;counter++)
+        ;
+      taskYIELD();
+    }
+}
+
+void led2_task (void *)
+{
+  BSP_LED_Init (LED3);
+  while (true)
+    {
+	  stuff = 0;
+      BSP_LED_Toggle(LED3);
+      for( volatile long int counter = 0;counter<1000000;counter++)
+  		;
+      BSP_LED_Toggle(LED3);
+      for( volatile long int counter = 0;counter<2000000;counter++)
+        ;
+      taskYIELD();
+    }
+}
+
+void lcd_task (void *)
+{
+
+	static std::stringstream output;
+	static std::string outputstring;
+	static const char * chararray;
+	static int i = 0;
+	while(true)
+	{
+		BSP_LCD_DisplayStringAtLine (2, (uint8_t *) "LCD_TASK");
+		stuff = 0;
+		output.str(std::string());
+		output << "Counter: " << i%1000;
+		outputstring = "";
+		outputstring = output.str();
+		chararray = "";
+		chararray = outputstring.c_str();
+		BSP_LCD_DisplayStringAtLine (1, (uint8_t *) chararray);
+		for( volatile long int counter = 0;counter<1000000;counter++)
+		  		;
+		i++;
+		taskYIELD();
+	}
+}
+
 int main(void)
 {
-	//init_system ();
 	HAL_Init();
 
 	/* Configure the system clock */
@@ -77,14 +125,28 @@ int main(void)
 	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
 	BSP_LCD_DisplayOn();
 
-
 	BSP_LCD_DisplayStringAtLine(0, (uint8_t *) "Hello FreeRTOS");
 
-	#define TEST_TASK_DELAY_PRIORITY ((1 + tskIDLE_PRIORITY) | portPRIVILEGE_BIT)
-	//xTaskCreate( (pdTASK_CODE)test_task_delay, 	"test", configMINIMAL_STACK_SIZE, 0, TEST_TASK_DELAY_PRIORITY, NULL);
+	std::stringstream output;
+	std::string outputstring;
+	const char * chararray;
+	output.str(std::string());
+	output << "Counter: " << 0;
+	outputstring = "";
+	outputstring = output.str();
+	chararray = "";
+	chararray = outputstring.c_str();
+	BSP_LCD_DisplayStringAtLine (1, (uint8_t *) chararray);
 
-	#define TEST_TASK_DELAY_UNTIL_PRIORITY ((1 + tskIDLE_PRIORITY) | portPRIVILEGE_BIT)
-	xTaskCreate( (pdTASK_CODE)test_task_delay_until, 	"test", configMINIMAL_STACK_SIZE, 0, TEST_TASK_DELAY_UNTIL_PRIORITY, NULL);
+	#define LED_TASK_PRIORITY ((1 + tskIDLE_PRIORITY) | portPRIVILEGE_BIT)
+	#define LCD_TASK_PRIORITY ((2 + tskIDLE_PRIORITY) | portPRIVILEGE_BIT)
+
+	//xTaskCreate( (pdTASK_CODE)test_task_delay, 	"test", configMINIMAL_STACK_SIZE, 0, LED_TASK_PRIORITY, NULL);
+	//xTaskCreate( (pdTASK_CODE)test_task_delay_until, 	"test", configMINIMAL_STACK_SIZE, 0, LED_TASK_PRIORITY, NULL);
+
+	xTaskCreate( (pdTASK_CODE)led1_task, 	"led1", 256, 0, LED_TASK_PRIORITY, NULL);
+	xTaskCreate( (pdTASK_CODE)led2_task, 	"led2", 256, 0, LED_TASK_PRIORITY, NULL);
+	xTaskCreate( (pdTASK_CODE)lcd_task, 	"lcd", 256, 0, LED_TASK_PRIORITY, NULL);
 
 	vTaskStartScheduler ();
 	return 0;
