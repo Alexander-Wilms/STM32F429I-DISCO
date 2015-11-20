@@ -20,8 +20,6 @@
 			
 static void SystemClock_Config(void);
 
-double ptone(double kp, double T1, double T, double ek, double vkvorher);
-
 void printaccel(int line, float value)
 {
 	std::stringstream output;
@@ -54,18 +52,12 @@ int main(void)
 	BSP_LCD_DisplayOn();
 
 	float accel[3];
-	float accelx,accely,accelz;
 	BSP_GYRO_Init();
 
 	int i = 0;
-	int j = 0;
 	float x_offset = 0;
 	float y_offset = 0;
 	float z_offset = 0;
-	float x[1000];
-	float y[1000];
-	float z[1000];
-	float sumx,sumy,sumz;
 	for(int i = 0;i<1000;i++)
 	{
 		BSP_GYRO_GetXYZ(accel);
@@ -107,11 +99,6 @@ int main(void)
 		}
 		i=i%100;
 	}
-}
-
-double ptone(double kp, double T1, double T, double ek, double vkvorher)
-{
-	return (T1/(T1+T))*vkvorher + kp*(T/(T1+T))*ek;
 }
 
 /**
