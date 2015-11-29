@@ -14,28 +14,55 @@
 #include "stm32f4xx_it.h"
 #include "stm32f429i_discovery.h"
 #include "stm32f429i_discovery_io.h"
-#include "stm32f429i_discovery_ts.h"
 #include "stm32f429i_discovery_lcd.h"
 #include "timer.h"
 #include "systick.h"
+#include "button.h"
+#include "lcd.h"
+#include "uart.h"
 
 // FreeRTOS can be configured via ./Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOSConfig.h
 #include "FreeRTOS.h"
 #include "task.h"
+#include "semphr.h"
+#include "queue.h"
 
 #include <string>
 #include <sstream>
 using namespace std;
 
-static void SystemClock_Config(void);
-
-
 volatile int systick_count = 0;
 volatile int stuff;
+volatile char simulated_input = 0x30;
+#define TASK_PRIORITY (1 | portPRIVILEGE_BIT)
+TaskHandle_t LCDTaskHandle;
+SemaphoreHandle_t xSemaphore;
+QueueHandle_t xQueue;
+// SemaphoreHandle_t xSemaphoreMutex;
 
-void lcd_balkenanzeige (void *)
+static void SystemClock_Config(void);
+void bargraph_task(void *);
+void laufschrift_task(void *);
+void uart_task( void *);
+void test_task (void *);
+// void lcd_balkenanzeige (void *);
+// void lcd_laufschrift (void *);
+// void lcd_zeit (void *);
+
+void test_task (void *)
 {
+  BSP_LED_Init (LED3);
+  while (true)
+    {
+      BSP_LED_Toggle(LED3);
+      vTaskDelay (configTICK_RATE_HZ/10);
+      BSP_LED_Toggle(LED3);
+      vTaskDelay (9*configTICK_RATE_HZ/10);
+    }
+}
 
+/*void lcd_balkenanzeige (void *)
+{
 	static std::stringstream output;
 	static std::string outputstring;
 	static const char * chararray;
@@ -129,7 +156,7 @@ void lcd_zeit (void *)
 		i++;
 	}
 
-}
+}*/
 
 int main(void)
 {
@@ -149,13 +176,24 @@ int main(void)
 	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
 	BSP_LCD_DisplayOn();
 
-	#define TASK_PRIORITY ((1 + tskIDLE_PRIORITY) | portPRIVILEGE_BIT)
+	xSemaphore = xSemaphoreCreateBinary();
+	xQueue = xQueueCreate( 15, sizeof( uint8_t *) );
 
-	xTaskCreate( (pdTASK_CODE)lcd_balkenanzeige, 	"lcd", 256, 0, TASK_PRIORITY, NULL);
+	// xTaskCreate( (pdTASK_CODE)uart_task, 	   "uart",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+
+	xTaskCreate( (pdTASK_CODE)test_task, 	   "test",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+
+	// xTaskCreate( (pdTASK_CODE)bargraph_task, "bargraph", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, &LCDTaskHandle);
+
+	// xTaskCreate( (pdTASK_CODE)pushbutton_task, "button", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+
+	// xTaskCreate( (pdTASK_CODE)laufschrift_task, 	   "laufschrift",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+
+	/*xTaskCreate( (pdTASK_CODE)lcd_balkenanzeige, 	"lcd", 256, 0, TASK_PRIORITY, NULL);
 
 	xTaskCreate( (pdTASK_CODE)lcd_laufschrift, 	"lcd", 256, 0, TASK_PRIORITY, NULL);
 
-	// Displaying strings in a tasks only works when daoing all of this before
+	// Displaying strings in a tasks only works when doing all of this before
 	std::stringstream output;
 	std::string outputstring;
 	const char * chararray;
@@ -166,7 +204,7 @@ int main(void)
 	chararray = "";
 	chararray = outputstring.c_str();
 
-	xTaskCreate( (pdTASK_CODE)lcd_zeit, 	"lcd", 256, 0, TASK_PRIORITY, NULL);
+	xTaskCreate( (pdTASK_CODE)lcd_zeit, 	"lcd", 256, 0, TASK_PRIORITY, NULL);*/
 
 	vTaskStartScheduler ();
 
