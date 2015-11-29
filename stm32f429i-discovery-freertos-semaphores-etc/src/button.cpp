@@ -6,8 +6,14 @@
  ******************************************************************************
  */
 
+// [A]
+// https://github.com/greiman/FreeRTOS-Arduino/issues/2
+// Software-Timer müssen eingeschaltet werden
+// #define configUSE_TIMERS 1 in FreeRTOSConfig.h
+
 #include "FreeRTOS.h"
 #include "task.h"
+#include "semphr.h"
 #include "queue.h"
 #include "timers.h"
 #include "common.h"
@@ -16,34 +22,41 @@
 // #include "stm32f4xx.h"
 // #include "stm32f429i_discovery.h"
 #include "stm32f429i_discovery_lcd.h"
+#include "stm32f429i_discovery.h"
+
+extern TaskHandle_t LCDTaskHandle;
+extern SemaphoreHandle_t xSemaphore;
+extern QueueHandle_t xQueue;
 
 COMMON QueueHandle_t EXTIqueue;
 COMMON TimerHandle_t de_bounce_timer;
 
 /** @brief  This function handles External line0 interrupt request. */
+// Achtung: auf stm32f429i-discovery ist es EXTI0_IRQHandler, nicht EXTI15_10_IRQHandler
 extern "C" void
-EXTI15_10_IRQHandler(void)
+EXTI0_IRQHandler(void)
 {
-  // ENTER_ISR;
-  portBASE_TYPE TaskWoken = pdFALSE;
+	// ENTER_ISR;
+	portBASE_TYPE TaskWoken = pdFALSE;
 
-  /* reset both EXTI I/O interrupt latches,
-   * as both buttons share the same interrupt
-   * and we don't know which one triggered */
-  __HAL_GPIO_EXTI_CLEAR_IT( KEY_BUTTON_PIN);
+	/* reset both EXTI I/O interrupt latches,
+	* as both buttons share the same interrupt
+	* and we don't know which one triggered */
+	__HAL_GPIO_EXTI_CLEAR_IT( KEY_BUTTON_PIN);
 
-  /* disable further interrupts for a while */
-  BSP_PB_Init (BUTTON_KEY, BUTTON_MODE_GPIO);
+	/* disable further interrupts for a while */
+	BSP_PB_Init (BUTTON_KEY, BUTTON_MODE_GPIO);
 
-  /* trigger timer callback */
-  // undefined reference to `xTimerGenericCommand'
-  // xTimerStartFromISR(de_bounce_timer, &TaskWoken);
+	/* trigger timer callback */
+	// undefined reference to `xTimerGenericCommand'
+	// Siehe [A]
+	xTimerStartFromISR(de_bounce_timer, &TaskWoken);
 
-  /* wake up task */
-  xQueueSendFromISR( EXTIqueue, 0, &TaskWoken);
+	/* wake up task */
+	xQueueSendFromISR( EXTIqueue, 0, &TaskWoken);
 
-  /* preempt the active task if necessary */
-  portEND_SWITCHING_ISR(TaskWoken);
+	/* preempt the active task if necessary */
+	portEND_SWITCHING_ISR(TaskWoken);
 }
 
 /** @brief  This function enables the button interrupt
@@ -52,41 +65,50 @@ EXTI15_10_IRQHandler(void)
  * */
 void de_bounce_callback(xTimerHandle)
 {
-  // once more: reset EXTI I/O interrupt latch
-  __HAL_GPIO_EXTI_CLEAR_IT( KEY_BUTTON_PIN);
-  BSP_PB_Init (BUTTON_KEY, BUTTON_MODE_EXTI);
+	// once more: reset EXTI I/O interrupt latch
+	__HAL_GPIO_EXTI_CLEAR_IT( KEY_BUTTON_PIN);
+	BSP_PB_Init (BUTTON_KEY, BUTTON_MODE_EXTI);
 }
 
 /** @brief  Task function responsible for LED blinking on pushbutton command */
 void pushbutton_task(void *)
 {
-  /* Initialize queue */
-  EXTIqueue = xQueueCreate( 10, 0); // actually a counting semaphore
-  ASSERT( EXTIqueue != 0);
+	/* Initialize queue */
+	EXTIqueue = xQueueCreate( 10, 0); // actually a counting semaphore
+	ASSERT( EXTIqueue != 0);
 
-  /* Initialize timer */
-  de_bounce_timer = xTimerCreate(0, 150, 0, 0, de_bounce_callback);
-  ASSERT( de_bounce_timer != 0);
+	/* Initialize timer */
+	// Siehe [A]
+	de_bounce_timer = xTimerCreate(0, 150, 0, 0, de_bounce_callback);
+	ASSERT( de_bounce_timer != 0);
 
-  /* Initialize our LED */
-  BSP_LED_Init (LED4);
+	/* Initialize our LED */
+	BSP_LED_Init (LED4);
 
-  /* Initialize queue */
-  EXTIqueue = xQueueCreate( 10, 0); // actually a counting semaphore
-  ASSERT( EXTIqueue != 0);
+	/* Initialize queue */
+	EXTIqueue = xQueueCreate( 10, 0); // actually a counting semaphore
+	ASSERT( EXTIqueue != 0);
 
-  /* Initialize USER Button with interrupt capability */
-  BSP_PB_Init (BUTTON_KEY, BUTTON_MODE_EXTI);
+	/* Initialize USER Button with interrupt capability */
+	BSP_PB_Init (BUTTON_KEY, BUTTON_MODE_EXTI);
 
-  for (;;)
-    {
-      /* Indefinitely wait for pushbutton message */
-      xQueueReceive(EXTIqueue, 0, portMAX_DELAY);
+	for (;;)
+	{
+		/* Indefinitely wait for pushbutton message */
+		xQueueReceive(EXTIqueue, 0, portMAX_DELAY);
 
-      /* blink once */
-      BSP_LED_On(LED4);
-      vTaskDelay(configTICK_RATE_HZ / 3);
-      BSP_LED_Off(LED4);
-      vTaskDelay(configTICK_RATE_HZ);
-    }
+		// LCD-Task resumen
+		//vTaskResume(LCDTaskHandle);
+
+		if( xSemaphore != NULL )
+		{
+			xSemaphoreGive( xSemaphore );
+		}
+
+		/* blink once */
+		BSP_LED_On(LED4);
+		vTaskDelay(configTICK_RATE_HZ / 3);
+		BSP_LED_Off(LED4);
+		vTaskDelay(configTICK_RATE_HZ);
+	}
 }

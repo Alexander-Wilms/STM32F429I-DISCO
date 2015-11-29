@@ -45,6 +45,7 @@ void bargraph_task(void *);
 void laufschrift_task(void *);
 void uart_task( void *);
 void test_task (void *);
+void pushbutton_task(void *);
 // void lcd_balkenanzeige (void *);
 // void lcd_laufschrift (void *);
 // void lcd_zeit (void *);
@@ -166,28 +167,18 @@ int main(void)
 	SystemClock_Config();
 	SysTick_init ();
 
-	BSP_LCD_Init();
-	BSP_LCD_LayerDefaultInit(1, (uint32_t) LCD_FRAME_BUFFER);
-	BSP_LCD_SetLayerVisible(1, ENABLE);
-
-	BSP_LCD_SelectLayer(1);
-	BSP_LCD_Clear(LCD_COLOR_WHITE);
-	BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
-	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
-	BSP_LCD_DisplayOn();
-
 	xSemaphore = xSemaphoreCreateBinary();
 	xQueue = xQueueCreate( 15, sizeof( uint8_t *) );
 
 	// xTaskCreate( (pdTASK_CODE)uart_task, 	   "uart",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
-	xTaskCreate( (pdTASK_CODE)test_task, 	   "test",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	// xTaskCreate( (pdTASK_CODE)test_task, 	   "test",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
-	// xTaskCreate( (pdTASK_CODE)bargraph_task, "bargraph", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, &LCDTaskHandle);
+	xTaskCreate( (pdTASK_CODE)bargraph_task, "bargraph", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, &LCDTaskHandle);
 
-	// xTaskCreate( (pdTASK_CODE)pushbutton_task, "button", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	xTaskCreate( (pdTASK_CODE)pushbutton_task, "button", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
-	// xTaskCreate( (pdTASK_CODE)laufschrift_task, 	   "laufschrift",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	xTaskCreate( (pdTASK_CODE)laufschrift_task, 	   "laufschrift",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
 	/*xTaskCreate( (pdTASK_CODE)lcd_balkenanzeige, 	"lcd", 256, 0, TASK_PRIORITY, NULL);
 

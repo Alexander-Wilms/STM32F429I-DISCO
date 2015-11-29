@@ -28,6 +28,10 @@ void lcd_init( void)
   /* Initialize the LCD */
 	BSP_LCD_Init();
 
+	BSP_LCD_LayerDefaultInit(1, (uint32_t) LCD_FRAME_BUFFER);
+	BSP_LCD_SetLayerVisible(1, ENABLE);
+	BSP_LCD_SelectLayer(1);
+
     /* Clear the LCD */
 	BSP_LCD_Clear(LCD_COLOR_YELLOW);
 
@@ -53,38 +57,38 @@ bargraph_task (void *)
 
 	while (true)
 	{
-		/*if( xSemaphore != NULL )
+		if( xSemaphore != NULL )
 		{
 			if( xSemaphoreTake( xSemaphore, ( TickType_t ) 10 ) == pdTRUE )
-			{*/
-				for (uint16_t width = 0; width < 320; ++width)
-				{
-					BSP_LCD_SetTextColor(LCD_COLOR_RED);
-					BSP_LCD_FillRect (0, 50, width, 10);
-					BSP_LCD_SetTextColor(LCD_COLOR_YELLOW);
-					BSP_LCD_FillRect (width, 50, 320 - width - 1, 10);
-					vTaskDelay (1);
-				}
-				for (uint16_t width = 319; width > 0; --width)
-				{
-					BSP_LCD_SetTextColor(LCD_COLOR_RED);
-					BSP_LCD_FillRect (0, 50, width, 10);
-					BSP_LCD_SetTextColor(LCD_COLOR_YELLOW);
-					BSP_LCD_FillRect (width, 50, 320 - width - 1, 10);
-					vTaskDelay (1);
-				}
-				// vTaskDelay(333);
-			//}
-		//}
+			{
+			for (uint16_t width = 0; width < 240; ++width)
+			{
+				BSP_LCD_SetTextColor(LCD_COLOR_RED);
+				BSP_LCD_FillRect (0, 50, width, 10);
+				BSP_LCD_SetTextColor(LCD_COLOR_YELLOW);
+				BSP_LCD_FillRect (width, 50, 240 - width - 1, 10);
+				vTaskDelay (1);
+			}
+			for (uint16_t width = 239; width > 0; --width)
+			{
+				BSP_LCD_SetTextColor(LCD_COLOR_RED);
+				BSP_LCD_FillRect (0, 50, width, 10);
+				BSP_LCD_SetTextColor(LCD_COLOR_YELLOW);
+				BSP_LCD_FillRect (width, 50, 240 - width - 1, 10);
+				vTaskDelay (1);
+			}
+			vTaskDelay(333);
+			}
+		}
 
 		// bargraph_task suspendieren
-		vTaskSuspend(0);
+		// vTaskSuspend(0);
 	}
 }
 
 void laufschrift_task (void *)
 {
-	lcd_init ();
+	// lcd_init ();
 	static std::stringstream output;
 	static std::string outputstring;
 	static const char * chararray;
@@ -138,7 +142,7 @@ void laufschrift_task (void *)
 
 
 		BSP_LCD_SetBackColor(LCD_COLOR_BLUE);
-		BSP_LCD_SetTextColor(LCD_COLOR_YELLOW);
+		BSP_LCD_SetTextColor(LCD_COLOR_ORANGE);
 		BSP_LCD_DisplayStringAtLine (3, (uint8_t *) &test);
 		for( volatile long int counter = 0;counter<2000000;counter++)
 			;
