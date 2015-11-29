@@ -2,9 +2,9 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
-		<item value="190" key="DIALOG_Y_ORIGIN"/>
+		<item value="317" key="DIALOG_Y_ORIGIN"/>
 		<item value="380" key="DIALOG_HEIGHT"/>
-		<item value="797" key="DIALOG_X_ORIGIN"/>
+		<item value="1053" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
@@ -13,18 +13,19 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="" key="selection"/>
+		<item value="Fill" key="selection"/>
 		<list key="findhistory">
+			<item value="DrawFull"/>
+			<item value="TX"/>
+			<item value="TX_PIN"/>
+			<item value="USARTx_TX_PIN"/>
 			<item value="slicing"/>
 			<item value="delayuntil"/>
 			<item value="delay_until"/>
 			<item value="init_system"/>
-			<item value="start_adress"/>
-			<item value="start_address"/>
-			<item value="BSP_"/>
-			<item value="BSP_COLOR"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Fill"/>
 			<item value="BSP_LCD_"/>
 			<item value="LCD_COLOR"/>
 			<item value="_"/>
