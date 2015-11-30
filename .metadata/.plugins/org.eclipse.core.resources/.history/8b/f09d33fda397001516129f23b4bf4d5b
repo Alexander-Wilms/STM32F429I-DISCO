@@ -65,7 +65,6 @@ void test_task (void *)
 
 void lcd_balkenanzeige (void *)
 {
-
 	static std::stringstream output;
 	static std::string outputstring;
 	static const char * chararray;
@@ -76,10 +75,7 @@ void lcd_balkenanzeige (void *)
 	int a = 0;
 	while(true)
 	{
-		if( xSemaphoreMutex != NULL )
-		{
-			if( xSemaphoreTake( xSemaphoreMutex, ( TickType_t ) 0 ) == pdTRUE )
-			{
+		//taskENTER_CRITICAL();
 		for(int j = 0;j<(int) strlen(test);j++)
 		{
 			if (j == 0)
@@ -89,15 +85,12 @@ void lcd_balkenanzeige (void *)
 			if (j == (int)strlen(test)-1)
 			test[j]=first;
 		}
-
-				BSP_LCD_SetTextColor(LCD_COLOR_GREEN);
-				BSP_LCD_FillRect(0, 200, 240, 24);
-				BSP_LCD_SetTextColor(LCD_COLOR_RED);
-				if(direction==1)
-				BSP_LCD_FillRect(i, 200, 100, 24);
-				BSP_LCD_FillRect(i, 200, 100, 24);
-				xSemaphoreGive( xSemaphoreMutex );
-
+		BSP_LCD_SetTextColor(LCD_COLOR_GREEN);
+		BSP_LCD_FillRect(0, 200, 240, 24);
+		BSP_LCD_SetTextColor(LCD_COLOR_RED);
+		if(direction==1)
+		BSP_LCD_FillRect(i, 200, 100, 24);
+			BSP_LCD_FillRect(i, 200, 100, 24);
 		if(direction == 1)
 		i++;
 		else
@@ -107,10 +100,9 @@ void lcd_balkenanzeige (void *)
 			direction++;
 			direction = direction %2;
 		}
-		vTaskDelay(50);
+		vTaskDelay(100);
 		a++;
-			}
-		}
+		//taskEXIT_CRITICAL();
 	}
 }
 
@@ -126,29 +118,22 @@ void lcd_laufschrift (void *)
 	int i = 0;
 	while(true)
 	{
-		if( xSemaphoreMutex != NULL )
-		{
-			if( xSemaphoreTake( xSemaphoreMutex, ( TickType_t ) 0 ) == pdTRUE )
-			{
-		for(int j = 0;j<(int) strlen(test);j++)
-		{
-			if (j == 0)
-			first = test[0];
-			if(j < (int)strlen(test)-1)
-			test[j] = test[j+1];
-			if (j == (int)strlen(test)-1)
-			test[j]=first;
-		}
-
+				//taskENTER_CRITICAL();
+				for(int j = 0;j<(int) strlen(test);j++)
+				{
+					if (j == 0)
+					first = test[0];
+					if(j < (int)strlen(test)-1)
+					test[j] = test[j+1];
+					if (j == (int)strlen(test)-1)
+					test[j]=first;
+				}
 				BSP_LCD_SetBackColor(LCD_COLOR_BLUE);
 				BSP_LCD_SetTextColor(LCD_COLOR_YELLOW);
 				BSP_LCD_DisplayStringAtLine (4, (uint8_t *) &test);
-				xSemaphoreGive( xSemaphoreMutex );
-
-		i++;
-		vTaskDelay(500);
-			}
-		}
+				vTaskDelay(500);
+				i++;
+				//taskEXIT_CRITICAL();
 	}
 }
 
@@ -161,8 +146,10 @@ void lcd_zeit (void *)
 	static Timer mytimerobject(12,34,56,78);
 	BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
 	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
+	int i = 0;
 	while(true)
 	{
+		//taskENTER_CRITICAL();
 		BSP_LED_Toggle(LED3);
 		output.str(std::string());
 		mytimerobject.setStu(systick_count/1000/60/60);
@@ -174,16 +161,11 @@ void lcd_zeit (void *)
 		outputstring = output.str();
 		chararray = "";
 		chararray = outputstring.c_str();
-		if( xSemaphoreMutex != NULL )
-		{
-			if( xSemaphoreTake( xSemaphoreMutex, ( TickType_t ) 0 ) == pdTRUE )
-			{
-				BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
-				BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
-				BSP_LCD_DisplayStringAtLine (6, (uint8_t *) chararray);
-				xSemaphoreGive( xSemaphoreMutex );
-			}
-		}
+		BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
+		BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
+		BSP_LCD_DisplayStringAtLine (6, (uint8_t *) chararray);
+		i++;
+		//taskEXIT_CRITICAL();
 	}
 }
 
@@ -201,8 +183,8 @@ int main(void)
 	// Nicht Größe des Pointers!
 	xQueue = xQueueCreate( 15, sizeof( uint8_t ) );
 
-	xSemaphoreMutex = xSemaphoreCreateMutex();
-	//xSemaphoreGive( xSemaphoreMutex );
+	xSemaphoreMutex = xSemaphoreCreateBinary();
+	xSemaphoreGive( xSemaphoreMutex );
 
 	// xTaskCreate( (pdTASK_CODE)uart_task, 	   "uart",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 

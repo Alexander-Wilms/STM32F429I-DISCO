@@ -59,8 +59,8 @@ void Timer::setHun(int hun_input)
 
 std::string Timer::printtime()
 {
-   	stringstream output;
-	output << setfill('0') << setw(2) << stu << ":" <<  std::setfill('0') << setw(2) << min << ":" << setfill('0') << setw(2) << sec;
+   	std::stringstream output;
+	output << std::setfill('0') << setw(2) << stu << ":" <<  std::setfill('0') << std::setw(2) << min << ":" << std::setfill('0') << std::setw(2) << sec;
 	string returnvalue = output.str();
 	return returnvalue;
 }

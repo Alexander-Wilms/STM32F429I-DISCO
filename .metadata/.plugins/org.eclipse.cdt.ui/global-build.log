@@ -1,19 +1,19 @@
-17:21:42 **** Incremental Build of configuration Debug for project stm32f429i-discovery-freertos-semaphores ****
+23:05:53 **** Incremental Build of configuration Debug for project stm32f429i-discovery-freertos-semaphores ****
 make all 
 Building file: ../src/main.cpp
 Invoking: MCU G++ Compiler
 %cd%
 arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32F429ZITx -DSTM32F429I_DISCO -DSTM32 -DSTM32F4 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/CMSIS/core" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/CMSIS/device" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/HAL_Driver/Inc/Legacy" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/HAL_Driver/Inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Middlewares/Third_Party/FreeRTOS/Source/include" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/ampire480272" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/ampire640480" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/Common" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/cs43l22" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/exc7200" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/ft6x06" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/ili9325" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/ili9341" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/l3gd20" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/lis302dl" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/lis3dsh" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/lsm303dlhc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/mfxstm32l152" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/n25q128a" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/n25q256a" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/n25q512a" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/otm8009a" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/ov2640" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/s25fl512s" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/s5k5cag" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/st7735" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/stmpe1600" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/stmpe811" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/ts3510" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Components/wm8994" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Fonts" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/Log" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-semaphores/Utilities/STM32F429I-Discovery" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fno-exceptions -mslow-flash-data -fno-rtti -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cpp"
 ../src/main.cpp: In function 'void lcd_balkenanzeige(void*)':
-../src/main.cpp:70:22: warning: unused variable 'chararray' [-Wunused-variable]
+../src/main.cpp:71:22: warning: unused variable 'chararray' [-Wunused-variable]
   static const char * chararray;
                       ^
 ../src/main.cpp: In function 'void lcd_laufschrift(void*)':
-../src/main.cpp:115:22: warning: unused variable 'chararray' [-Wunused-variable]
+../src/main.cpp:123:22: warning: unused variable 'chararray' [-Wunused-variable]
   static const char * chararray;
                       ^
 ../src/main.cpp: In function 'int main()':
-../src/main.cpp:202:15: warning: variable 'chararray' set but not used [-Wunused-but-set-variable]
+../src/main.cpp:221:15: warning: variable 'chararray' set but not used [-Wunused-but-set-variable]
   const char * chararray;
                ^
 Finished building: ../src/main.cpp
@@ -28,9 +28,9 @@ Generating binary and Printing size information:
 arm-none-eabi-objcopy -O binary "stm32f429i-discovery-freertos-semaphores.elf" "stm32f429i-discovery-freertos-semaphores.bin"
 arm-none-eabi-size "stm32f429i-discovery-freertos-semaphores.elf"
    text	   data	    bss	    dec	    hex	filename
- 278536	   2652	  41728	 322916	  4ed64	stm32f429i-discovery-freertos-semaphores.elf
+ 278856	   2652	  41728	 323236	  4eea4	stm32f429i-discovery-freertos-semaphores.elf
  
-17:21:50 **** Programing project stm32f429i-discovery-freertos-semaphores on chip ****
+23:06:01 **** Programing project stm32f429i-discovery-freertos-semaphores on chip ****
 "C:\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.externaltools.openocd.win32_1.5.0.201510231435\\tools\\openocd\\bin\\openocd.exe" -f stm32f429i_disco.cfg -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts\\st_board" -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts" -c "program Debug/stm32f429i-discovery-freertos-semaphores.elf verify reset exit" 
 Open On-Chip Debugger 0.9.0-dev-00418-g9afb8b4-dirty (2015-09-28-12:09)
 Licensed under GNU GPL v2
@@ -47,17 +47,20 @@ Info : Unable to match requested speed 2000 kHz, using 1800 kHz
 Info : clock speed 1800 kHz
 Info : STLINK v2 JTAG v17 API v2 SWIM v0 VID 0x0483 PID 0x3748
 Info : using stlink api v2
-Info : Target voltage: 2.882823
+Info : Target voltage: 2.867369
 Info : stm32f4x.cpu: hardware has 6 breakpoints, 4 watchpoints
 target state: halted
 target halted due to debug-request, current mode: Thread 
-xPSR: 0x01000000 pc: 0x080132b0 msp: 0x20030000
+xPSR: 0x01000000 pc: 0x080133e8 msp: 0x20030000
 configuring PLL
 ** Programming Started **
 auto erase enabled
 Info : device id = 0x20016419
 Info : flash size = 2048kbytes
-wrote 393216 bytes from file Debug/stm32f429i-discovery-freertos-semaphores.elf in 15.500887s (24.773 KiB/s)
+target state: halted
+target halted due to breakpoint, current mode: Thread 
+xPSR: 0x61000000 pc: 0x20000042 msp: 0x20030000
+wrote 393216 bytes from file Debug/stm32f429i-discovery-freertos-semaphores.elf in 15.586891s (24.636 KiB/s)
 ** Programming Finished **
 ** Verify Started **
 target state: halted
@@ -66,7 +69,7 @@ xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
 target state: halted
 target halted due to breakpoint, current mode: Thread 
 xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
-verified 281208 bytes in 2.678153s (102.540 KiB/s)
+verified 281528 bytes in 2.680153s (102.580 KiB/s)
 ** Verified OK **
 ** Resetting Target **
 shutdown command invoked

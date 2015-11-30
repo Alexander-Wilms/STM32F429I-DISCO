@@ -126,10 +126,6 @@ void lcd_laufschrift (void *)
 	int i = 0;
 	while(true)
 	{
-		if( xSemaphoreMutex != NULL )
-		{
-			if( xSemaphoreTake( xSemaphoreMutex, ( TickType_t ) 0 ) == pdTRUE )
-			{
 		for(int j = 0;j<(int) strlen(test);j++)
 		{
 			if (j == 0)
@@ -139,16 +135,18 @@ void lcd_laufschrift (void *)
 			if (j == (int)strlen(test)-1)
 			test[j]=first;
 		}
-
+		if( xSemaphoreMutex != NULL )
+		{
+			if( xSemaphoreTake( xSemaphoreMutex, ( TickType_t ) 0 ) == pdTRUE )
+			{
 				BSP_LCD_SetBackColor(LCD_COLOR_BLUE);
 				BSP_LCD_SetTextColor(LCD_COLOR_YELLOW);
 				BSP_LCD_DisplayStringAtLine (4, (uint8_t *) &test);
 				xSemaphoreGive( xSemaphoreMutex );
-
-		i++;
-		vTaskDelay(500);
 			}
 		}
+		i++;
+		vTaskDelay(500);
 	}
 }
 
