@@ -92,6 +92,8 @@ void pushbutton_task(void *)
 	/* Initialize USER Button with interrupt capability */
 	BSP_PB_Init (BUTTON_KEY, BUTTON_MODE_EXTI);
 
+	uint8_t buffer[2]={'a', 0};
+
 	for (;;)
 	{
 		/* Indefinitely wait for pushbutton message */
@@ -100,9 +102,17 @@ void pushbutton_task(void *)
 		// LCD-Task resumen
 		//vTaskResume(LCDTaskHandle);
 
-		if( xSemaphore != NULL )
+		/*if( xSemaphore != NULL )
 		{
 			xSemaphoreGive( xSemaphore );
+		}*/
+
+		if( xQueue != 0 )
+		{
+			if( xQueueSend( xQueue, (void *) buffer, ( TickType_t ) 10 ) == pdPASS )
+			{
+				buffer[0]++;
+			}
 		}
 
 		/* blink once */

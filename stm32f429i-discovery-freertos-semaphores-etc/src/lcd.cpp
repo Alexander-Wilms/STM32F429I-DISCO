@@ -92,8 +92,8 @@ void laufschrift_task (void *)
 	static std::stringstream output;
 	static std::string outputstring;
 	static const char * chararray;
-	static char test[] = "0123456789ABCDE";
-	static char outputstuff[] = "0123456789ABCDE";
+	static char test[] = "0123456789ABCD";
+	static char outputstuff[] = "0123456789ABCD";
 	char first;
 	static int i = 0;
 	static int k = 0;
@@ -111,8 +111,7 @@ void laufschrift_task (void *)
 				// by vATask.
 
 				i++;
-				i = i%15;
-				test[i] = ' ';
+				i = i%14;
 			}
 		}
 
