@@ -10,6 +10,7 @@
 
 #include <string.h>
 #include <iostream>
+#include <iomanip>
 #include "stm32f4xx.h"
 #include "stm32f4xx_it.h"
 #include "stm32f429i_discovery.h"
@@ -38,7 +39,7 @@ volatile char simulated_input = 0x30;
 TaskHandle_t LCDTaskHandle;
 SemaphoreHandle_t xSemaphore;
 QueueHandle_t xQueue;
-// SemaphoreHandle_t xSemaphoreMutex;
+SemaphoreHandle_t xSemaphoreMutex;
 
 static void SystemClock_Config(void);
 void bargraph_task(void *);
@@ -46,9 +47,9 @@ void laufschrift_task(void *);
 void uart_task( void *);
 void test_task (void *);
 void pushbutton_task(void *);
-// void lcd_balkenanzeige (void *);
-// void lcd_laufschrift (void *);
-// void lcd_zeit (void *);
+void lcd_balkenanzeige (void *);
+void lcd_laufschrift (void *);
+void lcd_zeit (void *);
 
 void test_task (void *)
 {
@@ -71,37 +72,40 @@ void lcd_balkenanzeige (void *)
 	static int direction = 1;
 	static char test[] = "123456789ABCDE";
 	char first;
+	int a = 0;
 	while(true)
 	{
+		taskENTER_CRITICAL();
 		for(int j = 0;j<(int) strlen(test);j++)
 		{
 			if (j == 0)
-				first = test[0];
+			first = test[0];
 			if(j < (int)strlen(test)-1)
-				test[j] = test[j+1];
+			test[j] = test[j+1];
 			if (j == (int)strlen(test)-1)
-				test[j]=first;
-
+			test[j]=first;
 		}
 		BSP_LCD_SetTextColor(LCD_COLOR_GREEN);
 		BSP_LCD_FillRect(0, 200, 240, 24);
 		BSP_LCD_SetTextColor(LCD_COLOR_RED);
 		if(direction==1)
+		BSP_LCD_FillRect(i, 200, 100, 24);
 			BSP_LCD_FillRect(i, 200, 100, 24);
-					BSP_LCD_FillRect(i, 200, 100, 24);
-		for( volatile long int counter = 0;counter<1000000;counter++)
-		  		;
 		if(direction == 1)
-			i++;
+		i++;
 		else
-			i--;
+		i--;
 		if(i == 140 || i == 0)
 		{
 			direction++;
 			direction = direction %2;
 		}
+		vTaskDelay(100);
+		a++;
+		taskEXIT_CRITICAL();
 	}
 }
+
 
 void lcd_laufschrift (void *)
 {
@@ -111,51 +115,57 @@ void lcd_laufschrift (void *)
 	static const char * chararray;
 	static char test[] = "123456789ABCDE";
 	char first;
+	int i = 0;
 	while(true)
 	{
-		for(int j = 0;j<(int) strlen(test);j++)
-		{
-			if (j == 0)
-				first = test[0];
-			if(j < (int)strlen(test)-1)
-				test[j] = test[j+1];
-			if (j == (int)strlen(test)-1)
-				test[j]=first;
-
-		}
-		BSP_LCD_SetBackColor(LCD_COLOR_BLUE);
-		BSP_LCD_SetTextColor(LCD_COLOR_YELLOW);
-		BSP_LCD_DisplayStringAtLine (4, (uint8_t *) &test);
-		vTaskDelay(500);
+				taskENTER_CRITICAL();
+				for(int j = 0;j<(int) strlen(test);j++)
+				{
+					if (j == 0)
+					first = test[0];
+					if(j < (int)strlen(test)-1)
+					test[j] = test[j+1];
+					if (j == (int)strlen(test)-1)
+					test[j]=first;
+				}
+				BSP_LCD_SetBackColor(LCD_COLOR_BLUE);
+				BSP_LCD_SetTextColor(LCD_COLOR_YELLOW);
+				BSP_LCD_DisplayStringAtLine (4, (uint8_t *) &test);
+				vTaskDelay(500);
+				i++;
+				taskEXIT_CRITICAL();
 	}
 }
 
 void lcd_zeit (void *)
 {
-
+	BSP_LED_Init (LED3);
 	static std::stringstream output;
 	static std::string outputstring;
 	static const char * chararray;
-	static int i = 0;
-	static Timer mytimerobject(12,34,56);
-
-	while(1)
+	static Timer mytimerobject(12,34,56,78);
+	BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
+	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
+	int i = 0;
+	while(true)
 	{
+		taskENTER_CRITICAL();
+		BSP_LED_Toggle(LED3);
 		output.str(std::string());
+		mytimerobject.setStu(systick_count/1000/60/60);
 		mytimerobject.setMin(systick_count/1000/60);
 		mytimerobject.setSec(systick_count/1000);
-		mytimerobject.setHun(systick_count/10);
-		output << "Time " << mytimerobject.printtime();
+		output << "Time " << std::setfill('0') << std::setw(2) << mytimerobject.getStu() << ":" <<  std::setfill('0') << std::setw(2) << mytimerobject.getMin() << ":" << std::setfill('0') << std::setw(2) << mytimerobject.getSec();
 		outputstring = "";
 		outputstring = output.str();
 		chararray = "";
 		chararray = outputstring.c_str();
 		BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
 		BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
-		BSP_LCD_DisplayStringAtLine (5, (uint8_t *) chararray);
+		BSP_LCD_DisplayStringAtLine (6, (uint8_t *) chararray);
 		i++;
+		taskEXIT_CRITICAL();
 	}
-
 }
 
 int main(void)
@@ -165,25 +175,29 @@ int main(void)
 	/* Configure the system clock */
 	SystemClock_Config();
 	SysTick_init ();
+	lcd_init();
 
 	xSemaphore = xSemaphoreCreateBinary();
 
 	// Nicht Größe des Pointers!
 	xQueue = xQueueCreate( 15, sizeof( uint8_t ) );
 
+	xSemaphoreMutex = xSemaphoreCreateBinary();
+	xSemaphoreGive( xSemaphoreMutex );
+
 	// xTaskCreate( (pdTASK_CODE)uart_task, 	   "uart",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
-	xTaskCreate( (pdTASK_CODE)test_task, 	   "test",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	// xTaskCreate( (pdTASK_CODE)test_task, 	   "test",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
-	xTaskCreate( (pdTASK_CODE)bargraph_task, "bargraph", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, &LCDTaskHandle);
+	//xTaskCreate( (pdTASK_CODE)bargraph_task, "bargraph", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, &LCDTaskHandle);
 
-	xTaskCreate( (pdTASK_CODE)pushbutton_task, "button", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
-	xTaskCreate( (pdTASK_CODE)laufschrift_task, 	   "laufschrift",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	// xTaskCreate( (pdTASK_CODE)pushbutton_task, "button", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	// xTaskCreate( (pdTASK_CODE)laufschrift_task, 	   "laufschrift",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
-	xTaskCreate( (pdTASK_CODE)lcd_balkenanzeige, 	"lcd", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
-	xTaskCreate( (pdTASK_CODE)lcd_laufschrift, 	"lcd", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	xTaskCreate( (pdTASK_CODE)lcd_balkenanzeige, 	"lcd_balkenanzeige", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	xTaskCreate( (pdTASK_CODE)lcd_laufschrift, 	"lcd_laufschrift", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 	// Displaying strings in a tasks only works when doing all of this before
-	/*std::stringstream output;
+	std::stringstream output;
 	std::string outputstring;
 	const char * chararray;
 	output.str(std::string());
@@ -191,12 +205,10 @@ int main(void)
 	outputstring = "";
 	outputstring = output.str();
 	chararray = "";
-	chararray = outputstring.c_str();*/
-	//xTaskCreate( (pdTASK_CODE)lcd_zeit, 	"lcd", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	chararray = outputstring.c_str();
+	xTaskCreate( (pdTASK_CODE)lcd_zeit, 	"lcd_zeit", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
 	vTaskStartScheduler ();
-
-
 }
 
 /**
