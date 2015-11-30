@@ -143,7 +143,7 @@ void laufschrift_task (void *)
 		a++;
 
 		BSP_LCD_SetBackColor(LCD_COLOR_BLUE);
-		BSP_LCD_SetTextColor(LCD_COLOR_ORANGE);
+		BSP_LCD_SetTextColor(LCD_COLOR_YELLOW);
 		BSP_LCD_DisplayStringAtLine (3, (uint8_t *) &outputstuff);
 		// BSP_LCD_DisplayStringAtLine (4, (uint8_t *) &test);
 		vTaskDelay(500);
