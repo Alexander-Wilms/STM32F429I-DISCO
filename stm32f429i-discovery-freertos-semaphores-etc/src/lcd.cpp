@@ -97,15 +97,16 @@ void laufschrift_task (void *)
 	char first;
 	static int i = 0;
 	static int k = 0;
-	static int a = 0;
+	static int a = 1;
 	static int b = 0;
 	static int done = 0;
+	int l = 0;
 	while(true)
 	{
 
 		if( xQueue != 0 )
 		{
-			if( xQueueReceive( xQueue, &( test[i] ), ( TickType_t ) 10 ) )
+			if( xQueueReceive( xQueue, &( test[i] ), ( TickType_t ) 0 ) )
 			{
 				// pcRxedMessage now points to the struct AMessage variable posted
 				// by vATask.
@@ -115,19 +116,21 @@ void laufschrift_task (void *)
 			}
 		}
 
-		/*done = 0;
-		for(int l=0; l<15; l++)
+		done = 0;
+		l = 0;
+		while(!done)
 		{
-			if(test[l]!= '\0' && done != 1)
+			if(test[l]!= '\0')
 			{
 				outputstuff[l] = test[l];
+				l++;
 			} else
 				done = 1;
 		}
 
-		for(int m = 1; m < a; m++)
+		for(int m = 0; m < a; m++)
 		{
-			for(int j = 0;j<(int) strlen(test);j++)
+			for(int j = 0;j<(int) strlen(outputstuff);j++)
 			{
 				if (j == 0)
 					first = outputstuff[0];
@@ -137,13 +140,12 @@ void laufschrift_task (void *)
 					outputstuff[j]=first;
 			}
 		}
-		a++;*/
-
+		a++;
 
 		BSP_LCD_SetBackColor(LCD_COLOR_BLUE);
 		BSP_LCD_SetTextColor(LCD_COLOR_ORANGE);
-		BSP_LCD_DisplayStringAtLine (3, (uint8_t *) &test);
-		for( volatile long int counter = 0;counter<2000000;counter++)
-			;
+		BSP_LCD_DisplayStringAtLine (3, (uint8_t *) &outputstuff);
+		// BSP_LCD_DisplayStringAtLine (4, (uint8_t *) &test);
+		vTaskDelay(500);
 	}
 }

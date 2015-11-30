@@ -168,7 +168,9 @@ int main(void)
 	SysTick_init ();
 
 	xSemaphore = xSemaphoreCreateBinary();
-	xQueue = xQueueCreate( 15, sizeof( uint8_t *) );
+
+	// Nicht Größe des Pointers!
+	xQueue = xQueueCreate( 15, sizeof( uint8_t ) );
 
 	// xTaskCreate( (pdTASK_CODE)uart_task, 	   "uart",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
