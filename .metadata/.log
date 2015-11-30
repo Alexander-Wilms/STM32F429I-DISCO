@@ -11874,3 +11874,165 @@ java.lang.NullPointerException
 
 !ENTRY org.eclipse.cdt.core 1 0 2015-11-30 02:15:40.504
 !MESSAGE Indexed 'stm32f429i-discovery-freertos-semaphore-queue-mutex' (0 sources, 0 headers) in 0,002 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-11-30 02:27:21.994
+!MESSAGE Indexed 'stm32f429i-discovery-freertos-semaphore-etc' (0 sources, 0 headers) in 0 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-30 02:27:22.323
+!MESSAGE Exception in provider org.eclipse.cdt.managedbuilder.core.MBSLanguageSettingsProvider: getSettingEntries(fr.ac6.managedbuild.config.gnu.cross.exe.debug.1034500415, L/stm32f429i-discovery-freertos-semaphore-etc/src/main.cpp, org.eclipse.cdt.core.g++)
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-30 02:27:22.324
+!MESSAGE Exception in provider org.eclipse.cdt.managedbuilder.core.MBSLanguageSettingsProvider: getSettingEntries(fr.ac6.managedbuild.config.gnu.cross.exe.debug.1034500415, L/stm32f429i-discovery-freertos-semaphore-etc/src/main.cpp, org.eclipse.cdt.core.g++)
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-30 02:27:22.324
+!MESSAGE Exception in provider org.eclipse.cdt.managedbuilder.core.MBSLanguageSettingsProvider: getSettingEntries(fr.ac6.managedbuild.config.gnu.cross.exe.debug.1034500415, L/stm32f429i-discovery-freertos-semaphore-etc/src/main.cpp, org.eclipse.cdt.core.g++)
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-30 02:27:22.325
+!MESSAGE Exception in provider org.eclipse.cdt.managedbuilder.core.MBSLanguageSettingsProvider: getSettingEntries(fr.ac6.managedbuild.config.gnu.cross.exe.debug.1034500415, L/stm32f429i-discovery-freertos-semaphore-etc/src/main.cpp, org.eclipse.cdt.core.g++)
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-30 02:27:22.325
+!MESSAGE Exception in provider org.eclipse.cdt.managedbuilder.core.MBSLanguageSettingsProvider: getSettingEntries(fr.ac6.managedbuild.config.gnu.cross.exe.debug.1034500415, L/stm32f429i-discovery-freertos-semaphore-etc/src/main.cpp, org.eclipse.cdt.core.g++)
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-11-30 02:30:10.770
+!MESSAGE Indexed 'stm32f429i-discovery-freertos-semaphore-queue-mutex' (0 sources, 0 headers) in 0 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-11-30 02:32:06.396
+!MESSAGE Indexed 'stm32f429i-discovery-freertos-semaphores' (0 sources, 0 headers) in 0,001 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-30 02:32:06.776
+!MESSAGE Exception in provider org.eclipse.cdt.managedbuilder.core.MBSLanguageSettingsProvider: getSettingEntries(fr.ac6.managedbuild.config.gnu.cross.exe.debug.1034500415, L/stm32f429i-discovery-freertos-semaphores/src/main.cpp, org.eclipse.cdt.core.g++)
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-30 02:32:06.777
+!MESSAGE Exception in provider org.eclipse.cdt.managedbuilder.core.MBSLanguageSettingsProvider: getSettingEntries(fr.ac6.managedbuild.config.gnu.cross.exe.debug.1034500415, L/stm32f429i-discovery-freertos-semaphores/src/main.cpp, org.eclipse.cdt.core.g++)
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-30 02:32:06.777
+!MESSAGE Exception in provider org.eclipse.cdt.managedbuilder.core.MBSLanguageSettingsProvider: getSettingEntries(fr.ac6.managedbuild.config.gnu.cross.exe.debug.1034500415, L/stm32f429i-discovery-freertos-semaphores/src/main.cpp, org.eclipse.cdt.core.g++)
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-30 02:32:06.777
+!MESSAGE Exception in provider org.eclipse.cdt.managedbuilder.core.MBSLanguageSettingsProvider: getSettingEntries(fr.ac6.managedbuild.config.gnu.cross.exe.debug.1034500415, L/stm32f429i-discovery-freertos-semaphores/src/main.cpp, org.eclipse.cdt.core.g++)
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-30 02:32:06.778
+!MESSAGE Exception in provider org.eclipse.cdt.managedbuilder.core.MBSLanguageSettingsProvider: getSettingEntries(fr.ac6.managedbuild.config.gnu.cross.exe.debug.1034500415, L/stm32f429i-discovery-freertos-semaphores/src/main.cpp, org.eclipse.cdt.core.g++)
+!STACK 0
+java.lang.NullPointerException
+!SESSION 2015-11-30 09:15:26.602 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_79
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_DE
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-11-30 09:16:04.471
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Alexander Wilms'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.epp.logging.aeri.ui 2 5 2015-11-30 09:16:15.983
+!MESSAGE The configuration download failed. Version: 1.0.1.v20150913-0716
+!STACK 0
+org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:134)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.request(AeriServer.java:57)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.refreshConfiguration(AeriServer.java:73)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:211)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.access$4(Startup.java:201)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup$1.run(Startup.java:98)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.SocketTimeoutException
+	at java.net.SocksSocketImpl.remainingMillis(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:244)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
+	... 16 more
+
+!ENTRY org.eclipse.epp.logging.aeri.ui 2 29 2015-11-30 09:16:16.011
+!MESSAGE Startup failed, AERI is disabled until next restart. Version: 1.0.1.v20150913-0716
+!STACK 0
+java.lang.RuntimeException: org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at com.google.common.base.Throwables.propagate(Throwables.java:160)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:219)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.access$4(Startup.java:201)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup$1.run(Startup.java:98)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:134)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.request(AeriServer.java:57)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.refreshConfiguration(AeriServer.java:73)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:211)
+	... 3 more
+Caused by: java.net.SocketTimeoutException
+	at java.net.SocksSocketImpl.remainingMillis(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:244)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
+	... 16 more
+
+!ENTRY org.eclipse.oomph.setup.core 4 0 2015-11-30 09:16:47.707
+!MESSAGE C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.setup\setups\locations.setup (Zugriff verweigert)
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.setup\setups\locations.setup (Zugriff verweigert)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl$1.<init>(FileURIHandlerImpl.java:65)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createOutputStream(FileURIHandlerImpl.java:65)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createOutputStream(ExtensibleURIConverterImpl.java:349)
+	at org.eclipse.oomph.setup.internal.core.util.UserURIHandlerImpl.createOutputStream(UserURIHandlerImpl.java:77)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createOutputStream(ExtensibleURIConverterImpl.java:349)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.save(ResourceImpl.java:996)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.associate(SetupContext.java:451)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.access$0(SetupContext.java:368)
+	at org.eclipse.oomph.setup.internal.core.SetupContext$1.run(SetupContext.java:362)
+	at org.eclipse.oomph.base.util.BaseUtil.execute(BaseUtil.java:241)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.associate(SetupContext.java:358)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.createSelf(SetupContext.java:237)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:429)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.access$3(SetupUIPlugin.java:323)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:223)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-11-30 09:20:40.168
+!MESSAGE Indexed 'stm32f429i-discovery-freertos-semaphore-queue-mutex' (112 sources, 393 headers) in 22,2 sec: 33.067 declarations; 134.137 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)

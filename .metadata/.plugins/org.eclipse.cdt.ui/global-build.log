@@ -1,4 +1,4 @@
-02:15:46 **** Build of configuration Debug for project stm32f429i-discovery-freertos-semaphore-queue-mutex ****
+09:20:41 **** Build of configuration Debug for project stm32f429i-discovery-freertos-semaphore-queue-mutex ****
 make all 
 Building file: ../src/button.cpp
 Invoking: MCU G++ Compiler
