@@ -1,0 +1,20 @@
+#include "stm32f429i_discovery.h" // Für __HAL_GPIO_EXTI_CLEAR_IT
+#include "stm32f429i_discovery_lcd.h"
+#include "stm32f4xx_hal_gpio.h"
+
+extern volatile int button_count;
+extern volatile int button_pressed;
+extern volatile bool running;
+
+extern "C" void
+EXTI0_IRQHandler (void)
+{
+	__HAL_GPIO_EXTI_CLEAR_IT(KEY_BUTTON_EXTI_IRQn);
+	button_count++;
+}
+
+void
+pushbutton_init (void)
+{
+	BSP_PB_Init (BUTTON_KEY, BUTTON_MODE_EXTI);
+}

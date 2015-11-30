@@ -1,0 +1,36 @@
+/**
+  ******************************************************************************
+  * @file    main.c
+  * @author  Ac6
+  * @version V1.0
+  * @date    01-December-2013
+  * @brief   Default main function.
+  ******************************************************************************
+*/
+
+
+#include "stm32f4xx.h"
+#include "stm32f429i_discovery.h"
+#include "stm32f429i_discovery_lcd.h"
+#include "stm32f429i_discovery_gyroscope.h"
+			
+
+int main(void)
+{
+	HAL_Init();
+
+	/* Configure the system clock */
+	SystemClock_Config();
+
+	BSP_LCD_Init();
+	BSP_LCD_LayerDefaultInit(1, (uint32_t) LCD_FRAME_BUFFER);
+	BSP_LCD_SetLayerVisible(1, ENABLE);
+
+	BSP_LCD_SelectLayer(1);
+	BSP_LCD_Clear(LCD_COLOR_WHITE);
+	BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
+	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
+	BSP_LCD_DisplayOn();
+
+	for(;;);
+}

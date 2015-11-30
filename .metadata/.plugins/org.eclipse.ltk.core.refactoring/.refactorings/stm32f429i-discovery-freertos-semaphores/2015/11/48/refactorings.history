@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;stm32f429i-discovery-freertos-semaphores-etc/src/button.cpp&apos; to &apos;button.cpp.old&apos;" description="Rename resource &apos;button.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/button.cpp" name="button.cpp.old" stamp="1448820976139" updateReferences="true"/>
+</session>
