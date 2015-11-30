@@ -1,4 +1,4 @@
-12:52:21 **** Incremental Build of configuration Debug for project stm32f429i-discovery-freertos-semaphores ****
+13:12:50 **** Incremental Build of configuration Debug for project stm32f429i-discovery-freertos-semaphores ****
 make all 
 Building file: ../src/main.cpp
 Invoking: MCU G++ Compiler
@@ -24,9 +24,9 @@ Generating binary and Printing size information:
 arm-none-eabi-objcopy -O binary "stm32f429i-discovery-freertos-semaphores.elf" "stm32f429i-discovery-freertos-semaphores.bin"
 arm-none-eabi-size "stm32f429i-discovery-freertos-semaphores.elf"
    text	   data	    bss	    dec	    hex	filename
- 275172	   2652	  41944	 319768	  4e118	stm32f429i-discovery-freertos-semaphores.elf
+ 276468	   2692	  41944	 321104	  4e650	stm32f429i-discovery-freertos-semaphores.elf
  
-12:52:49 **** Programing project stm32f429i-discovery-freertos-semaphores on chip ****
+13:12:58 **** Programing project stm32f429i-discovery-freertos-semaphores on chip ****
 "C:\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.externaltools.openocd.win32_1.5.0.201510231435\\tools\\openocd\\bin\\openocd.exe" -f stm32f429i_disco.cfg -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts\\st_board" -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts" -c "program Debug/stm32f429i-discovery-freertos-semaphores.elf verify reset exit" 
 Open On-Chip Debugger 0.9.0-dev-00418-g9afb8b4-dirty (2015-09-28-12:09)
 Licensed under GNU GPL v2
@@ -43,17 +43,17 @@ Info : Unable to match requested speed 2000 kHz, using 1800 kHz
 Info : clock speed 1800 kHz
 Info : STLINK v2 JTAG v17 API v2 SWIM v0 VID 0x0483 PID 0x3748
 Info : using stlink api v2
-Info : Target voltage: 2.869321
+Info : Target voltage: 2.870726
 Info : stm32f4x.cpu: hardware has 6 breakpoints, 4 watchpoints
 target state: halted
 target halted due to debug-request, current mode: Thread 
-xPSR: 0x01000000 pc: 0x08012b0c msp: 0x20030000
+xPSR: 0x01000000 pc: 0x08013318 msp: 0x20030000
 configuring PLL
 ** Programming Started **
 auto erase enabled
 Info : device id = 0x20016419
 Info : flash size = 2048kbytes
-wrote 393216 bytes from file Debug/stm32f429i-discovery-freertos-semaphores.elf in 15.526888s (24.731 KiB/s)
+wrote 393216 bytes from file Debug/stm32f429i-discovery-freertos-semaphores.elf in 15.588891s (24.633 KiB/s)
 ** Programming Finished **
 ** Verify Started **
 target state: halted
@@ -62,7 +62,7 @@ xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
 target state: halted
 target halted due to breakpoint, current mode: Thread 
 xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
-verified 277844 bytes in 2.654152s (102.229 KiB/s)
+verified 279180 bytes in 2.663152s (102.374 KiB/s)
 ** Verified OK **
 ** Resetting Target **
 shutdown command invoked

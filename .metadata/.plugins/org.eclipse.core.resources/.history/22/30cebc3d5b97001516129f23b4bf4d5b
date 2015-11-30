@@ -84,11 +84,11 @@ void lcd_balkenanzeige (void *)
 
 		}
 		BSP_LCD_SetTextColor(LCD_COLOR_GREEN);
-		BSP_LCD_FillRect(0, 200, 240, 24);
+		BSP_LCD_FillRect(200, 200, 240, 24);
 		BSP_LCD_SetTextColor(LCD_COLOR_RED);
 		if(direction==1)
-			BSP_LCD_FillRect(i, 200, 100, 24);
-					BSP_LCD_FillRect(i, 200, 100, 24);
+			BSP_LCD_FillRect(i, 0, 100, 24);
+					BSP_LCD_FillRect(i, 0, 100, 24);
 		for( volatile long int counter = 0;counter<1000000;counter++)
 		  		;
 		if(direction == 1)
@@ -152,7 +152,7 @@ void lcd_zeit (void *)
 		chararray = outputstring.c_str();
 		BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
 		BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
-		BSP_LCD_DisplayStringAtLine (5, (uint8_t *) chararray);
+		BSP_LCD_DisplayStringAtLine (2, (uint8_t *) chararray);
 		i++;
 	}
 
@@ -191,8 +191,8 @@ int main(void)
 	outputstring = "";
 	outputstring = output.str();
 	chararray = "";
-	chararray = outputstring.c_str();*/
-	//xTaskCreate( (pdTASK_CODE)lcd_zeit, 	"lcd", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	chararray = outputstring.c_str();
+	xTaskCreate( (pdTASK_CODE)lcd_zeit, 	"lcd", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);*/
 
 	vTaskStartScheduler ();
 

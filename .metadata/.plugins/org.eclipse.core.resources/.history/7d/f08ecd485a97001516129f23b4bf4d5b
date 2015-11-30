@@ -84,11 +84,11 @@ void lcd_balkenanzeige (void *)
 
 		}
 		BSP_LCD_SetTextColor(LCD_COLOR_GREEN);
-		BSP_LCD_FillRect(0, 200, 240, 24);
+		BSP_LCD_FillRect(0, 0, 240, 24);
 		BSP_LCD_SetTextColor(LCD_COLOR_RED);
 		if(direction==1)
-			BSP_LCD_FillRect(i, 200, 100, 24);
-					BSP_LCD_FillRect(i, 200, 100, 24);
+			BSP_LCD_FillRect(i, 0, 100, 24);
+					BSP_LCD_FillRect(i, 0, 100, 24);
 		for( volatile long int counter = 0;counter<1000000;counter++)
 		  		;
 		if(direction == 1)
@@ -125,8 +125,9 @@ void lcd_laufschrift (void *)
 		}
 		BSP_LCD_SetBackColor(LCD_COLOR_BLUE);
 		BSP_LCD_SetTextColor(LCD_COLOR_YELLOW);
-		BSP_LCD_DisplayStringAtLine (4, (uint8_t *) &test);
-		vTaskDelay(500);
+		BSP_LCD_DisplayStringAtLine (1, (uint8_t *) &test);
+		for( volatile long int counter = 0;counter<1000000;counter++)
+		  		;
 	}
 }
 
@@ -152,7 +153,7 @@ void lcd_zeit (void *)
 		chararray = outputstring.c_str();
 		BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
 		BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
-		BSP_LCD_DisplayStringAtLine (5, (uint8_t *) chararray);
+		BSP_LCD_DisplayStringAtLine (2, (uint8_t *) chararray);
 		i++;
 	}
 
@@ -173,15 +174,16 @@ int main(void)
 
 	// xTaskCreate( (pdTASK_CODE)uart_task, 	   "uart",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
-	xTaskCreate( (pdTASK_CODE)test_task, 	   "test",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	// xTaskCreate( (pdTASK_CODE)test_task, 	   "test",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
-	xTaskCreate( (pdTASK_CODE)bargraph_task, "bargraph", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, &LCDTaskHandle);
+	// xTaskCreate( (pdTASK_CODE)bargraph_task, "bargraph", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, &LCDTaskHandle);
 
-	xTaskCreate( (pdTASK_CODE)pushbutton_task, "button", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
-	xTaskCreate( (pdTASK_CODE)laufschrift_task, 	   "laufschrift",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	// xTaskCreate( (pdTASK_CODE)pushbutton_task, "button", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	// xTaskCreate( (pdTASK_CODE)laufschrift_task, 	   "laufschrift",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
-	xTaskCreate( (pdTASK_CODE)lcd_balkenanzeige, 	"lcd", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
-	xTaskCreate( (pdTASK_CODE)lcd_laufschrift, 	"lcd", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	lcd_init();
+	xTaskCreate( (pdTASK_CODE)lcd_balkenanzeige, 	"lcd", 256, 0, TASK_PRIORITY, NULL);
+	xTaskCreate( (pdTASK_CODE)lcd_laufschrift, 	"lcd", 256, 0, TASK_PRIORITY, NULL);
 	// Displaying strings in a tasks only works when doing all of this before
 	/*std::stringstream output;
 	std::string outputstring;
@@ -192,7 +194,7 @@ int main(void)
 	outputstring = output.str();
 	chararray = "";
 	chararray = outputstring.c_str();*/
-	//xTaskCreate( (pdTASK_CODE)lcd_zeit, 	"lcd", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	xTaskCreate( (pdTASK_CODE)lcd_zeit, 	"lcd", 256, 0, TASK_PRIORITY, NULL);
 
 	vTaskStartScheduler ();
 

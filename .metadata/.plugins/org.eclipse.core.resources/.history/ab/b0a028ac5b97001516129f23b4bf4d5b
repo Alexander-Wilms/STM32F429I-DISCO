@@ -84,11 +84,11 @@ void lcd_balkenanzeige (void *)
 
 		}
 		BSP_LCD_SetTextColor(LCD_COLOR_GREEN);
-		BSP_LCD_FillRect(0, 200, 240, 24);
+		BSP_LCD_FillRect(200, 200, 240, 24);
 		BSP_LCD_SetTextColor(LCD_COLOR_RED);
 		if(direction==1)
-			BSP_LCD_FillRect(i, 200, 100, 24);
-					BSP_LCD_FillRect(i, 200, 100, 24);
+			BSP_LCD_FillRect(i, 0, 100, 24);
+					BSP_LCD_FillRect(i, 0, 100, 24);
 		for( volatile long int counter = 0;counter<1000000;counter++)
 		  		;
 		if(direction == 1)
