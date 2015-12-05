@@ -5,3 +5,6 @@
 1449006225336	Rename resource 'stm32f429i-discovery-freertos-semaphores'
 1449006649109	Rename resource 'stm32f429i-discovery-freertos-sem'
 1449012047436	Rename resource 'Copy of stm32f429i-discovery-gyroscope'
+1449286372363	Delete resource 'stm32f429i-discovery-virtual-com-port/HAL_Driver'
+1449291141331	Delete resource 'vcp'
+1449291148120	Delete resource 'stm32f429i-discovery-virtual-com-port'
