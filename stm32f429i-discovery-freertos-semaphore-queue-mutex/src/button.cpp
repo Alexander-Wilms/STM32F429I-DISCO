@@ -17,6 +17,7 @@
 #include "queue.h"
 #include "timers.h"
 #include "common.h"
+#include "uart.h"
 // #include "stm324xg_eval.h"
 // #include "stm32f4xx_hal_gpio.h"
 // #include "stm32f4xx.h"
@@ -70,6 +71,8 @@ void de_bounce_callback(xTimerHandle)
 	BSP_PB_Init (BUTTON_KEY, BUTTON_MODE_EXTI);
 }
 
+//ROM char message[]="hello via UART\r\n";
+
 /** @brief  Task function responsible for LED blinking on pushbutton command */
 void pushbutton_task(void *)
 {
@@ -93,11 +96,17 @@ void pushbutton_task(void *)
 	BSP_PB_Init (BUTTON_KEY, BUTTON_MODE_EXTI);
 
 	uint8_t buffer[2]={'a', 0};
+	char message[]="hello via UART (Button)\r\n";
+	//uart uart3;
+
+	//uart uart3_2;
 
 	for (;;)
 	{
 		/* Indefinitely wait for pushbutton message */
 		xQueueReceive(EXTIqueue, 0, portMAX_DELAY);
+
+		//uart3_2.puts(message);
 
 		// LCD-Task resumen
 		//vTaskResume(LCDTaskHandle);
@@ -114,6 +123,8 @@ void pushbutton_task(void *)
 				buffer[0]++;
 			}
 		}
+
+		//uart3.puts(message);
 
 		/* blink once */
 		BSP_LED_On(LED4);

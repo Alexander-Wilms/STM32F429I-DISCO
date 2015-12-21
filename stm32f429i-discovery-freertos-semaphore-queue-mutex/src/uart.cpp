@@ -7,6 +7,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include <string.h>
+#include "stm32f429i_discovery.h"
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx.h"
 #include "uart.h"
@@ -102,13 +103,18 @@ uart::uart ( void)
 
 void uart::puts( const char * data)
 {
-  HAL_UART_Transmit_IT( &huart, (uint8_t *)data, strlen(data));
+	while(HAL_UART_Transmit_IT( &huart, (uint8_t *)data, strlen(data)) != HAL_OK);
 }
 
 void uart::wait_4_character( void)
 {
-  while( received_char == 0)
-    vTaskDelay(1);
+	BSP_LED_Init (LED3);
+	BSP_LED_Init (LED4);
+	BSP_LED_Toggle (LED4);
+	while( received_char == 0)
+		vTaskDelay(1);
+	BSP_LED_Toggle (LED4);
+	BSP_LED_Toggle (LED3);
 }
 
 char uart::receive( void)

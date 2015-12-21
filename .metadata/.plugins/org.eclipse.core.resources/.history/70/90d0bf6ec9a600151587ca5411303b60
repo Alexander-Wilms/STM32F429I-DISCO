@@ -1,0 +1,152 @@
+/**
+  ******************************************************************************
+  * @file    Template/main.c
+  * @author  MCD Application Team
+  * @version V1.0.0
+  * @date    20-September-2013
+  * @brief   Main program body
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; COPYRIGHT 2013 STMicroelectronics</center></h2>
+  *
+  * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+  * You may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at:
+  *
+  *        http://www.st.com/software_license_agreement_liberty_v2
+  *
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  *
+  ******************************************************************************
+  */
+
+#include "stm32f4xx_hal_UART.h"
+#include "stm32f4xx_hal_gpio.h"
+
+/** @addtogroup Template
+  * @{
+  */
+
+/* Private typedef -----------------------------------------------------------*/
+/* Private define ------------------------------------------------------------*/
+/* Private macro -------------------------------------------------------------*/
+/* Private variables ---------------------------------------------------------*/
+
+void RCC_Configuration(void)
+{
+      /* --------------------------- System Clocks Configuration -----------------*/
+      /* UART1 clock enable */
+      RCC_APB2PeriphClockCmd(RCC_APB2Periph_UART1, ENABLE);
+      /* GPIOA clock enable */
+      RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+}
+
+/**************************************************************************************/
+
+void GPIO_Configuration(void)
+{
+    GPIO_InitTypeDef GPIO_InitStructure;
+
+    /*-------------------------- GPIO Configuration ----------------------------*/
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9 | GPIO_Pin_10;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+    /* Connect UART pins to AF */
+    GPIO_PinAFConfig(GPIOA, GPIO_PinSource9, GPIO_AF_UART1);   // UART1_TX
+    GPIO_PinAFConfig(GPIOA, GPIO_PinSource10, GPIO_AF_UART1);  // UART1_RX
+}
+
+/**************************************************************************************/
+
+void UART1_Configuration(void)
+{
+    UART_InitTypeDef UART_InitStructure;
+
+    /* UARTx configuration ------------------------------------------------------*/
+    /* UARTx configured as follow:
+     *  - BaudRate = 9600 baud
+     *  - Word Length = 8 Bits
+     *  - One Stop Bit
+     *  - No parity
+     *  - Hardware flow control disabled (RTS and CTS signals)
+     *  - Receive and transmit enabled
+     */
+    UART_InitStructure.UART_BaudRate = 115200;
+    UART_InitStructure.UART_WordLength = UART_WordLength_8b;
+    UART_InitStructure.UART_StopBits = UART_StopBits_1;
+    UART_InitStructure.UART_Parity = UART_Parity_No;
+    UART_InitStructure.UART_HardwareFlowControl = UART_HardwareFlowControl_None;
+    UART_InitStructure.UART_Mode = UART_Mode_Rx | UART_Mode_Tx;
+    UART_Init(UART1, &UART_InitStructure);
+    UART_Cmd(UART1, ENABLE);
+}
+
+void UART1_puts(char* s)
+{
+    while(*s) {
+        while(UART_GetFlagStatus(UART1, UART_FLAG_TXE) == RESET);
+        UART_SendData(UART1, *s);
+        s++;
+    }
+}
+
+/**************************************************************************************/
+int main(void)
+{
+    RCC_Configuration();
+    GPIO_Configuration();
+    UART1_Configuration();
+
+    UART1_puts("Hello World!\r\n");
+    UART1_puts("Just for STM32F429I Discovery verify UART1 with USB TTL Cable\r\n");
+    while(1)
+    {
+        while(UART_GetFlagStatus(UART1, UART_FLAG_RXNE) == RESET);
+        char t = UART_ReceiveData(UART1);
+        if ((t == '\r')) {
+            while(UART_GetFlagStatus(UART1, UART_FLAG_TXE) == RESET);
+            UART_SendData(UART1, t);
+            t = '\n';
+        }
+        while(UART_GetFlagStatus(UART1, UART_FLAG_TXE) == RESET);
+        HAL_UART_SendData(UART1, t);
+    }
+
+    while(1); // Don't want to exit
+}
+#ifdef  USE_FULL_ASSERT
+
+/**
+  * @brief  Reports the name of the source file and the source line number
+  *         where the assert_param error has occurred.
+  * @param  file: pointer to the source file name
+  * @param  line: assert_param error line source number
+  * @retval None
+  */
+void assert_failed(uint8_t* file, uint32_t line)
+{
+  /* User can add his own implementation to report the file name and line number,
+     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+
+  /* Infinite loop */
+  while (1)
+  {
+  }
+}
+#endif
+
+/**
+  * @}
+  */
+
+
+/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

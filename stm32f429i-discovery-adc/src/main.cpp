@@ -1,20 +1,14 @@
-/**
-  ******************************************************************************
-  * @file    main.c
-  * @author  Ac6
-  * @version V1.0
-  * @date    01-December-2013
-  * @brief   Default main function.
-  ******************************************************************************
-*/
-
-// Based on http://visualgdb.com/tutorials/arm/stm32/adc/
-
+#include "stm32f4xx.h"
+#include "stm32f429i_discovery.h"
+#include "stm32f429i_discovery_lcd.h"
+#include "stm32f4xx_hal_gpio.h"
+#include "stm32f4xx_hal_tim.h"
+#include "stm32f4xx_hal_dac.h"
 #include "stm32f4xx.h"
 #include "stm32f429xx.h"
 #include "stm32f429i_discovery.h"
 #include "stm32f429i_discovery_lcd.h"
-			
+
 #include <string>
 #include <sstream>
 #include <iomanip>
@@ -70,13 +64,21 @@ void ConfigureADC()
     }
 }
 
-void printaccel(int line, int value)
+void printaccel(int line, float value, bool integer)
 {
+	int outputvalue;
 	std::stringstream output;
 	std::string outputstring;
 	const char * chararray;
 	output.str(std::string());
-	output << std::fixed /*<< std::setprecision(4)*/ << std::right << std::setw(10) << value;
+	if(integer)
+	{
+		outputvalue = value;
+		output << std::fixed /*<< std::setprecision(4)*/ << std::right << std::setw(10) << outputvalue << " V";
+	} else
+	{
+		output << std::fixed /*<< std::setprecision(4)*/ << std::right << std::setw(10) << value << " V";
+	}
 	outputstring = "";
 	outputstring = output.str();
 	chararray = "";
@@ -85,52 +87,53 @@ void printaccel(int line, int value)
 	BSP_LCD_DisplayStringAtLine(line,(uint8_t *) chararray);
 }
 
-uint32_t g_ADCValue;
-int g_MeasurementNumber;
+float g_ADCValue;
 
 int main(void)
 {
-    HAL_Init();
-    SystemClock_Config();
-    ConfigureADC();
+	HAL_Init();
+
+	/* Configure the system clock */
+	SystemClock_Config();
+
+	ConfigureADC();
 
 	BSP_LCD_Init();
 	BSP_LCD_LayerDefaultInit(1, (uint32_t) LCD_FRAME_BUFFER);
 	BSP_LCD_SetLayerVisible(1, ENABLE);
 
 	BSP_LCD_SelectLayer(1);
-	BSP_LCD_Clear(LCD_COLOR_WHITE);
+	BSP_LCD_Clear(LCD_COLOR_BLACK);
 	BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
 	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
 	BSP_LCD_DisplayOn();
 
-    HAL_ADC_Start(&g_AdcHandle);
-    int x[320];
-    for(int i = 0;i<320;i++)
-    	x[i] = 0;
-    int i = 0;
-    for (;;)
-    {
-        if (HAL_ADC_PollForConversion(&g_AdcHandle, 1000000) == HAL_OK)
-        {
-        	BSP_LCD_SetTextColor(LCD_COLOR_BLUE);
-        	BSP_LCD_DrawLine(0, i, 240, i);
-            g_ADCValue = HAL_ADC_GetValue(&g_AdcHandle);
-            x[i]=0.1*x[i]+0.9*g_ADCValue;
-            if(i>1)
-            	x[i]=(1*x[i]+0.5*x[i-1]+0.25*x[i-2])/1.75;
-            printaccel(0, x[i]);
-            BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
-            BSP_LCD_DrawLine(0, i, 240, i);
-            BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
-            if(i!=0)
-            	BSP_LCD_DrawLine(x[i-1]/10, i-1, x[i]/10, i);
-            //BSP_LCD_DrawPixel(x[i]/10,i,LCD_COLOR_BLACK);
-            i++;
-            i = i%320;
-            g_MeasurementNumber++;
-        }
-    }
+	int a[320];
+	for(int i = 0;i<320;i++)
+		a[i] = 0;
+	int i = 0;
+	int j = 0;
+
+	HAL_ADC_Start(&g_AdcHandle);
+	while(true)
+	{
+		if (HAL_ADC_PollForConversion(&g_AdcHandle, 1000000) == HAL_OK)
+		{
+			BSP_LCD_SetTextColor(LCD_COLOR_BLUE);
+			g_ADCValue = (float) HAL_ADC_GetValue(&g_AdcHandle)/4096*230;
+			printaccel(0,(float) HAL_ADC_GetValue(&g_AdcHandle)/4096*3.3,0);
+			a[j]=0.2*a[j]+0.8*g_ADCValue;
+			BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
+			BSP_LCD_DrawLine(0, j, 240, j);
+			BSP_LCD_SetTextColor(LCD_COLOR_BLUE);
+			if(j!=0 && a[j] <240)
+				BSP_LCD_DrawLine(a[j-1], j-1, a[j], j);
+			j++;
+			j = j%320;
+		}
+		i++;
+		i = i%320;
+	}
 }
 
 /**
@@ -160,7 +163,7 @@ int main(void)
  * COPYRIGHT(c) 2014 STMicroelectronics
  */
 static void SystemClock_Config(void) {
-	RCC_ClkInitTypeDef RCC_ClkInitStruct;
+		RCC_ClkInitTypeDef RCC_ClkInitStruct;
 	    RCC_OscInitTypeDef RCC_OscInitStruct;
 
 	    __HAL_RCC_PWR_CLK_ENABLE();
@@ -187,3 +190,5 @@ static void SystemClock_Config(void) {
 	    if (HAL_GetREVID() == 0x1001)
 	        __HAL_FLASH_PREFETCH_BUFFER_ENABLE();
 }
+
+

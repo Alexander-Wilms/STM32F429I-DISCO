@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;stm32f429i-discovery-uart&apos;" deleteContents="true" description="Delete resource &apos;stm32f429i-discovery-uart&apos;" element1="/stm32f429i-discovery-uart" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1450692442758"/>
+</session>

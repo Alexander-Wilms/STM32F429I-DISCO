@@ -204,17 +204,17 @@ int main(void)
 	xSemaphoreMutex = xSemaphoreCreateMutex();
 	//xSemaphoreGive( xSemaphoreMutex );
 
-	// xTaskCreate( (pdTASK_CODE)uart_task, 	   "uart",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	xTaskCreate( (pdTASK_CODE)uart_task, 	   "uart",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
 	// xTaskCreate( (pdTASK_CODE)test_task, 	   "test",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
 	//xTaskCreate( (pdTASK_CODE)bargraph_task, "bargraph", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, &LCDTaskHandle);
 
-	// xTaskCreate( (pdTASK_CODE)pushbutton_task, "button", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
-	// xTaskCreate( (pdTASK_CODE)laufschrift_task, 	   "laufschrift",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	//xTaskCreate( (pdTASK_CODE)pushbutton_task, "button", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	//xTaskCreate( (pdTASK_CODE)laufschrift_task, 	   "laufschrift",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
-	xTaskCreate( (pdTASK_CODE)lcd_balkenanzeige, 	"lcd_balkenanzeige", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
-	xTaskCreate( (pdTASK_CODE)lcd_laufschrift, 	"lcd_laufschrift", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	//xTaskCreate( (pdTASK_CODE)lcd_balkenanzeige, 	"lcd_balkenanzeige", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	//xTaskCreate( (pdTASK_CODE)lcd_laufschrift, 	"lcd_laufschrift", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 	// Displaying strings in a tasks only works when doing all of this before
 	std::stringstream output;
 	std::string outputstring;
@@ -225,7 +225,7 @@ int main(void)
 	outputstring = output.str();
 	chararray = "";
 	chararray = outputstring.c_str();
-	xTaskCreate( (pdTASK_CODE)lcd_zeit, 	"lcd_zeit", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	//xTaskCreate( (pdTASK_CODE)lcd_zeit, 	"lcd_zeit", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
 	vTaskStartScheduler ();
 }

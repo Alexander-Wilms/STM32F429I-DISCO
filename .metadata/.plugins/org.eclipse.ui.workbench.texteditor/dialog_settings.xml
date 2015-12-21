@@ -2,29 +2,30 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
-		<item value="202" key="DIALOG_Y_ORIGIN"/>
-		<item value="1268" key="DIALOG_X_ORIGIN"/>
+		<item value="210" key="DIALOG_Y_ORIGIN"/>
 		<item value="380" key="DIALOG_HEIGHT"/>
+		<item value="1276" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="GetXYZ" key="selection"/>
+		<item value="TIM1" key="selection"/>
 		<list key="findhistory">
-			<item value="getxyz"/>
-			<item value="floor"/>
-			<item value="xsemaphoreget"/>
-			<item value="cin"/>
-			<item value="led4"/>
-			<item value="led3"/>
-			<item value="timer_task"/>
-			<item value="xtimergettim"/>
+			<item value="TIM6"/>
+			<item value="tim1"/>
+			<item value="tim6"/>
+			<item value="white"/>
+			<item value="dac"/>
+			<item value="trigger"/>
+			<item value="wave"/>
+			<item value="wavegeneration"/>
 		</list>
 		<list key="replacehistory">
+			<item value="TIM1"/>
 			<item value="Fill"/>
 			<item value="BSP_LCD_"/>
 			<item value="LCD_COLOR"/>
