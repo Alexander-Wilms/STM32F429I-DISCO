@@ -11,6 +11,7 @@
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx.h"
 #include "uart.h"
+#include "lcd.h"
 #include "common.h"
 
 #include "FreeRTOS.h"
@@ -108,20 +109,23 @@ void uart::puts( const char * data)
 
 void uart::wait_4_character( void)
 {
-	BSP_LED_Init (LED3);
-	BSP_LED_Init (LED4);
-	BSP_LED_Toggle (LED4);
+	uint8_t buffer[2]={0, 0};
+	puts( (const char *)"entry waiting\r\n");
 	while( received_char == 0)
 		vTaskDelay(1);
-	BSP_LED_Toggle (LED4);
-	BSP_LED_Toggle (LED3);
+	buffer[0] = received_char;
+	//received_char = 0;
+	puts( (const char *)buffer);
+	puts( (const char *)"\r\n");
+	puts( (const char *)"exit waiting\r\n");
 }
 
 char uart::receive( void)
 {
-  char ret = received_char;
-  received_char = 0;
-  return ret;
+	puts( (const char *)"entry receive\r\n");
+	char ret = received_char;
+	received_char = 0;
+	return ret;
 }
 
 UART_HandleTypeDef uart::huart;
@@ -137,7 +141,46 @@ extern "C" void HAL_UART_ErrorCallback( UART_HandleTypeDef *)
 /** @brief USART callback on reception */
 extern "C" void deliver_RX_character( uint8_t c)
 {
-  uart::received_char=c;
+	uart::received_char=c;
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	// deliver_RX_character('a');
+	// deliver_RX_character(*huartcb->pRxBuffPtr);
+
+	// start the receive process under the RX callback
+	// see https://my.st.com/public/STe2ecommunities/mcu/Lists/STM32Java/Flat.aspx?RootFolder=%2Fpublic%2FSTe2ecommunities%2Fmcu%2FLists%2FSTM32Java%2FUART%20forwarding&FolderCTID=0x01200200770978C69A1141439FE559EB459D758000F9A0E3A95BA69146A17C2E80209ADC21&currentviews=1228
+	// HAL_UART_Receive_IT( huartcb, (uint8_t *)0x01, 1);
+
+	char a;
+	huart->pRxBuffPtr = (uint8_t *) &a;
+	huart->RxXferSize = 1;
+	huart->RxXferCount = 1;
+
+	huart->ErrorCode = HAL_UART_ERROR_NONE;
+	/* Check if a transmit process is ongoing or not */
+	if(huart->State == HAL_UART_STATE_BUSY_TX)
+	{
+	huart->State = HAL_UART_STATE_BUSY_TX_RX;
+	}
+	else
+	{
+	huart->State = HAL_UART_STATE_BUSY_RX;
+	}
+
+	/* Enable the UART Parity Error Interrupt */
+	__HAL_UART_ENABLE_IT(huart, UART_IT_PE);
+
+	/* Enable the UART Error Interrupt: (Frame error, noise error, overrun error) */
+	__HAL_UART_ENABLE_IT(huart, UART_IT_ERR);
+
+	/* Process Unlocked */
+	//__HAL_UNLOCK(huart);
+
+	/* Enable the UART Data Register not empty Interrupt */
+	__HAL_UART_ENABLE_IT(huart, UART_IT_RXNE);
+	deliver_RX_character(a);
 }
 
 /** @brief USART3  RX / TX / ERROR interrupt */

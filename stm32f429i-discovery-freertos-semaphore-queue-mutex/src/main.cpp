@@ -195,6 +195,7 @@ int main(void)
 	SystemClock_Config();
 	SysTick_init ();
 	lcd_init();
+	lcd_write_line( 0, (char *) "ping");
 
 	xSemaphore = xSemaphoreCreateBinary();
 
