@@ -195,9 +195,9 @@ int main(void)
 	SystemClock_Config();
 	SysTick_init ();
 	// lcd_init();
+	// lcd_write_line( 0, (char *) "hello");
 
 	xSemaphore = xSemaphoreCreateBinary();
-	xSemaphoreGive( xSemaphore );
 
 	// Nicht Größe des Pointers!
 	xQueue = xQueueCreate( 15, sizeof( uint8_t ) );
@@ -205,7 +205,7 @@ int main(void)
 	xSemaphoreMutex = xSemaphoreCreateMutex();
 	//xSemaphoreGive( xSemaphoreMutex );
 
-	xTaskCreate( (pdTASK_CODE)uart_task, 	   "uart",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	// xTaskCreate( (pdTASK_CODE)uart_task, 	   "uart",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
 	//xTaskCreate( (pdTASK_CODE)test_task, 	   "test",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 

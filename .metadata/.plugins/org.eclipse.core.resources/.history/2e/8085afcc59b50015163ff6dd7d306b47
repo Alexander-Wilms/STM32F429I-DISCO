@@ -53,7 +53,7 @@ bargraph_task (void *)
 {
 	lcd_init ();
 
-	lcd_write_line (0, (char *) "Hello FreeRTOS");
+	lcd_write_line (0, (char *) "pHello FreeRTOS");
 
 	while (true)
 	{
@@ -61,28 +61,28 @@ bargraph_task (void *)
 		{
 			if( xSemaphoreTake( xSemaphore, ( TickType_t ) 10 ) == pdTRUE )
 			{
-				for (uint16_t width = 0; width < 240; ++width)
-				{
-					BSP_LCD_SetTextColor(LCD_COLOR_RED);
-					BSP_LCD_FillRect (0, 50, width, 10);
-					BSP_LCD_SetTextColor(LCD_COLOR_YELLOW);
-					BSP_LCD_FillRect (width, 50, 240 - width - 1, 10);
-					vTaskDelay (1);
-				}
-				for (uint16_t width = 239; width > 0; --width)
-				{
-					BSP_LCD_SetTextColor(LCD_COLOR_RED);
-					BSP_LCD_FillRect (0, 50, width, 10);
-					BSP_LCD_SetTextColor(LCD_COLOR_YELLOW);
-					BSP_LCD_FillRect (width, 50, 240 - width - 1, 10);
-					vTaskDelay (1);
-				}
-				vTaskDelay(333);
+			for (uint16_t width = 0; width < 240; ++width)
+			{
+				BSP_LCD_SetTextColor(LCD_COLOR_RED);
+				BSP_LCD_FillRect (0, 50, width, 10);
+				BSP_LCD_SetTextColor(LCD_COLOR_YELLOW);
+				BSP_LCD_FillRect (width, 50, 240 - width - 1, 10);
+				vTaskDelay (1);
+			}
+			for (uint16_t width = 239; width > 0; --width)
+			{
+				BSP_LCD_SetTextColor(LCD_COLOR_RED);
+				BSP_LCD_FillRect (0, 50, width, 10);
+				BSP_LCD_SetTextColor(LCD_COLOR_YELLOW);
+				BSP_LCD_FillRect (width, 50, 240 - width - 1, 10);
+				vTaskDelay (1);
+			}
+			vTaskDelay(333);
 			}
 		}
 
 		// bargraph_task suspendieren
-		// vTaskSuspend(0);
+		vTaskSuspend(0);
 	}
 }
 

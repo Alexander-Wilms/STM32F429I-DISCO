@@ -61,6 +61,7 @@ bargraph_task (void *)
 		{
 			if( xSemaphoreTake( xSemaphore, ( TickType_t ) 10 ) == pdTRUE )
 			{
+				lcd_write_line (4, (char *) "vorwaerts");
 				for (uint16_t width = 0; width < 240; ++width)
 				{
 					BSP_LCD_SetTextColor(LCD_COLOR_RED);
@@ -69,6 +70,7 @@ bargraph_task (void *)
 					BSP_LCD_FillRect (width, 50, 240 - width - 1, 10);
 					vTaskDelay (1);
 				}
+				lcd_write_line (4, (char *) "rueckwaerts");
 				for (uint16_t width = 239; width > 0; --width)
 				{
 					BSP_LCD_SetTextColor(LCD_COLOR_RED);
@@ -82,7 +84,7 @@ bargraph_task (void *)
 		}
 
 		// bargraph_task suspendieren
-		// vTaskSuspend(0);
+		vTaskSuspend(0);
 	}
 }
 

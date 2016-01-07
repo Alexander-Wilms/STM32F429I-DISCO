@@ -18,7 +18,6 @@
 #include "semphr.h"
 #include "stm32f4xx_hal.h"
 
-
 ROM char message[]="hello via UART\r\n";
 
 extern TaskHandle_t LCDTaskHandle;
@@ -39,6 +38,18 @@ void uart_task( void *)
 
 	while( true)
     {
+		/* Enable the UART Parity Error Interrupt */
+		__HAL_UART_ENABLE_IT(uart3.huart, UART_IT_PE);
+
+		/* Enable the UART Error Interrupt: (Frame error, noise error, overrun error) */
+		__HAL_UART_ENABLE_IT(huart, UART_IT_ERR);
+
+		/* Process Unlocked */
+		//__HAL_UNLOCK(huart);
+
+		/* Enable the UART Data Register not empty Interrupt */
+		__HAL_UART_ENABLE_IT(huart, UART_IT_RXNE);
+
 		uart3.wait_4_character();
 		buffer[0] = uart3.receive();
 		uart3.puts( (const char *)buffer);
@@ -46,17 +57,17 @@ void uart_task( void *)
 		// LCD-Task resumen
 		// vTaskResume(LCDTaskHandle);
 
-		if( xSemaphore != NULL )
+		/*if( xSemaphore != NULL )
 		{
 			xSemaphoreGive( xSemaphore );
-		}
+		}*/
 
-		if( xQueue != 0 )
+		/*if( xQueue != 0 )
 		{
 			if( xQueueSend( xQueue, (void *) buffer, ( TickType_t ) 10 ) != pdPASS )
 			{
 				// Failed to post the message, even after 10 ticks.
 			}
-		}
+		}*/
     }
 }

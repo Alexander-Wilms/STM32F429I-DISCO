@@ -109,12 +109,19 @@ void uart::puts( const char * data)
 
 void uart::wait_4_character( void)
 {
+	uint8_t buffer[2]={0, 0};
+	// puts( (const char *)"entry waiting\r\n");
 	while( received_char == 0)
 		vTaskDelay(1);
+	/*buffer[0] = received_char;
+	puts( (const char *)buffer);
+	puts( (const char *)"\r\n");*/
+	// puts( (const char *)"exit waiting\r\n");
 }
 
 char uart::receive( void)
 {
+	// puts( (const char *)"entry receive\r\n");
 	char ret = received_char;
 	received_char = 0;
 	return ret;

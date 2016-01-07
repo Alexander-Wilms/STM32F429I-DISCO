@@ -16,8 +16,6 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "semphr.h"
-#include "stm32f4xx_hal.h"
-
 
 ROM char message[]="hello via UART\r\n";
 
@@ -43,20 +41,20 @@ void uart_task( void *)
 		buffer[0] = uart3.receive();
 		uart3.puts( (const char *)buffer);
 
-		// LCD-Task resumen
-		// vTaskResume(LCDTaskHandle);
+		/* LCD-Task resumen
+		   vTaskResume(LCDTaskHandle);*/
 
-		if( xSemaphore != NULL )
+		/*if( xSemaphore != NULL )
 		{
 			xSemaphoreGive( xSemaphore );
-		}
+		}*/
 
-		if( xQueue != 0 )
+		/*if( xQueue != 0 )
 		{
 			if( xQueueSend( xQueue, (void *) buffer, ( TickType_t ) 10 ) != pdPASS )
 			{
 				// Failed to post the message, even after 10 ticks.
 			}
-		}
+		}*/
     }
 }

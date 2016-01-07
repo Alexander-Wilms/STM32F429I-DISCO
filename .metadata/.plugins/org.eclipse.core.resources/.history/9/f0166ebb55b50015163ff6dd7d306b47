@@ -109,20 +109,20 @@ void pushbutton_task(void *)
 		//uart3_2.puts(message);
 
 		// LCD-Task resumen
-		// vTaskResume(LCDTaskHandle);
+		//vTaskResume(LCDTaskHandle);
 
 		if( xSemaphore != NULL )
 		{
 			xSemaphoreGive( xSemaphore );
 		}
 
-		/*if( xQueue != 0 )
+		if( xQueue != 0 )
 		{
 			if( xQueueSend( xQueue, (void *) buffer, ( TickType_t ) 10 ) == pdPASS )
 			{
 				buffer[0]++;
 			}
-		}*/
+		}
 
 		//uart3.puts(message);
 

@@ -1,10 +1,28 @@
-15:35:03 **** Incremental Build of configuration Debug for project stm32f429i-discovery-freertos-semaphore-queue-mutex ****
+17:26:27 **** Incremental Build of configuration Debug for project stm32f429i-discovery-freertos-semaphore-queue-mutex ****
 make all 
-Building file: ../src/uart.cpp
+Building file: ../src/main.cpp
 Invoking: MCU G++ Compiler
 %cd%
-arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32F429ZITx -DSTM32F429I_DISCO -DSTM32 -DSTM32F4 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fno-exceptions -mslow-flash-data -fno-rtti -MMD -MP -MF"src/uart.d" -MT"src/uart.o" -o "src/uart.o" "../src/uart.cpp" @"src/includes.args"
-Finished building: ../src/uart.cpp
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32F429ZITx -DSTM32F429I_DISCO -DSTM32 -DSTM32F4 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fno-exceptions -mslow-flash-data -fno-rtti -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cpp" @"src/includes.args"
+../src/main.cpp: In function 'void lcd_balkenanzeige(void*)':
+../src/main.cpp:71:22: warning: unused variable 'chararray' [-Wunused-variable]
+  static const char * chararray;
+                      ^
+../src/main.cpp: In function 'void lcd_laufschrift(void*)':
+../src/main.cpp:123:22: warning: unused variable 'chararray' [-Wunused-variable]
+  static const char * chararray;
+                      ^
+../src/main.cpp: In function 'int main()':
+../src/main.cpp:222:15: warning: variable 'chararray' set but not used [-Wunused-but-set-variable]
+  const char * chararray;
+               ^
+Finished building: ../src/main.cpp
+ 
+Building file: ../src/uart_task.cpp
+Invoking: MCU G++ Compiler
+%cd%
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32F429ZITx -DSTM32F429I_DISCO -DSTM32 -DSTM32F4 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fno-exceptions -mslow-flash-data -fno-rtti -MMD -MP -MF"src/uart_task.d" -MT"src/uart_task.o" -o "src/uart_task.o" "../src/uart_task.cpp" @"src/includes.args"
+Finished building: ../src/uart_task.cpp
  
 Building target: stm32f429i-discovery-freertos-semaphore-queue-mutex.elf
 Invoking: MCU G++ Linker
@@ -16,9 +34,9 @@ Generating binary and Printing size information:
 arm-none-eabi-objcopy -O binary "stm32f429i-discovery-freertos-semaphore-queue-mutex.elf" "stm32f429i-discovery-freertos-semaphore-queue-mutex.bin"
 arm-none-eabi-size "stm32f429i-discovery-freertos-semaphore-queue-mutex.elf"
    text	   data	    bss	    dec	    hex	filename
- 278296	   2612	  41728	 322636	  4ec4c	stm32f429i-discovery-freertos-semaphore-queue-mutex.elf
+ 279248	   2612	  41728	 323588	  4f004	stm32f429i-discovery-freertos-semaphore-queue-mutex.elf
  
-15:35:15 **** Programing project stm32f429i-discovery-freertos-semaphore-queue-mutex on chip ****
+17:26:45 **** Programing project stm32f429i-discovery-freertos-semaphore-queue-mutex on chip ****
 "C:\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.externaltools.openocd.win32_1.5.0.201510231435\\tools\\openocd\\bin\\openocd.exe" -f stm32f429i_disco.cfg -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts\\st_board" -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts" -c "program Debug/stm32f429i-discovery-freertos-semaphore-queue-mutex.elf verify reset exit" 
 Open On-Chip Debugger 0.9.0-dev-00418-g9afb8b4-dirty (2015-09-28-12:09)
 Licensed under GNU GPL v2
@@ -35,17 +53,17 @@ Info : Unable to match requested speed 2000 kHz, using 1800 kHz
 Info : clock speed 1800 kHz
 Info : STLINK v2 JTAG v17 API v2 SWIM v0 VID 0x0483 PID 0x3748
 Info : using stlink api v2
-Info : Target voltage: 2.860677
+Info : Target voltage: 2.859277
 Info : stm32f4x.cpu: hardware has 6 breakpoints, 4 watchpoints
 target state: halted
 target halted due to debug-request, current mode: Thread 
-xPSR: 0x01000000 pc: 0x0801317c msp: 0x20030000
+xPSR: 0x01000000 pc: 0x08012d24 msp: 0x20030000
 configuring PLL
 ** Programming Started **
 auto erase enabled
 Info : device id = 0x20016419
 Info : flash size = 2048kbytes
-wrote 393216 bytes from file Debug/stm32f429i-discovery-freertos-semaphore-queue-mutex.elf in 15.592892s (24.627 KiB/s)
+wrote 393216 bytes from file Debug/stm32f429i-discovery-freertos-semaphore-queue-mutex.elf in 15.460884s (24.837 KiB/s)
 ** Programming Finished **
 ** Verify Started **
 target state: halted
@@ -54,7 +72,7 @@ xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
 target state: halted
 target halted due to breakpoint, current mode: Thread 
 xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
-verified 280928 bytes in 2.835162s (96.765 KiB/s)
+verified 281880 bytes in 2.689153s (102.364 KiB/s)
 ** Verified OK **
 ** Resetting Target **
 shutdown command invoked
