@@ -25,20 +25,20 @@ extern QueueHandle_t xQueue;
  *  */
 void lcd_init( void)
 {
-  /* Initialize the LCD */
+	// Initialize the LCD
 	BSP_LCD_Init();
 
 	BSP_LCD_LayerDefaultInit(1, (uint32_t) LCD_FRAME_BUFFER);
 	BSP_LCD_SetLayerVisible(1, ENABLE);
 	BSP_LCD_SelectLayer(1);
 
-    /* Clear the LCD */
+    // Clear the LCD
 	BSP_LCD_Clear(LCD_COLOR_YELLOW);
 
-    /* Set the LCD Back Color */
+    // Set the LCD Back Color
 	BSP_LCD_SetBackColor(LCD_COLOR_YELLOW);
 
-    /* Set the LCD Text Color */
+    // Set the LCD Text Color
 	BSP_LCD_SetTextColor(LCD_COLOR_BLUE);
 }
 
@@ -51,7 +51,6 @@ void lcd_write_line( unsigned line, char * text)
 void
 bargraph_task (void *)
 {
-	lcd_init ();
 
 	lcd_write_line (0, (char *) "Hello FreeRTOS");
 
@@ -88,7 +87,7 @@ bargraph_task (void *)
 
 void laufschrift_task (void *)
 {
-	lcd_init ();
+	//lcd_init ();
 	static std::stringstream output;
 	static std::string outputstring;
 	static const char * chararray;

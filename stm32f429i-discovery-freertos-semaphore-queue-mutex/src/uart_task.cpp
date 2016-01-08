@@ -17,7 +17,7 @@
 #include "task.h"
 #include "semphr.h"
 #include "stm32f4xx_hal.h"
-
+#include "stm32f429i_discovery_lcd.h"
 
 ROM char message[]="hello via UART\r\n";
 
@@ -28,6 +28,7 @@ extern QueueHandle_t xQueue;
 /** @brief  demo task demonstrating USART usage */
 void uart_task( void *)
 {
+	//lcd_init();
 	BSP_LED_Init (LED3);
 	uint8_t buffer[2]={0, 0};
 	uart uart3;

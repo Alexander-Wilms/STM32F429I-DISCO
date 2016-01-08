@@ -1,0 +1,86 @@
+/*
+ * uart.cpp
+ *
+ *  Created on: Nov 16, 2015
+ *      Author: schaefer
+ */
+
+/* Includes ------------------------------------------------------------------*/
+
+#include "stm32f429i_discovery.h"
+#include "stm32f4xx_hal_uart.h"
+#include "uart.h"
+#include <string.h>
+#include "common.h"
+
+#include "FreeRTOS.h"
+#include "task.h"
+#include "semphr.h"
+#include "stm32f4xx_hal.h"
+#include "stm32f429i_discovery_lcd.h"
+
+ROM char message[]="hello via UART\r\n";
+
+extern TaskHandle_t LCDTaskHandle;
+extern SemaphoreHandle_t xSemaphore;
+extern QueueHandle_t xQueue;
+
+/** @brief LCD initialization
+ *
+ * needs to be once called before theLCD screen can be used
+ *  */
+void lcd_init( void)
+{
+  /* Initialize the LCD */
+	BSP_LCD_Init();
+
+	BSP_LCD_LayerDefaultInit(1, (uint32_t) LCD_FRAME_BUFFER);
+	BSP_LCD_SetLayerVisible(1, ENABLE);
+	BSP_LCD_SelectLayer(1);
+
+    /* Clear the LCD */
+	BSP_LCD_Clear(LCD_COLOR_YELLOW);
+
+    /* Set the LCD Back Color */
+	BSP_LCD_SetBackColor(LCD_COLOR_YELLOW);
+
+    /* Set the LCD Text Color */
+	BSP_LCD_SetTextColor(LCD_COLOR_BLUE);
+}
+
+/** @brief  demo task demonstrating USART usage */
+void uart_task( void *)
+{
+	lcd_init();
+	BSP_LED_Init (LED3);
+	uint8_t buffer[2]={0, 0};
+	uart uart3;
+
+	uart3.puts(message);
+
+	/*char a[] = {"test\r\n"};
+	uart3.puts(a);*/
+
+	while( true)
+    {
+		uart3.wait_4_character();
+		buffer[0] = uart3.receive();
+		uart3.puts( (const char *)buffer);
+
+		// LCD-Task resumen
+		// vTaskResume(LCDTaskHandle);
+
+		if( xSemaphore != NULL )
+		{
+			xSemaphoreGive( xSemaphore );
+		}
+
+		if( xQueue != 0 )
+		{
+			if( xQueueSend( xQueue, (void *) buffer, ( TickType_t ) 10 ) != pdPASS )
+			{
+				// Failed to post the message, even after 10 ticks.
+			}
+		}
+    }
+}

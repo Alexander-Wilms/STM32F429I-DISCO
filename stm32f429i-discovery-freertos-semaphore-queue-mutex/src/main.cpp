@@ -194,7 +194,7 @@ int main(void)
 	/* Configure the system clock */
 	SystemClock_Config();
 	SysTick_init ();
-	// lcd_init();
+	lcd_init();
 
 	xSemaphore = xSemaphoreCreateBinary();
 	xSemaphoreGive( xSemaphore );
@@ -203,21 +203,21 @@ int main(void)
 	xQueue = xQueueCreate( 15, sizeof( uint8_t ) );
 
 	xSemaphoreMutex = xSemaphoreCreateMutex();
-	//xSemaphoreGive( xSemaphoreMutex );
+	xSemaphoreGive( xSemaphoreMutex );
 
-	xTaskCreate( (pdTASK_CODE)uart_task, 	   "uart",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	xTaskCreate( (pdTASK_CODE)uart_task, 	   	"uart",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
-	//xTaskCreate( (pdTASK_CODE)test_task, 	   "test",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	// xTaskCreate( (pdTASK_CODE)test_task, 	   	"test",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
-	// xTaskCreate( (pdTASK_CODE)bargraph_task, "bargraph", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, &LCDTaskHandle);
+	xTaskCreate( (pdTASK_CODE)bargraph_task, 	"bargraph", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, &LCDTaskHandle);
 
 	// xTaskCreate( (pdTASK_CODE)pushbutton_task, "button", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
-	//xTaskCreate( (pdTASK_CODE)laufschrift_task, 	   "laufschrift",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
+	// xTaskCreate( (pdTASK_CODE)laufschrift_task, 	   "laufschrift",     configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
 	//xTaskCreate( (pdTASK_CODE)lcd_balkenanzeige, 	"lcd_balkenanzeige", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 	//xTaskCreate( (pdTASK_CODE)lcd_laufschrift, 	"lcd_laufschrift", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 	// Displaying strings in a tasks only works when doing all of this before
-	std::stringstream output;
+	/*std::stringstream output;
 	std::string outputstring;
 	const char * chararray;
 	output.str(std::string());
@@ -225,7 +225,7 @@ int main(void)
 	outputstring = "";
 	outputstring = output.str();
 	chararray = "";
-	chararray = outputstring.c_str();
+	chararray = outputstring.c_str();*/
 	//xTaskCreate( (pdTASK_CODE)lcd_zeit, 	"lcd_zeit", configMINIMAL_STACK_SIZE, 0, TASK_PRIORITY, NULL);
 
 	vTaskStartScheduler ();
