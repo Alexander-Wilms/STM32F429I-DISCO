@@ -87,6 +87,7 @@ bargraph_task (void *)
 
 void laufschrift_task (void *)
 {
+	//lcd_init ();
 	static std::stringstream output;
 	static std::string outputstring;
 	static const char * chararray;
