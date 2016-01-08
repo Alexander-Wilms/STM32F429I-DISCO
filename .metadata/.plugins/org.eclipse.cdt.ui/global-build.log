@@ -1,37 +1,25 @@
-01:24:49 **** Incremental Build of configuration Debug for project stm32f429i-discovery-freertos-semaphore-queue-mutex ****
+13:26:53 **** Incremental Build of configuration Debug for project stm32f429i-discovery-adc ****
 make all 
 Building file: ../src/main.cpp
 Invoking: MCU G++ Compiler
 %cd%
-arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32F429ZITx -DSTM32F429I_DISCO -DSTM32 -DSTM32F4 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fno-exceptions -mslow-flash-data -fno-rtti -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cpp" @"src/includes.args"
-../src/main.cpp: In function 'void lcd_balkenanzeige(void*)':
-../src/main.cpp:71:22: warning: unused variable 'chararray' [-Wunused-variable]
-  static const char * chararray;
-                      ^
-../src/main.cpp: In function 'void lcd_laufschrift(void*)':
-../src/main.cpp:123:22: warning: unused variable 'chararray' [-Wunused-variable]
-  static const char * chararray;
-                      ^
-../src/main.cpp: In function 'int main()':
-../src/main.cpp:221:15: warning: variable 'chararray' set but not used [-Wunused-but-set-variable]
-  const char * chararray;
-               ^
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32F429ZITx -DSTM32F429I_DISCO -DSTM32 -DSTM32F4 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/CMSIS/core" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/CMSIS/device" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/HAL_Driver/Inc/Legacy" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/HAL_Driver/Inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/ampire480272" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/ampire640480" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/Common" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/cs43l22" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/exc7200" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/ft6x06" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/ili9325" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/ili9341" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/l3gd20" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/lis302dl" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/lis3dsh" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/lsm303dlhc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/mfxstm32l152" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/n25q128a" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/n25q256a" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/n25q512a" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/otm8009a" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/ov2640" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/s25fl512s" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/s5k5cag" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/st7735" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/stmpe1600" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/stmpe811" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/ts3510" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Components/wm8994" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Fonts" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/Log" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-adc/Utilities/STM32F429I-Discovery" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fno-exceptions -mslow-flash-data -fno-rtti -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cpp"
 Finished building: ../src/main.cpp
  
-Building target: stm32f429i-discovery-freertos-semaphore-queue-mutex.elf
+Building target: stm32f429i-discovery-adc.elf
 Invoking: MCU G++ Linker
-arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"C:\tools\ARM\Realzeitsysteme-STM32F429I-DISCO\stm32f429i-discovery-freertos-semaphore-queue-mutex\LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -fno-exceptions -fno-rtti -lm -o "stm32f429i-discovery-freertos-semaphore-queue-mutex.elf" @"objects.list"  
-Finished building target: stm32f429i-discovery-freertos-semaphore-queue-mutex.elf
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"C:\tools\ARM\Realzeitsysteme-STM32F429I-DISCO\stm32f429i-discovery-adc\LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -fno-exceptions -fno-rtti -lm -o "stm32f429i-discovery-adc.elf" @"objects.list"  
+Finished building target: stm32f429i-discovery-adc.elf
  
 make --no-print-directory post-build
 Generating binary and Printing size information:
-arm-none-eabi-objcopy -O binary "stm32f429i-discovery-freertos-semaphore-queue-mutex.elf" "stm32f429i-discovery-freertos-semaphore-queue-mutex.bin"
-arm-none-eabi-size "stm32f429i-discovery-freertos-semaphore-queue-mutex.elf"
+arm-none-eabi-objcopy -O binary "stm32f429i-discovery-adc.elf" "stm32f429i-discovery-adc.bin"
+arm-none-eabi-size "stm32f429i-discovery-adc.elf"
    text	   data	    bss	    dec	    hex	filename
- 281184	   2652	  41728	 325564	  4f7bc	stm32f429i-discovery-freertos-semaphore-queue-mutex.elf
+ 259872	   2592	  23880	 286344	  45e88	stm32f429i-discovery-adc.elf
  
-01:25:09 **** Programing project stm32f429i-discovery-freertos-semaphore-queue-mutex on chip ****
-"C:\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.externaltools.openocd.win32_1.5.0.201510231435\\tools\\openocd\\bin\\openocd.exe" -f stm32f429i_disco.cfg -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts\\st_board" -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts" -c "program Debug/stm32f429i-discovery-freertos-semaphore-queue-mutex.elf verify reset exit" 
+13:31:23 **** Programing project stm32f429i-discovery-adc on chip ****
+"C:\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.externaltools.openocd.win32_1.5.0.201510231435\\tools\\openocd\\bin\\openocd.exe" -f stm32f429i_disco.cfg -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts\\st_board" -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts" -c "program Debug/stm32f429i-discovery-adc.elf verify reset exit" 
 Open On-Chip Debugger 0.9.0-dev-00418-g9afb8b4-dirty (2015-09-28-12:09)
 Licensed under GNU GPL v2
 For bug reports, read
@@ -47,17 +35,20 @@ Info : Unable to match requested speed 2000 kHz, using 1800 kHz
 Info : clock speed 1800 kHz
 Info : STLINK v2 JTAG v17 API v2 SWIM v0 VID 0x0483 PID 0x3748
 Info : using stlink api v2
-Info : Target voltage: 2.869321
+Info : Target voltage: 2.863748
 Info : stm32f4x.cpu: hardware has 6 breakpoints, 4 watchpoints
 target state: halted
 target halted due to debug-request, current mode: Thread 
-xPSR: 0x01000000 pc: 0x0801355c msp: 0x20030000
+xPSR: 0x01000000 pc: 0x08013ce8 msp: 0x20030000
 configuring PLL
 ** Programming Started **
 auto erase enabled
 Info : device id = 0x20016419
 Info : flash size = 2048kbytes
-wrote 393216 bytes from file Debug/stm32f429i-discovery-freertos-semaphore-queue-mutex.elf in 15.730900s (24.411 KiB/s)
+target state: halted
+target halted due to breakpoint, current mode: Thread 
+xPSR: 0x61000000 pc: 0x20000042 msp: 0x20030000
+wrote 393216 bytes from file Debug/stm32f429i-discovery-adc.elf in 15.073862s (25.475 KiB/s)
 ** Programming Finished **
 ** Verify Started **
 target state: halted
@@ -66,7 +57,7 @@ xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
 target state: halted
 target halted due to breakpoint, current mode: Thread 
 xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
-verified 283856 bytes in 2.781159s (99.672 KiB/s)
+verified 262484 bytes in 2.051117s (124.972 KiB/s)
 ** Verified OK **
 ** Resetting Target **
 shutdown command invoked

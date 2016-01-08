@@ -64,7 +64,7 @@ void ConfigureADC()
     }
 }
 
-void printaccel(int line, float value, bool integer)
+void print(int line, float value, bool integer)
 {
 	int outputvalue;
 	std::stringstream output;
@@ -121,7 +121,7 @@ int main(void)
 		{
 			BSP_LCD_SetTextColor(LCD_COLOR_BLUE);
 			g_ADCValue = (float) HAL_ADC_GetValue(&g_AdcHandle)/4096*230;
-			printaccel(0,(float) HAL_ADC_GetValue(&g_AdcHandle)/4096*3.3,0);
+			print(0,(float) HAL_ADC_GetValue(&g_AdcHandle)/4096*3.3,0);
 			a[j]=0.2*a[j]+0.8*g_ADCValue;
 			BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
 			BSP_LCD_DrawLine(0, j, 240, j);
