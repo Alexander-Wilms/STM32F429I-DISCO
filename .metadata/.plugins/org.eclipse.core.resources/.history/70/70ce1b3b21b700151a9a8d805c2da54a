@@ -43,17 +43,20 @@ void pwm_task (void *)
 
 void pwm_task_busy (void *)
 {
+	BSP_LED_Init (LED3);
 	BSP_LED_Init (LED4);
 	int i, j = 0;
 	int total = 100000;
 	float duty = 0.5;
 	while (true)
 	{
-		BSP_LED_On(LED4);
-		for(i=0;i<total*duty;i++);
+		BSP_LED_On(LED3);
 		BSP_LED_Off(LED4);
+		for(i=0;i<total*duty;i++);
+		BSP_LED_Off(LED3);
+		BSP_LED_On(LED4);
 		for(i=0;i<total*(1-duty);i++);
-		duty = (sin(j*3.1415/180)+1)/2;
+		duty = (sin(j*2)+1)/2;
 		j++;
 	}
 }

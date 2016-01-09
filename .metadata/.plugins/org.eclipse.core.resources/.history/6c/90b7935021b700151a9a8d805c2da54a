@@ -53,7 +53,7 @@ void pwm_task_busy (void *)
 		for(i=0;i<total*duty;i++);
 		BSP_LED_Off(LED4);
 		for(i=0;i<total*(1-duty);i++);
-		duty = (sin(j*3.1415/180)+1)/2;
+		duty = (sin(j*2)+1)/2;
 		j++;
 	}
 }
