@@ -1,4 +1,4 @@
-23:35:45 **** Incremental Build of configuration Debug for project stm32f429i-discovery-freertos-manual-pwm ****
+23:37:39 **** Incremental Build of configuration Debug for project stm32f429i-discovery-freertos-manual-pwm ****
 make all 
 Building file: ../src/main.cpp
 Invoking: MCU G++ Compiler
@@ -16,9 +16,9 @@ Generating binary and Printing size information:
 arm-none-eabi-objcopy -O binary "stm32f429i-discovery-freertos-manual-pwm.elf" "stm32f429i-discovery-freertos-manual-pwm.bin"
 arm-none-eabi-size "stm32f429i-discovery-freertos-manual-pwm.elf"
    text	   data	    bss	    dec	    hex	filename
-  19340	   1124	  17256	  37720	   9358	stm32f429i-discovery-freertos-manual-pwm.elf
+  19364	   1124	  17256	  37744	   9370	stm32f429i-discovery-freertos-manual-pwm.elf
  
-23:35:54 **** Programing project stm32f429i-discovery-freertos-manual-pwm on chip ****
+23:37:49 **** Programing project stm32f429i-discovery-freertos-manual-pwm on chip ****
 "C:\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.externaltools.openocd.win32_1.5.0.201510231435\\tools\\openocd\\bin\\openocd.exe" -f stm32f429i_disco.cfg -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts\\st_board" -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts" -c "program Debug/stm32f429i-discovery-freertos-manual-pwm.elf verify reset exit" 
 Open On-Chip Debugger 0.9.0-dev-00418-g9afb8b4-dirty (2015-09-28-12:09)
 Licensed under GNU GPL v2
@@ -39,13 +39,16 @@ Info : Target voltage: 2.869321
 Info : stm32f4x.cpu: hardware has 6 breakpoints, 4 watchpoints
 target state: halted
 target halted due to debug-request, current mode: Thread 
-xPSR: 0x01000000 pc: 0x080033ac msp: 0x20030000
+xPSR: 0x01000000 pc: 0x080033e4 msp: 0x20030000
 configuring PLL
 ** Programming Started **
 auto erase enabled
 Info : device id = 0x20016419
 Info : flash size = 2048kbytes
-wrote 32768 bytes from file Debug/stm32f429i-discovery-freertos-manual-pwm.elf in 1.828104s (17.504 KiB/s)
+target state: halted
+target halted due to breakpoint, current mode: Thread 
+xPSR: 0x61000000 pc: 0x20000042 msp: 0x20030000
+wrote 32768 bytes from file Debug/stm32f429i-discovery-freertos-manual-pwm.elf in 1.840106s (17.390 KiB/s)
 ** Programming Finished **
 ** Verify Started **
 target state: halted
@@ -54,7 +57,7 @@ xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
 target state: halted
 target halted due to breakpoint, current mode: Thread 
 xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
-verified 20468 bytes in 0.861049s (23.214 KiB/s)
+verified 20492 bytes in 0.848049s (23.597 KiB/s)
 ** Verified OK **
 ** Resetting Target **
 shutdown command invoked
