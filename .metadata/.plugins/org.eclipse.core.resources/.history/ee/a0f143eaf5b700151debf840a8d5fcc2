@@ -59,7 +59,7 @@ void pwm_task (void *)
 	__GPIOD_CLK_ENABLE();
 
 	// Actual PWM can only use specific pins (not the ones connected to the LEDs)
-	// Connect pins PB6 and PD12 to PG13, with just one wire it's quite dim
+	// Connect pins PB6 and PD12 to PG13, with just one wire it's rather dim
 	GPIO_InitStructure.Pin = GPIO_PIN_6;
 	GPIO_InitStructure.Mode = GPIO_MODE_AF_PP;
 	GPIO_InitStructure.Pull = GPIO_PULLUP;

@@ -1,4 +1,4 @@
-00:51:46 **** Incremental Build of configuration Debug for project stm32f429i-discovery-freertos-manual-pwm ****
+00:57:48 **** Incremental Build of configuration Debug for project stm32f429i-discovery-freertos-manual-pwm ****
 make all 
 Building file: ../src/main.cpp
 Invoking: MCU G++ Compiler
@@ -22,7 +22,7 @@ arm-none-eabi-size "stm32f429i-discovery-freertos-manual-pwm.elf"
    text	   data	    bss	    dec	    hex	filename
   21372	   1124	  17256	  39752	   9b48	stm32f429i-discovery-freertos-manual-pwm.elf
  
-00:51:56 **** Programing project stm32f429i-discovery-freertos-manual-pwm on chip ****
+00:57:57 **** Programing project stm32f429i-discovery-freertos-manual-pwm on chip ****
 "C:\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.externaltools.openocd.win32_1.5.0.201510231435\\tools\\openocd\\bin\\openocd.exe" -f stm32f429i_disco.cfg -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts\\st_board" -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts" -c "program Debug/stm32f429i-discovery-freertos-manual-pwm.elf verify reset exit" 
 Open On-Chip Debugger 0.9.0-dev-00418-g9afb8b4-dirty (2015-09-28-12:09)
 Licensed under GNU GPL v2
@@ -39,7 +39,7 @@ Info : Unable to match requested speed 2000 kHz, using 1800 kHz
 Info : clock speed 1800 kHz
 Info : STLINK v2 JTAG v17 API v2 SWIM v0 VID 0x0483 PID 0x3748
 Info : using stlink api v2
-Info : Target voltage: 2.880564
+Info : Target voltage: 2.876336
 Info : stm32f4x.cpu: hardware has 6 breakpoints, 4 watchpoints
 target state: halted
 target halted due to debug-request, current mode: Thread 
@@ -52,7 +52,7 @@ Info : flash size = 2048kbytes
 target state: halted
 target halted due to breakpoint, current mode: Thread 
 xPSR: 0x61000000 pc: 0x20000042 msp: 0x20030000
-wrote 32768 bytes from file Debug/stm32f429i-discovery-freertos-manual-pwm.elf in 1.853106s (17.268 KiB/s)
+wrote 32768 bytes from file Debug/stm32f429i-discovery-freertos-manual-pwm.elf in 1.841105s (17.381 KiB/s)
 ** Programming Finished **
 ** Verify Started **
 target state: halted
@@ -61,7 +61,7 @@ xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
 target state: halted
 target halted due to breakpoint, current mode: Thread 
 xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
-verified 22500 bytes in 0.866050s (25.371 KiB/s)
+verified 22500 bytes in 0.861049s (25.518 KiB/s)
 ** Verified OK **
 ** Resetting Target **
 shutdown command invoked
