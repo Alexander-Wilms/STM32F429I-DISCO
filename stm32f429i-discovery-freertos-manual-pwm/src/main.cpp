@@ -11,10 +11,13 @@
 #include <string.h>
 #include <math.h>
 #include "stm32f4xx.h"
+#include "stm32f429xx.h"
 #include "stm32f429i_discovery.h"
 #include "stm32f429i_discovery_io.h"
 #include "stm32f429i_discovery_ts.h"
 #include "stm32f429i_discovery_lcd.h"
+#include "stm32f4xx_hal_gpio.h"
+#include "stm32f4xx_hal_rcc.h"
 
 // FreeRTOS can be configured via ./Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOSConfig.h
 #include "FreeRTOS.h"
@@ -25,23 +28,7 @@
 
 static void SystemClock_Config(void);
 
-void pwm_task (void *)
-{
-	  BSP_LED_Init (LED4);
-	  TickType_t xLastWakeTime;
-	  while (true)
-	    {
-	      BSP_LED_On(LED4);
-		  xLastWakeTime = xTaskGetTickCount();
-	      vTaskDelayUntil (&xLastWakeTime, (TickType_t) 10);
-	      BSP_LED_Off(LED4);
-		  xLastWakeTime = xTaskGetTickCount();
-	      vTaskDelayUntil (&xLastWakeTime, (TickType_t) 1);
-
-	    }
-}
-
-void pwm_task_busy (void *)
+void manual_pwm_task (void *)
 {
 	BSP_LED_Init (LED3);
 	BSP_LED_Init (LED4);
@@ -61,6 +48,73 @@ void pwm_task_busy (void *)
 	}
 }
 
+void pwm_task (void *)
+{
+	GPIO_InitTypeDef GPIO_InitStructure;
+	TIM_HandleTypeDef TimHandle;
+	TIM_OC_InitTypeDef PWMConfig;
+	TIM_BreakDeadTimeConfigTypeDef DeadConfig;
+
+	__GPIOB_CLK_ENABLE();
+	__GPIOD_CLK_ENABLE();
+
+	// Actual PWM can only use specific pins (not the ones connected to the LEDs)
+
+	GPIO_InitStructure.Pin = GPIO_PIN_6;
+	GPIO_InitStructure.Mode = GPIO_MODE_AF_PP;
+	GPIO_InitStructure.Pull = GPIO_PULLUP;
+	GPIO_InitStructure.Speed = GPIO_SPEED_HIGH;
+	GPIO_InitStructure.Alternate = GPIO_AF2_TIM4;
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+	GPIO_InitStructure.Pin = GPIO_PIN_12;
+	HAL_GPIO_Init(GPIOD, &GPIO_InitStructure);
+
+	__TIM4_CLK_ENABLE();
+
+	TimHandle.Instance = TIM4;
+	TimHandle.Init.Period = 255;
+	TimHandle.Init.Prescaler = 0;
+	TimHandle.Init.ClockDivision = 0;
+	TimHandle.Init.CounterMode = TIM_COUNTERMODE_UP;
+
+	HAL_TIM_PWM_Init(&TimHandle);
+
+	PWMConfig.Pulse = 254;
+	PWMConfig.OCMode = TIM_OCMODE_PWM1;
+	PWMConfig.OCPolarity = TIM_OCPOLARITY_HIGH;
+	PWMConfig.OCNPolarity = TIM_OCNPOLARITY_HIGH;
+	PWMConfig.OCIdleState = TIM_OCIDLESTATE_SET;
+	PWMConfig.OCNIdleState = TIM_OCNIDLESTATE_RESET;
+	PWMConfig.OCFastMode = TIM_OCFAST_DISABLE;
+
+	HAL_TIM_PWM_ConfigChannel(&TimHandle,&PWMConfig,TIM_CHANNEL_1);
+
+	DeadConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_ENABLE;
+	DeadConfig.BreakPolarity = TIM_BREAKPOLARITY_LOW;
+	DeadConfig.BreakState = TIM_BREAK_DISABLE;
+	DeadConfig.DeadTime = 0xff;
+	DeadConfig.LockLevel = TIM_LOCKLEVEL_OFF;
+	DeadConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
+	DeadConfig.OffStateRunMode = TIM_OSSR_DISABLE;
+
+	// HAL_TIMEx_ConfigBreakDeadTime(&TimHandle,&DeadConfig);
+
+	HAL_TIM_PWM_Start(&TimHandle,TIM_CHANNEL_1);
+
+	BSP_LED_Init (LED3);
+	BSP_LED_Init (LED4);
+	int j = 0;
+	float duty = 0.5;
+	while (true)
+	{
+		duty = (254) * (sin(j/10000)+1)/2;
+		j++;
+
+		TIM4->CCR1 =duty;
+	}
+}
+
 int main(void)
 {
 	HAL_Init();
@@ -69,7 +123,8 @@ int main(void)
 	SystemClock_Config();
 
 	#define LED_TASK_PRIORITY ((1 + tskIDLE_PRIORITY) | portPRIVILEGE_BIT)
-	xTaskCreate( (pdTASK_CODE)pwm_task_busy, 	"led1", 256, 0, LED_TASK_PRIORITY, NULL);
+	xTaskCreate( (pdTASK_CODE)pwm_task, 	"led1", 256, 0, LED_TASK_PRIORITY, NULL);
+	//xTaskCreate( (pdTASK_CODE)manual_pwm_task, 	"led1", 256, 0, LED_TASK_PRIORITY, NULL);
 	vTaskStartScheduler ();
 
 	return 0;
