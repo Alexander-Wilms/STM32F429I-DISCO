@@ -109,7 +109,7 @@ void pwm_task (void *)
 		duty = (254) * (sin(j/10000)+1)/2;
 		j++;
 
-		TIM4->CCR1 = duty;
+		TIM4->CCR1 =duty;
 	}
 }
 

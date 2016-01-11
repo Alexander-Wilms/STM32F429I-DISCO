@@ -98,6 +98,8 @@ void pwm_task (void *)
 	DeadConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
 	DeadConfig.OffStateRunMode = TIM_OSSR_DISABLE;
 
+	// HAL_TIMEx_ConfigBreakDeadTime(&TimHandle,&DeadConfig);
+
 	HAL_TIM_PWM_Start(&TimHandle,TIM_CHANNEL_1);
 
 	BSP_LED_Init (LED3);
@@ -109,7 +111,7 @@ void pwm_task (void *)
 		duty = (254) * (sin(j/10000)+1)/2;
 		j++;
 
-		TIM4->CCR1 = duty;
+		TIM4->CCR1 =duty;
 	}
 }
 
