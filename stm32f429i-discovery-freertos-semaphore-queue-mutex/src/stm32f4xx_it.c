@@ -13,11 +13,6 @@
 #include "stm32f4xx.h"
 #include "stm32f4xx_it.h"
 
-#include "FreeRTOS.h"
-#include "task.h"
-
-extern volatile int systick_count;
-
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -42,5 +37,4 @@ void SysTick_Handler(void)
 		xPortSysTickHandler();
 	}
 	// HAL_SYSTICK_IRQHandler();
-	systick_count++;
 }

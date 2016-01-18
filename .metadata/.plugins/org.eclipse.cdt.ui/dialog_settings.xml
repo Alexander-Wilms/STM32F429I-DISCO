@@ -10,6 +10,7 @@
 		<item value="227191" key="searchFlags"/>
 		<item value="false" key="caseSensitive"/>
 		<list key="previousPatterns">
+			<item value="__HAL_TIM_SET_COMPARE"/>
 			<item value="deliver_RX"/>
 		</list>
 	</section>

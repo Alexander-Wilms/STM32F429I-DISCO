@@ -2,9 +2,9 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
-		<item value="210" key="DIALOG_Y_ORIGIN"/>
+		<item value="255" key="DIALOG_Y_ORIGIN"/>
 		<item value="380" key="DIALOG_HEIGHT"/>
-		<item value="1276" key="DIALOG_X_ORIGIN"/>
+		<item value="617" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
@@ -13,26 +13,26 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="vTaskDelay" key="selection"/>
+		<item value="uart" key="selection"/>
 		<list key="findhistory">
-			<item value="vtaskdelay"/>
-			<item value="receive_it"/>
-			<item value="deliver"/>
-			<item value="deliver_RX"/>
-			<item value="TIM6"/>
-			<item value="tim1"/>
-			<item value="tim6"/>
-			<item value="white"/>
+			<item value="uart"/>
+			<item value="puts"/>
+			<item value="Recursive"/>
+			<item value="Take"/>
+			<item value="Give"/>
+			<item value="canpacket"/>
+			<item value="loop"/>
+			<item value="TIM2"/>
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
+			<item value="TakeRecursive"/>
+			<item value="GiveRecursive"/>
+			<item value="TIM4"/>
+			<item value="TIM2"/>
 			<item value="TIM1"/>
+			<item value="TIM_Init"/>
 			<item value="Fill"/>
-			<item value="BSP_LCD_"/>
-			<item value="LCD_COLOR"/>
-			<item value="_"/>
-			<item value="BSP_"/>
-			<item value="systick_count"/>
-			<item value="//timer.sleep"/>
 		</list>
 	</section>
 </section>
