@@ -1,16 +1,10 @@
-03:40:27 **** Incremental Build of configuration Debug for project stm32f429i-discovery-freertos-uart ****
+19:35:26 **** Incremental Build of configuration Debug for project stm32f429i-discovery-freertos-uart ****
 make all 
 Building file: ../src/main.cpp
 Invoking: MCU G++ Compiler
 %cd%
 arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32F429ZITx -DSTM32F429I_DISCO -DSTM32 -DSTM32F4 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/CMSIS/core" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/CMSIS/device" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/HAL_Driver/Inc/Legacy" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/HAL_Driver/Inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Middlewares/Third_Party/FreeRTOS/Source/include" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/ampire480272" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/ampire640480" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/Common" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/cs43l22" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/exc7200" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/ft6x06" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/ili9325" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/ili9341" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/l3gd20" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/lis302dl" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/lis3dsh" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/lsm303dlhc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/mfxstm32l152" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/n25q128a" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/n25q256a" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/n25q512a" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/otm8009a" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/ov2640" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/s25fl512s" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/s5k5cag" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/st7735" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/stmpe1600" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/stmpe811" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/ts3510" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/wm8994" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Fonts" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Log" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/STM32F429I-Discovery" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fno-exceptions -mslow-flash-data -fno-rtti -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cpp"
 Finished building: ../src/main.cpp
- 
-Building file: ../src/uart_task.cpp
-Invoking: MCU G++ Compiler
-%cd%
-arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32F429ZITx -DSTM32F429I_DISCO -DSTM32 -DSTM32F4 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/CMSIS/core" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/CMSIS/device" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/HAL_Driver/Inc/Legacy" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/HAL_Driver/Inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Middlewares/Third_Party/FreeRTOS/Source/include" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/ampire480272" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/ampire640480" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/Common" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/cs43l22" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/exc7200" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/ft6x06" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/ili9325" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/ili9341" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/l3gd20" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/lis302dl" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/lis3dsh" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/lsm303dlhc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/mfxstm32l152" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/n25q128a" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/n25q256a" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/n25q512a" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/otm8009a" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/ov2640" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/s25fl512s" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/s5k5cag" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/st7735" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/stmpe1600" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/stmpe811" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/ts3510" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Components/wm8994" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Fonts" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/Log" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/stm32f429i-discovery-freertos-uart/Utilities/STM32F429I-Discovery" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fno-exceptions -mslow-flash-data -fno-rtti -MMD -MP -MF"src/uart_task.d" -MT"src/uart_task.o" -o "src/uart_task.o" "../src/uart_task.cpp"
-Finished building: ../src/uart_task.cpp
  
 Building target: stm32f429i-discovery-freertos-uart.elf
 Invoking: MCU G++ Linker
@@ -22,49 +16,9 @@ Generating binary and Printing size information:
 arm-none-eabi-objcopy -O binary "stm32f429i-discovery-freertos-uart.elf" "stm32f429i-discovery-freertos-uart.bin"
 arm-none-eabi-size "stm32f429i-discovery-freertos-uart.elf"
    text	   data	    bss	    dec	    hex	filename
- 276764	   2612	  41360	 320736	  4e4e0	stm32f429i-discovery-freertos-uart.elf
+ 276836	   2612	  41360	 320808	  4e528	stm32f429i-discovery-freertos-uart.elf
  
-03:40:38 **** Programing project stm32f429i-discovery-freertos-uart on chip ****
-"C:\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.externaltools.openocd.win32_1.5.0.201510231435\\tools\\openocd\\bin\\openocd.exe" -f stm32f429i_disco.cfg -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts\\st_board" -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts" -c "program Debug/stm32f429i-discovery-freertos-adc-uart.elf verify reset exit" 
-Open On-Chip Debugger 0.9.0-dev-00418-g9afb8b4-dirty (2015-09-28-12:09)
-Licensed under GNU GPL v2
-For bug reports, read
-	http://openocd.org/doc/doxygen/bugs.html
-Info : auto-selecting first available session transport "hla_swd". To override use 'transport select <transport>'.
-Info : The selected transport took over low-level target control. The results might differ compared to plain JTAG/SWD
-adapter speed: 2000 kHz
-adapter_nsrst_delay: 100
-srst_only separate srst_nogate srst_open_drain connect_deassert_srst
-srst_only separate srst_nogate srst_open_drain connect_deassert_srst
-Info : Unable to match requested speed 2000 kHz, using 1800 kHz
-Info : Unable to match requested speed 2000 kHz, using 1800 kHz
-Info : clock speed 1800 kHz
-Info : STLINK v2 JTAG v17 API v2 SWIM v0 VID 0x0483 PID 0x3748
-Info : using stlink api v2
-Info : Target voltage: 2.865692
-Info : stm32f4x.cpu: hardware has 6 breakpoints, 4 watchpoints
-target state: halted
-target halted due to debug-request, current mode: Thread 
-xPSR: 0x01000000 pc: 0x08013488 msp: 0x20030000
-configuring PLL
-** Programming Started **
-auto erase enabled
-Info : device id = 0x20016419
-Info : flash size = 2048kbytes
-wrote 393216 bytes from file Debug/stm32f429i-discovery-freertos-adc-uart.elf in 15.570891s (24.661 KiB/s)
-** Programming Finished **
-** Verify Started **
-target state: halted
-target halted due to breakpoint, current mode: Thread 
-xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
-target state: halted
-target halted due to breakpoint, current mode: Thread 
-xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
-verified 285896 bytes in 2.717156s (102.753 KiB/s)
-** Verified OK **
-** Resetting Target **
-shutdown command invoked
-03:41:33 **** Programing project stm32f429i-discovery-freertos-uart on chip ****
+19:35:38 **** Programing project stm32f429i-discovery-freertos-uart on chip ****
 "C:\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.externaltools.openocd.win32_1.5.0.201510231435\\tools\\openocd\\bin\\openocd.exe" -f stm32f429i_disco.cfg -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts\\st_board" -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts" -c "program Debug/stm32f429i-discovery-freertos-uart.elf verify reset exit" 
 Open On-Chip Debugger 0.9.0-dev-00418-g9afb8b4-dirty (2015-09-28-12:09)
 Licensed under GNU GPL v2
@@ -81,17 +35,20 @@ Info : Unable to match requested speed 2000 kHz, using 1800 kHz
 Info : clock speed 1800 kHz
 Info : STLINK v2 JTAG v17 API v2 SWIM v0 VID 0x0483 PID 0x3748
 Info : using stlink api v2
-Info : Target voltage: 2.865692
+Info : Target voltage: 2.874091
 Info : stm32f4x.cpu: hardware has 6 breakpoints, 4 watchpoints
 target state: halted
 target halted due to debug-request, current mode: Thread 
-xPSR: 0x01000000 pc: 0x08014368 msp: 0x20030000
+xPSR: 0x01000000 pc: 0x080132bc msp: 0x20030000
 configuring PLL
 ** Programming Started **
 auto erase enabled
 Info : device id = 0x20016419
 Info : flash size = 2048kbytes
-wrote 393216 bytes from file Debug/stm32f429i-discovery-freertos-uart.elf in 15.519887s (24.742 KiB/s)
+target state: halted
+target halted due to breakpoint, current mode: Thread 
+xPSR: 0x61000000 pc: 0x20000042 msp: 0x20030000
+wrote 393216 bytes from file Debug/stm32f429i-discovery-freertos-uart.elf in 14.673839s (26.169 KiB/s)
 ** Programming Finished **
 ** Verify Started **
 target state: halted
@@ -100,7 +57,7 @@ xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
 target state: halted
 target halted due to breakpoint, current mode: Thread 
 xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
-verified 279396 bytes in 2.671153s (102.146 KiB/s)
+verified 279468 bytes in 2.169124s (125.819 KiB/s)
 ** Verified OK **
 ** Resetting Target **
 shutdown command invoked

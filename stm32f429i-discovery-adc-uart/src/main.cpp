@@ -114,7 +114,7 @@ int main(void)
 		a[i] = 0;
 	int i = 0;
 	int j = 0;
-	uart3.puts("|");
+	uart3.puts("\n\r");
 	HAL_ADC_Start(&g_AdcHandle);
 	int done = 0;
 	while(!done)

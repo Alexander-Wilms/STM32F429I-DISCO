@@ -95,15 +95,25 @@ void pushbutton_task(void *)
 	BSP_PB_Init (BUTTON_KEY, BUTTON_MODE_EXTI);
 
 	uint8_t buffer[2]={'a', 0};
-	char message[]="hello via UART (Button)\r\n";
-	extern uart uart3;
 
 	while(1)
 	{
 		/* Indefinitely wait for pushbutton message */
 		xQueueReceive(EXTIqueue, 0, portMAX_DELAY);
-		xQueueSend( DisplayQueue, (void *) buffer, ( TickType_t ) 10 );
-		xQueueSend( TerminalQueue, (void *) buffer, ( TickType_t ) 10 );
+		if( DisplayQueue != 0 )
+		{
+			if( xQueueSend( DisplayQueue, (void *) buffer, ( TickType_t ) 10 ) != pdPASS )
+			{
+				// Failed to post the message, even after 10 ticks.
+			}
+		}
+		if( DisplayQueue != 0 )
+		{
+			if( xQueueSend( TerminalQueue, (void *) buffer, ( TickType_t ) 10 ) != pdPASS )
+			{
+				// Failed to post the message, even after 10 ticks.
+			}
+		}
 		buffer[0]++;
 	}
 }

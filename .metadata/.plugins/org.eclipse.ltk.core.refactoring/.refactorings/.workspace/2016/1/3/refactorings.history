@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;stm32f429i-discovery-freertos-manual-pwm&apos; to &apos;stm32f429i-discovery-freertos-pwm&apos;" description="Rename resource &apos;stm32f429i-discovery-freertos-manual-pwm&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/stm32f429i-discovery-freertos-manual-pwm" name="stm32f429i-discovery-freertos-pwm" stamp="1453399189613" updateReferences="true"/>
+</session>

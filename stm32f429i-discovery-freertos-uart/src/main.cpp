@@ -49,8 +49,6 @@ void uart_send_task( void *);
 void uart_receive_task( void *);
 void pushbutton_task(void *);
 
-uart uart3;
-
 int main(void)
 {
 	HAL_Init();

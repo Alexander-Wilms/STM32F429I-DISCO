@@ -23,11 +23,13 @@ extern QueueHandle_t DisplayQueue;
 extern QueueHandle_t TerminalQueue;
 extern SemaphoreHandle_t xSemaphoreMutex;
 
-extern uart uart3;
 
 /** @brief  demo task demonstrating USART usage */
 void uart_receive_task( void *)
 {
+	uart uart3;
+	uart3.puts( (const char *) "uart_receive_task");
+
 	uint8_t buffer[2]={0, 0};
 
 	/*int done = 0;
@@ -59,6 +61,9 @@ void uart_receive_task( void *)
 
 void uart_send_task( void *)
 {
+	uart uart3;
+	uart3.puts( (const char *) "uart_send_task");
+
 	/*int done = 0;
 	while( !done)
 	{
@@ -69,6 +74,7 @@ void uart_send_task( void *)
 			done = 1;
 		}
 	}*/
+	uart3.puts( (const char *)"hello");
 
 	char terminalbuffer[2] = {0,0};
 
