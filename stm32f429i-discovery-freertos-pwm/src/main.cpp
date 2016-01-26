@@ -26,6 +26,8 @@
 #include <string>
 #include <sstream>
 
+#define PERIOD 255 //255
+
 static void SystemClock_Config(void);
 
 void manual_pwm_task (void *)
@@ -38,12 +40,15 @@ void manual_pwm_task (void *)
 	while (true)
 	{
 		BSP_LED_On(LED3);
-		BSP_LED_Off(LED4);
+		BSP_LED_On(LED4);
 		for(i=0;i<total*duty;i++);
 		BSP_LED_Off(LED3);
-		BSP_LED_On(LED4);
+		BSP_LED_Off(LED4);
 		for(i=0;i<total*(1-duty);i++);
+		// LED
 		duty = (sin(j*3.1415/180)+1)/2;
+		// Motor
+		//duty = 0.5+(sin(j*3.1415/180)+1)/4;
 		j++;
 	}
 }
@@ -73,14 +78,14 @@ void pwm_task (void *)
 	__TIM4_CLK_ENABLE();
 
 	TimHandle.Instance = TIM4;
-	TimHandle.Init.Period = 255;
+	TimHandle.Init.Period = PERIOD;
 	TimHandle.Init.Prescaler = 0;
 	TimHandle.Init.ClockDivision = 0;
 	TimHandle.Init.CounterMode = TIM_COUNTERMODE_UP;
 
 	HAL_TIM_PWM_Init(&TimHandle);
 
-	PWMConfig.Pulse = 254;
+	PWMConfig.Pulse = PERIOD-1;
 	PWMConfig.OCMode = TIM_OCMODE_PWM1;
 	PWMConfig.OCPolarity = TIM_OCPOLARITY_HIGH;
 	PWMConfig.OCNPolarity = TIM_OCNPOLARITY_HIGH;
@@ -106,7 +111,7 @@ void pwm_task (void *)
 	float duty = 0.5;
 	while (true)
 	{
-		duty = (254) * (sin(j/10000)+1)/2;
+		duty = (PERIOD-1) * (sin(j/10000)+1)/2;
 		j++;
 
 		TIM4->CCR1 = duty;
