@@ -24,6 +24,8 @@
 
 // FreeRTOS can be configured via ./Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOSConfig.h
 #include "FreeRTOS.h"
+// In order to be able to give mutexes from a task different from the one that gave it, comment out
+// "configASSERT( pxTCB == pxCurrentTCB );" in line 3466 of tasks.c
 #include "task.h"
 #include "semphr.h"
 #include "queue.h"
@@ -126,10 +128,10 @@ int main(void)
 	Queue_1 = xQueueCreate( 10, 4*sizeof( uint8_t ) );
 	Queue_2 = xQueueCreate( 10, 4*sizeof( uint8_t ) );
 
-	// Mutex_1 = xSemaphoreCreateMutex();
-	Mutex_1 = xSemaphoreCreateBinary();
-	// Mutex_2 = xSemaphoreCreateMutex();
-	Mutex_2 = xSemaphoreCreateBinary();
+	Mutex_1 = xSemaphoreCreateMutex();
+	//Mutex_1 = xSemaphoreCreateBinary();
+	Mutex_2 = xSemaphoreCreateMutex();
+	//Mutex_2 = xSemaphoreCreateBinary();
 	xSemaphoreGive( Mutex_1 );
 	xSemaphoreGive( Mutex_2 );
 

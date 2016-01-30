@@ -3463,7 +3463,7 @@ TCB_t *pxTCB;
 			If the mutex is held by a task then it cannot be given from an
 			interrupt, and if a mutex is given by the holding task then it must
 			be the running state task. */
-			configASSERT( pxTCB == pxCurrentTCB );
+			//configASSERT( pxTCB == pxCurrentTCB );
 
 			configASSERT( pxTCB->uxMutexesHeld );
 			( pxTCB->uxMutexesHeld )--;

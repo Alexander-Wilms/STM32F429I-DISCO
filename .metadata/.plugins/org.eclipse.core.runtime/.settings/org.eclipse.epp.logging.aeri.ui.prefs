@@ -1,3 +1,3 @@
-action=IGNORE
+action=ASK
 eclipse.preferences.version=1
-rememberSendAction=RESTART
+rememberSendAction=NONE
