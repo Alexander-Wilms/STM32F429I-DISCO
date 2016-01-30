@@ -17,8 +17,18 @@
 #include "stm32f4xx_hal_gpio.h"
 
 // FreeRTOS can be configured via ./Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOSConfig.h
-//#define traceTASK_SWITCHED_IN() vSetAnalogueOutput( 0, (int)pxCurrentTCB->uxTCBNumber )
-//#define traceTASK_SWITCHED_IN() HAL_GPIO_WritePin(GPIOA, (uint16_t) pxCurrentTCB->uxTCBNumber, GPIO_PIN_SET)
+
+/* Tracing macros have to be defined at the end of FreeRTOSConfig.h
+ *
+ * #define traceTASK_SWITCHED_IN() \
+    { unsigned priority=pxCurrentTCB->uxPriority; *(volatile unsigned *)0x4002201a=0xf0; *(volatile unsigned *)0x40022018 = priority << 4; }
+
+ * #define ENTER_ISR \
+ * unsigned old_prio =*(volatile unsigned*)0x40022014 >> 4;   *(volatile unsigned*)0x40022018 = 0xf0;
+ * #define LEAVE_ISR  *(volatile unsigned*)0x4002201a = 0xf0; *(volatile unsigned*)0x40022018 = old_prio << 4;
+ * #define ENTER_RTOS *(volatile unsigned*)0x40022018 = 0xe0; *(volatile unsigned*)0x4002201a = 0x10;
+ * #define ENTER_IDLE *(volatile unsigned*)0x4002201a = 0xf0;
+ */
 
 #include "FreeRTOS.h"
 #include "task.h"
@@ -32,53 +42,6 @@ static void SystemClock_Config(void);
 
 volatile int stuff;
 
-ADC_HandleTypeDef g_AdcHandle;
-
-void ConfigureADC()
-{
-    GPIO_InitTypeDef gpioInit;
-
-    __GPIOC_CLK_ENABLE();
-    __ADC1_CLK_ENABLE();
-
-    gpioInit.Pin = GPIO_PIN_1;
-    gpioInit.Mode = GPIO_MODE_ANALOG;
-    gpioInit.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(GPIOC, &gpioInit);
-
-    HAL_NVIC_SetPriority(ADC_IRQn, 0, 0);
-    HAL_NVIC_EnableIRQ(ADC_IRQn);
-
-    ADC_ChannelConfTypeDef adcChannel;
-
-    g_AdcHandle.Instance = ADC1;
-
-    g_AdcHandle.Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
-    g_AdcHandle.Init.Resolution = ADC_RESOLUTION_12B;
-    g_AdcHandle.Init.ScanConvMode = DISABLE;
-    g_AdcHandle.Init.ContinuousConvMode = ENABLE;
-    g_AdcHandle.Init.DiscontinuousConvMode = DISABLE;
-    g_AdcHandle.Init.NbrOfDiscConversion = 0;
-    g_AdcHandle.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-    g_AdcHandle.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T1_CC1;
-    g_AdcHandle.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-    g_AdcHandle.Init.NbrOfConversion = 1;
-    g_AdcHandle.Init.DMAContinuousRequests = ENABLE;
-    g_AdcHandle.Init.EOCSelection = DISABLE;
-
-    HAL_ADC_Init(&g_AdcHandle);
-
-    adcChannel.Channel = ADC_CHANNEL_11;
-    adcChannel.Rank = 1;
-    adcChannel.SamplingTime = ADC_SAMPLETIME_480CYCLES;
-    adcChannel.Offset = 0;
-
-    if (HAL_ADC_ConfigChannel(&g_AdcHandle, &adcChannel) != HAL_OK)
-    {
-        asm("bkpt 255");
-    }
-}
-
 void blink_task_low_priority( void *)
 {
 	BSP_LED_Init (LED3);
@@ -86,9 +49,9 @@ void blink_task_low_priority( void *)
 	xLastWakeTime = xTaskGetTickCount();
 	while (true)
 	{
-		BSP_LED_Toggle(LED3);
+		BSP_LED_Toggle(LED3); // Add breakpoint here
 		vTaskDelayUntil (&xLastWakeTime, (TickType_t) 2000/3);
-		BSP_LED_Toggle(LED3);
+		BSP_LED_Toggle(LED3); // Add breakpoint here
 		vTaskDelayUntil (&xLastWakeTime, (TickType_t) 1000/3);
 	}
 }
@@ -100,9 +63,9 @@ void blink_task_high_priority( void *)
 	xLastWakeTime = xTaskGetTickCount();
 	while (true)
 	{
-		BSP_LED_Toggle(LED4);
+		BSP_LED_Toggle(LED4); // Add breakpoint here
 		vTaskDelayUntil (&xLastWakeTime, (TickType_t) 1000/3);
-		BSP_LED_Toggle(LED4);
+		BSP_LED_Toggle(LED4); // Add breakpoint here
 		vTaskDelayUntil (&xLastWakeTime, (TickType_t) 2000/3);
 	}
 }
@@ -130,38 +93,6 @@ void print(int line, float value, bool integer)
 	BSP_LCD_DisplayStringAtLine(line,(uint8_t *) chararray);
 }
 
-float g_ADCValue;
-
-void oszi( void *)
-{
-	int a[320];
-	for(int i = 0;i<320;i++)
-		a[i] = 0;
-	int i = 0;
-	int j = 0;
-
-	HAL_ADC_Start(&g_AdcHandle);
-	while(true)
-	{
-		if (HAL_ADC_PollForConversion(&g_AdcHandle, 0) == HAL_OK)
-		{
-			//BSP_LCD_DisplayStringAtLine(8,(uint8_t *) 0x30+j);
-			BSP_LCD_SetTextColor(LCD_COLOR_BLUE);
-			g_ADCValue = (float) HAL_ADC_GetValue(&g_AdcHandle)/4096*230;
-			a[j]=0.2*a[j]+0.8*g_ADCValue;
-			BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
-			BSP_LCD_DrawLine(0, j, 240, j);
-			BSP_LCD_SetTextColor(LCD_COLOR_BLUE);
-			if(j!=0 && a[j] <240)
-				BSP_LCD_DrawLine(a[j-1], j-1, a[j], j);
-			j++;
-			j = j%320;
-		}
-		i++;
-		i = i%320;
-	}
-}
-
 int main(void)
 {
 	HAL_Init();
@@ -169,7 +100,6 @@ int main(void)
 	/* Configure the system clock */
 	SystemClock_Config();
 
-	ConfigureADC();
 
 	BSP_LCD_Init();
 	BSP_LCD_LayerDefaultInit(1, (uint32_t) LCD_FRAME_BUFFER);
@@ -181,14 +111,17 @@ int main(void)
 	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
 	BSP_LCD_DisplayOn();
 
-	// BSP_LCD_DisplayStringAtLine(0, (uint8_t *) "Hello FreeRTOS");
+	//BSP_LCD_DisplayStringAtLine(0, (uint8_t *) "Hello FreeRTOS");
 
 	#define LED_TASK_PRIORITY_LOW ((1 + tskIDLE_PRIORITY) | portPRIVILEGE_BIT)
 	#define LED_TASK_PRIORITY_HIGH ((2 + tskIDLE_PRIORITY) | portPRIVILEGE_BIT)
 
+	/*
+	 * BSP_LED_Init (LED3);
+	 *
+	 */
 	xTaskCreate( (pdTASK_CODE)blink_task_low_priority, 	"led3", 256, 0, LED_TASK_PRIORITY_LOW, NULL);
 	xTaskCreate( (pdTASK_CODE)blink_task_high_priority, 	"led4", 256, 0, LED_TASK_PRIORITY_HIGH, NULL);
-	xTaskCreate( (pdTASK_CODE)oszi, 	"oszi", 256, 0, LED_TASK_PRIORITY_HIGH, NULL);
 
 	vTaskStartScheduler ();
 	return 0;

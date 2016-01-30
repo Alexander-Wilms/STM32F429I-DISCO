@@ -9635,3 +9635,6 @@ java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oom
 	at org.eclipse.oomph.setup.ui.SetupUIPlugin.access$3(SetupUIPlugin.java:323)
 	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:223)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY fr.ac6.mcu.debug 4 200 2016-01-30 17:38:24.487
+!MESSAGE OpenOCD Binary not found
