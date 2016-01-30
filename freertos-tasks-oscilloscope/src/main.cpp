@@ -30,6 +30,8 @@
  * #define ENTER_IDLE *(volatile unsigned*)0x4002201a = 0xf0;
  */
 
+// Run the code in a debugger and it will stop each time a task switch has occurred. The current task number will be displayed on the LCD
+
 #include "FreeRTOS.h"
 #include "task.h"
 
