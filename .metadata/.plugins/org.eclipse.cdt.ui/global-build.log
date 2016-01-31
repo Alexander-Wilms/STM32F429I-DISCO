@@ -1,43 +1,8 @@
-15:40:43 **** Incremental Build of configuration Debug for project real-time-clocks-state-machine-transition-matrix ****
+16:10:03 **** Incremental Build of configuration Debug for project first-project ****
 make all 
-Building file: ../src/button.cpp
-Invoking: MCU G++ Compiler
-%cd%
-arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32F429ZITx -DSTM32F429I_DISCO -DSTM32 -DSTM32F4 -DDEBUG -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/CMSIS/core" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/CMSIS/device" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/StdPeriph_Driver/inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/Utilities/Common" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/Utilities/STM32F429I-Discovery" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fno-exceptions -mslow-flash-data -fno-rtti -MMD -MP -MF"src/button.d" -MT"src/button.o" -o "src/button.o" "../src/button.cpp"
-Finished building: ../src/button.cpp
- 
-Building file: ../src/fsm.cpp
-Invoking: MCU G++ Compiler
-%cd%
-arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32F429ZITx -DSTM32F429I_DISCO -DSTM32 -DSTM32F4 -DDEBUG -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/CMSIS/core" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/CMSIS/device" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/StdPeriph_Driver/inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/Utilities/Common" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/Utilities/STM32F429I-Discovery" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fno-exceptions -mslow-flash-data -fno-rtti -MMD -MP -MF"src/fsm.d" -MT"src/fsm.o" -o "src/fsm.o" "../src/fsm.cpp"
-Finished building: ../src/fsm.cpp
- 
-Building file: ../src/main.cpp
-Invoking: MCU G++ Compiler
-%cd%
-arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32F429ZITx -DSTM32F429I_DISCO -DSTM32 -DSTM32F4 -DDEBUG -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/CMSIS/core" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/CMSIS/device" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/StdPeriph_Driver/inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/Utilities/Common" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/Utilities/STM32F429I-Discovery" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fno-exceptions -mslow-flash-data -fno-rtti -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cpp"
-Finished building: ../src/main.cpp
- 
-Building file: ../src/systick.cpp
-Invoking: MCU G++ Compiler
-%cd%
-arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32F429ZITx -DSTM32F429I_DISCO -DSTM32 -DSTM32F4 -DDEBUG -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/CMSIS/core" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/CMSIS/device" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/StdPeriph_Driver/inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/Utilities/Common" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/Utilities/STM32F429I-Discovery" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-state-machine-transition-matrix/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fno-exceptions -mslow-flash-data -fno-rtti -MMD -MP -MF"src/systick.d" -MT"src/systick.o" -o "src/systick.o" "../src/systick.cpp"
-Finished building: ../src/systick.cpp
- 
-Building target: real-time-clocks-state-machine-transition-matrix.elf
-Invoking: MCU G++ Linker
-arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"C:\tools\ARM\Realzeitsysteme-STM32F429I-DISCO\real-time-clocks-state-machine-transition-matrix\LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -fno-exceptions -fno-rtti -lm -o "real-time-clocks-state-machine-transition-matrix.elf" @"objects.list"  
-Finished building target: real-time-clocks-state-machine-transition-matrix.elf
- 
-make --no-print-directory post-build
-Generating binary and Printing size information:
-arm-none-eabi-objcopy -O binary "real-time-clocks-state-machine-transition-matrix.elf" "real-time-clocks-state-machine-transition-matrix.bin"
-arm-none-eabi-size "real-time-clocks-state-machine-transition-matrix.elf"
-   text	   data	    bss	    dec	    hex	filename
- 242480	   2564	  11256	 256300	  3e92c	real-time-clocks-state-machine-transition-matrix.elf
- 
-15:40:50 **** Programing project real-time-clocks-state-machine-transition-matrix on chip ****
-"C:\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.externaltools.openocd.win32_1.5.0.201510231435\\tools\\openocd\\bin\\openocd.exe" -f stm32f429i_disco.cfg -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts\\st_board" -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts" -c "program Debug/real-time-clocks-state-machine-transition-matrix.elf verify reset exit" 
+make: Nothing to be done for `all'.
+16:10:13 **** Programing project first-project on chip ****
+"C:\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.externaltools.openocd.win32_1.5.0.201510231435\\tools\\openocd\\bin\\openocd.exe" -f stm32f429i_disco.cfg -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts\\st_board" -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts" -c "program Debug/first-project.elf verify exit" 
 Open On-Chip Debugger 0.9.0-dev-00418-g9afb8b4-dirty (2015-09-28-12:09)
 Licensed under GNU GPL v2
 For bug reports, read
@@ -53,17 +18,17 @@ Info : Unable to match requested speed 2000 kHz, using 1800 kHz
 Info : clock speed 1800 kHz
 Info : STLINK v2 JTAG v17 API v2 SWIM v0 VID 0x0483 PID 0x3748
 Info : using stlink api v2
-Info : Target voltage: 2.860946
+Info : Target voltage: 2.862347
 Info : stm32f4x.cpu: hardware has 6 breakpoints, 4 watchpoints
 target state: halted
 target halted due to debug-request, current mode: Thread 
-xPSR: 0x01000000 pc: 0x0800d828 msp: 0x20030000
+xPSR: 0x01000000 pc: 0x0800d8e0 msp: 0x20030000
 configuring PLL
 ** Programming Started **
 auto erase enabled
 Info : device id = 0x20016419
 Info : flash size = 2048kbytes
-wrote 262144 bytes from file Debug/real-time-clocks-state-machine-transition-matrix.elf in 10.567605s (24.225 KiB/s)
+wrote 262144 bytes from file Debug/first-project.elf in 10.598606s (24.154 KiB/s)
 ** Programming Finished **
 ** Verify Started **
 target state: halted
@@ -72,7 +37,6 @@ xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
 target state: halted
 target halted due to breakpoint, current mode: Thread 
 xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
-verified 245064 bytes in 2.424139s (98.724 KiB/s)
+verified 245308 bytes in 2.426138s (98.741 KiB/s)
 ** Verified OK **
-** Resetting Target **
 shutdown command invoked

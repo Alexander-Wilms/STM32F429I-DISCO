@@ -44,3 +44,7 @@
 1454251533114	Rename resource 'real-time-clocks-events'
 1454251571194	Rename resource 'real-time-clock-events'
 1454251582197	Rename resource 'real-time-clocks-state-machine-transition-matrix'
+1454252748295	Delete 3 resources
+1454252891247	Delete resource 'first-project'
+1454252914005	Rename resource 'gg'
+1454252923993	Delete resource 'first-project/Debug/gg.elf'
