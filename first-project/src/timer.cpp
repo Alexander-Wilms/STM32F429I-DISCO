@@ -1,7 +1,6 @@
-// g++ -std=c++0x main.cpp
+// do not include iostream or stdio.h, since they use function calls
+// that are not supported on the stm32
 
-
-// keinen iostream oder stdio.h verwenden, da Funktionen verwqendet werden
 #include <string>
 #include <sstream>
 #include <iomanip>
@@ -54,14 +53,3 @@ std::string Timer::printtime()
 	return returnvalue;
 	return "";
 }
-
-/*int main()
-{
-	int min_input, sec_input, hun_input;
-	cin >> min_input;
-	cin >> sec_input;
-	cin >> hun_input;
-	Time timeobject(min_input,sec_input,hun_input);
-	cout << timeobject.print() << endl;
-	return 0;
-}*/

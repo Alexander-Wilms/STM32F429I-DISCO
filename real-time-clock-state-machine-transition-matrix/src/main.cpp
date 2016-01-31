@@ -8,7 +8,6 @@
   ******************************************************************************
 */
 
-
 #include "stm32f4xx.h"
 #include "stm32f429i_discovery.h"
 #include "stm32f429i_discovery_lcd.h"
@@ -16,8 +15,6 @@
 #include "systick.h"
 #include "button.h"
 #include "fsm.h"
-//#include "button.h"
-//#include "stm32f4xx_hal.h"
 #include <string>
 #include <sstream>
 

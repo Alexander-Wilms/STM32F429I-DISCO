@@ -15,9 +15,6 @@
 #include <sstream>
 #include "stm32f429i_discovery_lcd.h"
 #include "fsm.h"
-/*#include "stm32f4xx_hal.h"
-#include "stm324xg_eval.h"
-#include "button.h"*/
 
 
 #define TICK_RATE_HZ 1000       //!< SysTick interrupt frequency

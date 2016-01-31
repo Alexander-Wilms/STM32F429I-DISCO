@@ -8,21 +8,17 @@
   ******************************************************************************
 */
 
-
 #include "stm32f4xx.h"
 #include "stm32f429i_discovery.h"
 #include "stm32f429i_discovery_lcd.h"
 #include "timer.h"
 #include "systick.h"
 #include "button.h"
-//#include "button.h"
-//#include "stm32f4xx_hal.h"
 #include <string>
 #include <sstream>
 
 volatile int systick_count = 0;
 volatile int systick_init_done = 0;
-volatile bool button_pressed = 0;
 volatile bool running = 1;
 volatile int button_count = 0;
 volatile bool LED_is_ON;
@@ -42,22 +38,17 @@ int main(void)
 
 	pushbutton_init();
 
-	//HAL_Init();
-
-	/* LTDC reload configuration */
-	//LTDC_ReloadConfig(LTDC_IMReload);
-
-	/* Enable the LTDC */
+	// Enable the LTDC
 	LTDC_Cmd(ENABLE);
 
-	/* Set LCD foreground layer */
+	// Set LCD foreground layer
 	LCD_SetLayer(LCD_FOREGROUND_LAYER);
 	LCD_SetTransparency(0);
 
-	/* Set LCD background layer */
+	// Set LCD background layer
 	LCD_SetLayer(LCD_BACKGROUND_LAYER);
 
-	/* LCD display message */
+	// LCD display message
 	LCD_Clear(LCD_COLOR_BLUE);
 	LCD_SetBackColor(LCD_COLOR_BLUE);
 	LCD_SetTextColor(LCD_COLOR_WHITE);
@@ -80,30 +71,29 @@ int main(void)
 	LCD_DisplayStringLine(LCD_LINE_1,(uint8_t*)"RZS     ");
 	LCD_DisplayStringLine(LCD_LINE_2,(uint8_t*)"WS 15/16     ");
 
-
 	STM_EVAL_LEDInit(LED3);
 	STM_EVAL_LEDInit(LED4);
+
 	while(1)
 	{
+		// Status LEDs
+		// Toggle LED3 once each second
 		if((systick_count/1000)%2)
-		{
 			STM_EVAL_LEDOn(LED3);
-		} else
-		{
+		else
 			STM_EVAL_LEDOff(LED3);
-		}
 
-		if(button_pressed)
-		{
+		// Indicate that the clock has been stopped
+		if(!running)
 			STM_EVAL_LEDOn(LED4);
-		} else
-		{
+		else
 			STM_EVAL_LEDOff(LED4);
-		}
 
+		// Debug info
 		if(systick_init_done)
 			LCD_DisplayStringLine(LCD_LINE_9,(uint8_t*) "SysT init OK");
 
+		// Debug info
 		outputISR.str(std::string());
 		outputISR << "SysT ISR " << systick_count;
 		outputstringISR = "";
@@ -112,6 +102,7 @@ int main(void)
 		chararrayISR = outputstringISR.c_str();
 		LCD_DisplayStringLine(LCD_LINE_10,(uint8_t*) chararrayISR);
 
+		// Time
 		output.str(std::string());
 		mytimerobject.setMin(systick_count/1000/60);
 		mytimerobject.setSec(systick_count/1000);
@@ -121,9 +112,9 @@ int main(void)
 		outputstring = output.str();
 		chararray = "";
 		chararray = outputstring.c_str();
-
 		LCD_DisplayStringLine(LCD_LINE_11, (uint8_t*) chararray);
 
+		// Debug info
 		outputButton.str(std::string());
 		outputButton << "Btn ISR " << button_count;
 		outputstringButton = "";

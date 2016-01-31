@@ -27,6 +27,8 @@ volatile bool button_pressed = 0;
 volatile int button_count = 0;
 volatile bool LED_is_ON;
 
+volatile state_type mystate = RUNNING;
+
 int main(void)
 {
 	LCD_Init();
@@ -64,18 +66,36 @@ int main(void)
 	STM_EVAL_LEDInit(LED3);
 	STM_EVAL_LEDInit(LED4);
 
-	state_type mystate = RUNNING;
+
 
 	// Super loop
 	while(1)
 	{
 		switch(get_event()){
+
+		case TICK:
+			if(mystate==RUNNING)
+				systick_count++;
+			output.str(std::string());
+			mytimerobject.setMin(systick_count/100/60);
+			mytimerobject.setSec(systick_count/100);
+			mytimerobject.setHun(systick_count/1);
+			output << "Time " << mytimerobject.printtime();
+			outputstring = "";
+			outputstring = output.str();
+			chararray = "";
+			chararray = outputstring.c_str();
+			LCD_DisplayStringLine(LCD_LINE_3,(uint8_t*) chararray);
+			LCD_ClearLine(LCD_LINE_4);
+			break;
+
 		case START_STOP:
 			LCD_DisplayStringLine(LCD_LINE_4,(uint8_t*) "START_STOP");
 
 			if(mystate == RUNNING)
 			{
 				mystate = HALTED;
+				LCD_ClearLine(LCD_LINE_5);
 				LCD_DisplayStringLine(LCD_LINE_5,(uint8_t*) "HALTED");
 			}
 			else if(mystate == HALTED)
@@ -84,22 +104,7 @@ int main(void)
 				LCD_DisplayStringLine(LCD_LINE_5,(uint8_t*) "RUNNING");
 			}
 			break;
-		case TICK:
-			if(mystate == RUNNING)
-				systick_count++;
 
-			output.str(std::string());
-			mytimerobject.setMin(systick_count/100/60);
-			mytimerobject.setSec(systick_count/100);
-			mytimerobject.setHun(systick_count);
-			output << "Time " << mytimerobject.printtime();
-			outputstring = "";
-			outputstring = output.str();
-			chararray = "";
-			chararray = outputstring.c_str();
-			LCD_DisplayStringLine(LCD_LINE_3, (uint8_t*) chararray);
-
-			break;
 		default:
 			break;
 		}

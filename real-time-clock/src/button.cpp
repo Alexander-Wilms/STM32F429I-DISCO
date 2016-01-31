@@ -1,15 +1,8 @@
 #include "stm32f429i_discovery.h" // Für __HAL_GPIO_EXTI_CLEAR_IT
 #include "stm32f429i_discovery_lcd.h"
-//#include "stm32f4xx.h"
-//#include "stm32f4xx_hal.h"
-//#include "stm32f4xx_hal_conf.h"
-//#include "stm32f4xx_hal_gpio.h"
-
 
 extern volatile bool LED_is_ON;
-extern volatile int button_count;
-extern volatile int button_pressed;
-extern volatile bool state;
+extern volatile bool running_state;
 
 volatile int count;
 
@@ -25,8 +18,8 @@ EXTI0_IRQHandler (void)
 	EXTI_ClearITPendingBit(USER_BUTTON_EXTI_LINE);
 	// disable interrupt
 	STM_EVAL_PBInit(BUTTON_USER, BUTTON_MODE_GPIO);
-
-	state = !state;
+	// start/stop clock
+	running_state = !running_state;
 	// Show status
 	STM_EVAL_LEDOn( LED4);
 	// Toggle LED

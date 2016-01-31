@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-   @file    main.c
+  * @file    main.c
   * @author  Ac6
   * @version V1.0
   * @date    01-December-2013
@@ -8,14 +8,12 @@
   ******************************************************************************
 */
 
-
 #include "stm32f4xx.h"
 #include "stm32f429i_discovery.h"
 #include "stm32f429i_discovery_lcd.h"
 #include "timer.h"
 #include "systick.h"
 #include "button.h"
-#include "fsm.h"
 //#include "button.h"
 //#include "stm32f4xx_hal.h"
 #include <string>
@@ -24,8 +22,15 @@
 volatile int systick_count = 0;
 volatile int systick_init_done = 0;
 volatile bool button_pressed = 0;
+volatile bool state = 1;
 volatile int button_count = 0;
 volatile bool LED_is_ON;
+			
+void delay(int counter)
+{
+	while(counter!=0)
+		counter--;
+}
 
 int main(void)
 {
@@ -35,6 +40,11 @@ int main(void)
 	SysTick_init ();
 
 	pushbutton_init();
+
+	//HAL_Init();
+
+	/* LTDC reload configuration */
+	//LTDC_ReloadConfig(LTDC_IMReload);
 
 	/* Enable the LTDC */
 	LTDC_Cmd(ENABLE);
@@ -55,55 +65,44 @@ int main(void)
 	std::string outputstring;
 	const char * chararray;
 
+	std::stringstream outputISR;
+	std::string outputstringISR;
+	const char * chararrayISR;
+
+	std::stringstream outputButton;
+	std::string outputstringButton;
+	const char * chararrayButton;
+
 	Timer mytimerobject(12,34,56);
 
 	LCD_DisplayStringLine(LCD_LINE_0,(uint8_t*)"h_da    ");
 	LCD_DisplayStringLine(LCD_LINE_1,(uint8_t*)"RZS     ");
 	LCD_DisplayStringLine(LCD_LINE_2,(uint8_t*)"WS 15/16     ");
 
+
 	STM_EVAL_LEDInit(LED3);
 	STM_EVAL_LEDInit(LED4);
-
-	state_type mystate = RUNNING;
 
 	// Super loop
 	while(1)
 	{
-		switch(get_event()){
-		case TICK:
-			if(mystate == RUNNING)
-				systick_count++;
-
+		if(state)
+		{
 			output.str(std::string());
-			mytimerobject.setMin(systick_count/100/60);
-			mytimerobject.setSec(systick_count/100);
-			mytimerobject.setHun(systick_count);
+			mytimerobject.setMin(systick_count/1000/60);
+			mytimerobject.setSec(systick_count/1000);
+			mytimerobject.setHun(systick_count/10);
 			output << "Time " << mytimerobject.printtime();
 			outputstring = "";
 			outputstring = output.str();
 			chararray = "";
 			chararray = outputstring.c_str();
-			LCD_DisplayStringLine(LCD_LINE_3, (uint8_t*) chararray);
-
-			break;
-
-		case START_STOP:
-			LCD_DisplayStringLine(LCD_LINE_4,(uint8_t*) "START_STOP");
-
-			if(mystate == RUNNING)
-			{
-				mystate = HALTED;
-				LCD_DisplayStringLine(LCD_LINE_5,(uint8_t*) "HALTED");
-			}
-			else if(mystate == HALTED)
-			{
-				mystate = RUNNING;
-				LCD_DisplayStringLine(LCD_LINE_5,(uint8_t*) "RUNNING");
-			}
-			break;
-
-		default:
-			break;
+			LCD_DisplayStringLine(LCD_LINE_11, (uint8_t*) chararray);
 		}
+
+		if(LED_is_ON)
+			STM_EVAL_LEDOn(LED3);
+		else
+			STM_EVAL_LEDOff(LED3);
 	}
 }

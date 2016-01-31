@@ -14,15 +14,13 @@
 #include "timer.h"
 #include "systick.h"
 #include "button.h"
-//#include "button.h"
-//#include "stm32f4xx_hal.h"
 #include <string>
 #include <sstream>
 
 volatile int systick_count = 0;
 volatile int systick_init_done = 0;
 volatile bool button_pressed = 0;
-volatile bool state = 1;
+volatile bool running_state = 1;
 volatile int button_count = 0;
 volatile bool LED_is_ON;
 			
@@ -40,11 +38,6 @@ int main(void)
 	SysTick_init ();
 
 	pushbutton_init();
-
-	//HAL_Init();
-
-	/* LTDC reload configuration */
-	//LTDC_ReloadConfig(LTDC_IMReload);
 
 	/* Enable the LTDC */
 	LTDC_Cmd(ENABLE);
@@ -86,7 +79,7 @@ int main(void)
 	// Super loop
 	while(1)
 	{
-		if(state)
+		if(running_state)
 		{
 			output.str(std::string());
 			mytimerobject.setMin(systick_count/1000/60);

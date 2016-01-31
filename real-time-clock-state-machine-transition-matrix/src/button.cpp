@@ -2,11 +2,6 @@
 #include "stm32f429i_discovery_lcd.h"
 #include "fsm.h"
 
-//#include "stm32f4xx.h"
-//#include "stm32f4xx_hal.h"
-//#include "stm32f4xx_hal_conf.h"
-//#include "stm32f4xx_hal_gpio.h"
-
 /** @brief  This function handles External line0 interrupt request from KEY
  *
  * It will be called whenever the button is pressed
@@ -23,6 +18,6 @@ void
 pushbutton_init (void)
 {
   /* Initialize USER Buttons with interrupt capability */
-	// Drücken führt zu Interrupt
+	// Pressing the button causes and interrupt
 	STM_EVAL_PBInit (BUTTON_USER, BUTTON_MODE_EXTI);
 }
