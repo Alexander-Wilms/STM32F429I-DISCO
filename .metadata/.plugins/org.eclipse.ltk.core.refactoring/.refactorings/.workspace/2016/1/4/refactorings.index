@@ -41,3 +41,6 @@
 1454198694307	Delete resource 'real-time-clocks-events/Debug/events.elf'
 1454202118251	Delete 2 resources
 1454245877488	Delete resource 'real-time-clocks-state-machine-transition-matrix/Debug/real-time-clocks-events.elf'
+1454251533114	Rename resource 'real-time-clocks-events'
+1454251571194	Rename resource 'real-time-clock-events'
+1454251582197	Rename resource 'real-time-clocks-state-machine-transition-matrix'
