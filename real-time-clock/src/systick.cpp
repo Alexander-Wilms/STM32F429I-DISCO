@@ -13,10 +13,12 @@
 #include "stm32f4xx.h"
 #include <string>
 #include <sstream>
+
+#include "stm32f429i_discovery.h"
 #include "stm32f429i_discovery_lcd.h"
 /*#include "stm32f4xx_hal.h"
-#include "stm324xg_eval.h"
-#include "button.h"*/
+#include "stm324xg_eval.h"*/
+#include "button.h"
 
 #define TICK_RATE_HZ 1000       //!< SysTick interrupt frequency
 
@@ -27,6 +29,16 @@ extern "C" void SysTick_Handler(void)
   HAL_IncTick();
 #endif
 
+  if(count != 0)
+	  count--;
+  else if (count == 0)
+  {
+	  // Enable ISR
+	  STM_EVAL_PBInit(BUTTON_USER, BUTTON_MODE_EXTI);
+	  // Update status
+	  STM_EVAL_LEDOff( LED4);
+  }
+
   if(running)
 	  systick_count++;
 }
@@ -35,5 +47,4 @@ extern "C" void SysTick_Handler(void)
 void SysTick_init( void)
 {
 	SysTick_Config (SystemCoreClock / TICK_RATE_HZ);
-	systick_init_done = 1;
 }

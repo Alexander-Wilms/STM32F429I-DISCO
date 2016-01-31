@@ -11,6 +11,8 @@ extern volatile int button_count;
 extern volatile int button_pressed;
 extern volatile bool running;
 
+volatile int count;
+
 /** @brief  This function handles External line0 interrupt request from KEY
  *
  * It will be called whenever the button is pressed
@@ -18,27 +20,17 @@ extern volatile bool running;
 extern "C" void
 EXTI0_IRQHandler (void)
 {
-	//count = 50;
-	/* reset both EXTI I/O interrupt latches,
-	* as both buttons share the same interrupt
-	* and we don't know which one triggered */
-	//__HAL_GPIO_EXTI_CLEAR_IT( USER_BUTTON_PIN);
-	// Disable interrupts
-	// STM_EVAL_PBInit (BUTTON_USER, BUTTON_MODE_GPIO);
-	// Toggle state
-	//if(key==START_STOP)
-		//running = !running;
-	// Show status
-	// STM_EVAL_LEDOn( LED3);
-	// Toggle LED
-	// LED_is_ON = ! LED_is_ON;
-	// LCD_DisplayStringLine(LCD_LINE_12, (uint8_t*) "Button pressed");
-
-	// Debouncing not neccessary on my board
+	count = 1000;
+	// clear interrupt pending bit
 	EXTI_ClearITPendingBit(USER_BUTTON_EXTI_LINE);
-	button_pressed = !button_pressed;
+	// disable interrupt
+	STM_EVAL_PBInit(BUTTON_USER, BUTTON_MODE_GPIO);
+
 	running = !running;
-	button_count++;
+	// Show status
+	STM_EVAL_LEDOn( LED4);
+	// Toggle LED
+	LED_is_ON = !LED_is_ON;
 }
 
 /** @brief button interrupt initialization */
