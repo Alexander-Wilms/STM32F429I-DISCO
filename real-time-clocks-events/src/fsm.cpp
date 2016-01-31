@@ -1,29 +1,25 @@
+// finite state machine
 // based on http://skript.eit.h-da.de/rzs/Documentation/Rolltor/fsm_8c-source.html
 
 #include <inttypes.h>
 #include "fsm.h"
+#include <queue>
 
-volatile uint16_t recorded_events;
+//std::queue<int> recorded_events;
+int recorded_events;
 
-int get_event( void)
-        {
-        register uint16_t bit, event;
-        if( recorded_events==0)
-        	return NO_EVENT;
-
-        // find highest priority event
-        for( bit=1, event=0; (bit & recorded_events)==0; )
-		{
-			bit <<=1;
-			++event;
-		}
-
-        // switch this bit off
-        recorded_events &= ~bit;
-        return event;
-        }
+int get_event(void)
+{
+	//int returnvalue = recorded_events.front();
+	//recorded_events.pop();
+	//return returnvalue;
+	int returnvalue = recorded_events;
+	recorded_events = 0xff;
+	return returnvalue;
+}
 
 void signal_event( int event)
 {
-	recorded_events |= (1<<event);
+	//recorded_events.push(event);
+	recorded_events=event;
 }

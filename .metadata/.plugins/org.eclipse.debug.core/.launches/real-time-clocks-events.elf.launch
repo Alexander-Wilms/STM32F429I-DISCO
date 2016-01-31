@@ -3,7 +3,7 @@
 <stringAttribute key="DEBBUGER_BOARD_NAME" value="STM32F429I-DISCO"/>
 <stringAttribute key="DEBBUGER_MCU_NAME" value="STM32F429ZITx"/>
 <stringAttribute key="fr.ac6.mcu.ide.DBG_INTERFACE" value=""/>
-<stringAttribute key="fr.ac6.mcu.ide.OPENOCD_NAME" value="${openstm32_openocd_path}\openocd.exe"/>
+<stringAttribute key="fr.ac6.mcu.ide.OPENOCD_NAME" value="&quot;C:\tools\ARM\openocd-0.9.0\bin\openocd.exe&quot;"/>
 <stringAttribute key="fr.ac6.mcu.ide.OPENOCD_OTHER_OPTIONS" value=""/>
 <intAttribute key="fr.ac6.mcu.ide.OPENOCD_PORT" value="3333"/>
 <stringAttribute key="fr.ac6.mcu.ide.OPENOCD_SCRIPT" value="${openstm32_openocd_script_path}\stm32f429i_disco.cfg"/>
@@ -39,8 +39,17 @@
 <stringAttribute key="org.eclipse.cdt.dsf.gdb.DEBUG_NAME" value="${openstm32_compiler_path}\arm-none-eabi-gdb"/>
 <intAttribute key="org.eclipse.cdt.launch.ATTR_BUILD_BEFORE_LAUNCH_ATTR" value="2"/>
 <stringAttribute key="org.eclipse.cdt.launch.COREFILE_PATH" value=""/>
+<stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_REGISTER_GROUPS" value=""/>
 <stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="Debug/real-time-clocks-events.elf"/>
 <stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="real-time-clocks-events"/>
 <booleanAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_AUTO_ATTR" value="true"/>
 <stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value="fr.ac6.managedbuild.config.gnu.cross.exe.debug.1931336078"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/real-time-clocks-events"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.dsf.launch.MEMORY_BLOCKS" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;memoryBlockExpressionList context=&quot;reserved-for-future-use&quot;/&gt;&#13;&#10;"/>
+<stringAttribute key="process_factory_id" value="fr.ac6.mcu.debug.launching.MCUGdbProcessFactory"/>
 </launchConfiguration>

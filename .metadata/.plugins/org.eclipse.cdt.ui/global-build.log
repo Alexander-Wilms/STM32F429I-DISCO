@@ -1,31 +1,25 @@
-02:38:54 **** Incremental Build of configuration Debug for project real-time-clock ****
+14:05:41 **** Incremental Build of configuration Debug for project real-time-clocks-events ****
 make all 
-Building file: ../src/button.cpp
+Building file: ../src/main.cpp
 Invoking: MCU G++ Compiler
 %cd%
-arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32F429ZITx -DSTM32F429I_DISCO -DSTM32 -DSTM32F4 -DDEBUG -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clock/inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clock/CMSIS/core" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clock/CMSIS/device" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clock/StdPeriph_Driver/inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clock/Utilities/Common" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clock/Utilities/STM32F429I-Discovery" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clock/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fno-exceptions -mslow-flash-data -fno-rtti -MMD -MP -MF"src/button.d" -MT"src/button.o" -o "src/button.o" "../src/button.cpp"
-Finished building: ../src/button.cpp
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32F429ZITx -DSTM32F429I_DISCO -DSTM32 -DSTM32F4 -DDEBUG -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-events/inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-events/CMSIS/core" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-events/CMSIS/device" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-events/StdPeriph_Driver/inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-events/Utilities/Common" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-events/Utilities/STM32F429I-Discovery" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clocks-events/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fno-exceptions -mslow-flash-data -fno-rtti -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cpp"
+Finished building: ../src/main.cpp
  
-Building file: ../src/systick.cpp
-Invoking: MCU G++ Compiler
-%cd%
-arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32F429ZITx -DSTM32F429I_DISCO -DSTM32 -DSTM32F4 -DDEBUG -DUSE_STDPERIPH_DRIVER -DSTM32F429_439xx -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clock/inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clock/CMSIS/core" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clock/CMSIS/device" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clock/StdPeriph_Driver/inc" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clock/Utilities/Common" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clock/Utilities/STM32F429I-Discovery" -I"C:/tools/ARM/Realzeitsysteme-STM32F429I-DISCO/real-time-clock/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fno-exceptions -mslow-flash-data -fno-rtti -MMD -MP -MF"src/systick.d" -MT"src/systick.o" -o "src/systick.o" "../src/systick.cpp"
-Finished building: ../src/systick.cpp
- 
-Building target: real-time-clock.elf
+Building target: real-time-clocks-events.elf
 Invoking: MCU G++ Linker
-arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"C:\tools\ARM\Realzeitsysteme-STM32F429I-DISCO\real-time-clock\LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -fno-exceptions -fno-rtti -lm -o "real-time-clock.elf" @"objects.list"  
-Finished building target: real-time-clock.elf
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"C:\tools\ARM\Realzeitsysteme-STM32F429I-DISCO\real-time-clocks-events\LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -fno-exceptions -fno-rtti -lm -o "real-time-clocks-events.elf" @"objects.list"  
+Finished building target: real-time-clocks-events.elf
  
 make --no-print-directory post-build
 Generating binary and Printing size information:
-arm-none-eabi-objcopy -O binary "real-time-clock.elf" "real-time-clock.bin"
-arm-none-eabi-size "real-time-clock.elf"
+arm-none-eabi-objcopy -O binary "real-time-clocks-events.elf" "real-time-clocks-events.bin"
+arm-none-eabi-size "real-time-clocks-events.elf"
    text	   data	    bss	    dec	    hex	filename
- 242352	   2528	  11032	 255912	  3e7a8	real-time-clock.elf
+ 242416	   2528	  11032	 255976	  3e7e8	real-time-clocks-events.elf
  
-02:39:00 **** Programing project real-time-clock on chip ****
-"C:\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.externaltools.openocd.win32_1.5.0.201510231435\\tools\\openocd\\bin\\openocd.exe" -f stm32f429i_disco.cfg -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts\\st_board" -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts" -c "program Debug/real-time-clock.elf verify reset exit" 
+14:05:48 **** Programing project real-time-clocks-events on chip ****
+"C:\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.externaltools.openocd.win32_1.5.0.201510231435\\tools\\openocd\\bin\\openocd.exe" -f stm32f429i_disco.cfg -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts\\st_board" -s "C:\\tools\\ARM\\cpp-mars\\eclipse\\..\\..\\..\\..\\Users\\Alexander Wilms\\.p2\\pool\\plugins\\fr.ac6.mcu.debug_1.5.0.201510231435\\resources\\openocd\\scripts" -c "program Debug/real-time-clocks-events.elf verify reset exit" 
 Open On-Chip Debugger 0.9.0-dev-00418-g9afb8b4-dirty (2015-09-28-12:09)
 Licensed under GNU GPL v2
 For bug reports, read
@@ -41,17 +35,17 @@ Info : Unable to match requested speed 2000 kHz, using 1800 kHz
 Info : clock speed 1800 kHz
 Info : STLINK v2 JTAG v17 API v2 SWIM v0 VID 0x0483 PID 0x3748
 Info : using stlink api v2
-Info : Target voltage: 2.859277
+Info : Target voltage: 2.867369
 Info : stm32f4x.cpu: hardware has 6 breakpoints, 4 watchpoints
 target state: halted
 target halted due to debug-request, current mode: Thread 
-xPSR: 0x01000000 pc: 0x0800d770 msp: 0x20030000
+xPSR: 0x01000000 pc: 0x0800d7a8 msp: 0x20030000
 configuring PLL
 ** Programming Started **
 auto erase enabled
 Info : device id = 0x20016419
 Info : flash size = 2048kbytes
-wrote 262144 bytes from file Debug/real-time-clock.elf in 10.620608s (24.104 KiB/s)
+wrote 262144 bytes from file Debug/real-time-clocks-events.elf in 10.549603s (24.266 KiB/s)
 ** Programming Finished **
 ** Verify Started **
 target state: halted
@@ -60,7 +54,7 @@ xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
 target state: halted
 target halted due to breakpoint, current mode: Thread 
 xPSR: 0x61000000 pc: 0x2000002e msp: 0x20030000
-verified 244900 bytes in 2.424139s (98.658 KiB/s)
+verified 244964 bytes in 2.428139s (98.521 KiB/s)
 ** Verified OK **
 ** Resetting Target **
 shutdown command invoked

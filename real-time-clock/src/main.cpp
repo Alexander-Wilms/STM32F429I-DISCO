@@ -22,7 +22,7 @@
 volatile int systick_count = 0;
 volatile int systick_init_done = 0;
 volatile bool button_pressed = 0;
-volatile bool running = 1;
+volatile bool state = 1;
 volatile int button_count = 0;
 volatile bool LED_is_ON;
 			
@@ -86,7 +86,7 @@ int main(void)
 	// Super loop
 	while(1)
 	{
-		if(running)
+		if(state)
 		{
 			output.str(std::string());
 			mytimerobject.setMin(systick_count/1000/60);

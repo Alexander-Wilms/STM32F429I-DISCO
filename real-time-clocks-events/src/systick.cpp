@@ -19,20 +19,25 @@
 #include "stm324xg_eval.h"
 #include "button.h"*/
 
+
 #define TICK_RATE_HZ 1000       //!< SysTick interrupt frequency
 
 /** @brief SysTick interrupt service route called @ 1000 Hz */
+
+volatile int a = 0;
 extern "C" void SysTick_Handler(void)
 {
 	#if defined(USE_HAL_DRIVER)
-	  HAL_IncTick();
+		HAL_IncTick();
 	#endif
-	signal_event(TICK);
+
+	if(a%10==0)
+		signal_event(TICK);
+	a++;
 }
 
 /** @brief SysTick initialization */
 void SysTick_init( void)
 {
 	SysTick_Config (SystemCoreClock / TICK_RATE_HZ);
-	systick_init_done = 1;
 }

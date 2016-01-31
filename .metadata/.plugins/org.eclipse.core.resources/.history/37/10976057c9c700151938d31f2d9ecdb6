@@ -1,0 +1,19 @@
+// finite state machine
+// based on http://skript.eit.h-da.de/rzs/Documentation/Rolltor/fsm_8c-source.html
+
+#include <inttypes.h>
+#include "fsm.h"
+
+volatile uint16_t recorded_event;
+
+int get_event( void)
+{
+	int returnvalue = recorded_event;
+	recorded_event = NO_EVENT;
+	return returnvalue;
+}
+
+void signal_event( int event)
+{
+	recorded_event = event;
+}

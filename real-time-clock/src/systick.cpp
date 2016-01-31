@@ -39,7 +39,7 @@ extern "C" void SysTick_Handler(void)
 	  STM_EVAL_LEDOff( LED4);
   }
 
-  if(running)
+  if(state)
 	  systick_count++;
 }
 

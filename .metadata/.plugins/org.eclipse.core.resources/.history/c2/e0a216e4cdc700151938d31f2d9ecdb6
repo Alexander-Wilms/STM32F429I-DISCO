@@ -1,0 +1,18 @@
+// finite state machine
+// based on http://skript.eit.h-da.de/rzs/Documentation/Rolltor/fsm_8c-source.html
+
+#include <inttypes.h>
+#include "fsm.h"
+#include <queue>
+
+std::queue<int> recorded_event;
+
+int get_event(void)
+{
+	return recorded_event.pop();;
+}
+
+void signal_event( int event)
+{
+	recorded_event.push(event);
+}

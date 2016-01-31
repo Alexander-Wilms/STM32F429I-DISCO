@@ -1,0 +1,27 @@
+// finite state machine
+
+#ifndef FSM
+#define FSM
+
+typedef void (*fptr)(void);
+
+typedef struct
+        {
+        fptr action;
+        int target_state;
+        }
+transition_matrix_element;
+
+typedef enum state_type
+        { RUNNING, HALTED, N_STATES };
+
+typedef enum event_type
+        { TICK, START_STOP, N_EVENTS };
+
+int     get_event( void);
+void    signal_event( int event);
+
+#define NO_EVENT        0xff
+#define NIX             0xff
+
+#endif //FSM

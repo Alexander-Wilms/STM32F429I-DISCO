@@ -9,7 +9,7 @@
 extern volatile bool LED_is_ON;
 extern volatile int button_count;
 extern volatile int button_pressed;
-extern volatile bool running;
+extern volatile bool state;
 
 volatile int count;
 
@@ -26,7 +26,7 @@ EXTI0_IRQHandler (void)
 	// disable interrupt
 	STM_EVAL_PBInit(BUTTON_USER, BUTTON_MODE_GPIO);
 
-	running = !running;
+	state = !state;
 	// Show status
 	STM_EVAL_LEDOn( LED4);
 	// Toggle LED
