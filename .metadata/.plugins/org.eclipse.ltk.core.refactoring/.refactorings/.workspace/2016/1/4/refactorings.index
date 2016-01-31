@@ -36,3 +36,7 @@
 1454174169698	Delete resource 'digital-controller-hal/Debug/stm32f429i-discovery-digitaler-regler-hal.elf'
 1454174180713	Delete resource 'events/Debug/stm32f429i-discovery-events.elf'
 1454174238867	Delete resource 'freertos-tasks/Debug/stm32f429i-discovery-freertos-tasks.elf'
+1454198528814	Rename resource 'first-project'
+1454198682496	Rename resource 'events'
+1454198694307	Delete resource 'real-time-clocks-events/Debug/events.elf'
+1454202118251	Delete 2 resources
