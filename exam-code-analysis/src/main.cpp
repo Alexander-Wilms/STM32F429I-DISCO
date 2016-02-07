@@ -67,11 +67,11 @@ static void high (void *)
 static void medium( void *x)
 {
 	BSP_LCD_DisplayStringAtLine (i++, (uint8_t *) "6  medium");
-	char *c;
+	char * c;
 	uint32_t tmp[1];
 
 	BSP_LCD_DisplayStringAtLine (i++, (uint8_t *) "7  medium before for loop");
-	for( c="012345";*c != 0 ;++c)
+	for( c=(char *)"012345";*c != 0 ;++c)
 	{
 		BSP_LCD_DisplayStringAtLine (i++, (uint8_t *) "8  medium before taking mutex 1");
 		xSemaphoreTake( Mutex_1, 	portMAX_DELAY);

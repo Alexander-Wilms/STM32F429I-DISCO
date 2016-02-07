@@ -4,9 +4,9 @@
 		<item value="311" key="DIALOG_WIDTH"/>
 		<item value="com.collabnet.subversion.merge.views.MergeResultsView" key="ShowViewDialog.STORE_SELECTED_VIEW_ID"/>
 		<item value="146" key="DIALOG_Y_ORIGIN"/>
-		<item value="438" key="DIALOG_HEIGHT"/>
 		<item value="653" key="DIALOG_X_ORIGIN"/>
-		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="438" key="DIALOG_HEIGHT"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 		<list key="ShowViewDialog.STORE_EXPANDED_CATEGORIES_ID">
 			<item value="SVN"/>
 			<item value="Team"/>

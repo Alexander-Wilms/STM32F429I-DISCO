@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;freertos-pwm/Debug/stm32f429i-discovery-freertos-pwm.elf&apos;" deleteContents="false" description="Delete resource &apos;freertos-pwm/Debug/stm32f429i-discovery-freertos-pwm.elf&apos;" element1="/freertos-pwm/Debug/stm32f429i-discovery-freertos-pwm.elf" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1454540228325"/>
+</session>
