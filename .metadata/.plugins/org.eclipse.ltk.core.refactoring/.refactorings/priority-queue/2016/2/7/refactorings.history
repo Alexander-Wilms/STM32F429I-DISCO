@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;priority-queue/src/priority-queue.cpp&apos; to &apos;priority-queue.cpp.nocompile&apos;" description="Rename resource &apos;priority-queue.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/priority-queue.cpp" name="priority-queue.cpp.nocompile" stamp="1455675624525" updateReferences="true"/>
+</session>

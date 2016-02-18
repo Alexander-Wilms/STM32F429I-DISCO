@@ -3944,3 +3944,952 @@ java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oom
 	at org.eclipse.oomph.setup.ui.SetupUIPlugin.access$3(SetupUIPlugin.java:323)
 	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:223)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2016-02-08 22:27:11.642 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_79
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_DE
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-02-08 22:27:57.144
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Alexander Wilms'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.oomph.setup.core 4 0 2016-02-08 22:28:36.165
+!MESSAGE C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.setup\setups\locations.setup (Zugriff verweigert)
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.setup\setups\locations.setup (Zugriff verweigert)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl$1.<init>(FileURIHandlerImpl.java:65)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createOutputStream(FileURIHandlerImpl.java:65)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createOutputStream(ExtensibleURIConverterImpl.java:349)
+	at org.eclipse.oomph.setup.internal.core.util.UserURIHandlerImpl.createOutputStream(UserURIHandlerImpl.java:77)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createOutputStream(ExtensibleURIConverterImpl.java:349)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.save(ResourceImpl.java:996)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.associate(SetupContext.java:451)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.access$0(SetupContext.java:368)
+	at org.eclipse.oomph.setup.internal.core.SetupContext$1.run(SetupContext.java:362)
+	at org.eclipse.oomph.base.util.BaseUtil.execute(BaseUtil.java:241)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.associate(SetupContext.java:358)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.createSelf(SetupContext.java:237)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:429)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.access$3(SetupUIPlugin.java:323)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:223)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-02-08 22:33:30.176
+!MESSAGE Indexed 'freertos-i2c' (107 sources, 382 headers) in 9,23 sec: 32.439 declarations; 132.253 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+!SESSION 2016-02-16 11:00:00.775 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_79
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_DE
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-02-16 11:00:42.607
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Alexander Wilms'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.epp.logging.aeri.ui 2 5 2016-02-16 11:00:58.583
+!MESSAGE The configuration download failed. Version: 1.0.1.v20150913-0716
+!STACK 0
+org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:134)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.request(AeriServer.java:57)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.refreshConfiguration(AeriServer.java:73)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:211)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.access$4(Startup.java:201)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup$1.run(Startup.java:98)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.SocketTimeoutException
+	at java.net.SocksSocketImpl.remainingMillis(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:244)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
+	... 16 more
+
+!ENTRY org.eclipse.epp.logging.aeri.ui 2 29 2016-02-16 11:00:58.659
+!MESSAGE Startup failed, AERI is disabled until next restart. Version: 1.0.1.v20150913-0716
+!STACK 0
+java.lang.RuntimeException: org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at com.google.common.base.Throwables.propagate(Throwables.java:160)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:219)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.access$4(Startup.java:201)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup$1.run(Startup.java:98)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:134)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.request(AeriServer.java:57)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.refreshConfiguration(AeriServer.java:73)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:211)
+	... 3 more
+Caused by: java.net.SocketTimeoutException
+	at java.net.SocksSocketImpl.remainingMillis(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:244)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
+	... 16 more
+
+!ENTRY org.eclipse.oomph.setup.core 4 0 2016-02-16 11:01:40.317
+!MESSAGE C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.setup\setups\locations.setup (Zugriff verweigert)
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.setup\setups\locations.setup (Zugriff verweigert)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl$1.<init>(FileURIHandlerImpl.java:65)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createOutputStream(FileURIHandlerImpl.java:65)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createOutputStream(ExtensibleURIConverterImpl.java:349)
+	at org.eclipse.oomph.setup.internal.core.util.UserURIHandlerImpl.createOutputStream(UserURIHandlerImpl.java:77)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createOutputStream(ExtensibleURIConverterImpl.java:349)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.save(ResourceImpl.java:996)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.associate(SetupContext.java:451)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.access$0(SetupContext.java:368)
+	at org.eclipse.oomph.setup.internal.core.SetupContext$1.run(SetupContext.java:362)
+	at org.eclipse.oomph.base.util.BaseUtil.execute(BaseUtil.java:241)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.associate(SetupContext.java:358)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.createSelf(SetupContext.java:237)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:429)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.access$3(SetupUIPlugin.java:323)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:223)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.core.jobs 4 2 2016-02-16 11:12:24.055
+!MESSAGE An internal error occurred during: "Contacting Software Sites".
+!STACK 0
+org.eclipse.oomph.util.IORuntimeException: java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.p2\cache\http___www.ac6-tools.com_Eclipse-updates_org.openstm32.system-workbench.site_p2.index (Zugriff verweigert)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:212)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:135)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.cacheIndexFile(CachingRepositoryManager.java:248)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:155)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:387)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:117)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:102)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$2.runModal(PreloadingRepositoryHandler.java:83)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.p2\cache\http___www.ac6-tools.com_Eclipse-updates_org.openstm32.system-workbench.site_p2.index (Zugriff verweigert)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:148)
+	... 11 more
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 0 2016-02-16 11:12:59.150
+!MESSAGE Unexpected error loading extension: org.eclipse.equinox.p2.metadata.repository.compositeRepository
+!STACK 0
+org.eclipse.oomph.util.IORuntimeException: java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.p2\cache\http___download.eclipse.org_technology_epp_packages_mars_p2.index (Zugriff verweigert)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:212)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:135)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.cacheIndexFile(CachingRepositoryManager.java:248)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:155)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:387)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:116)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:337)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:144)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:387)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.ProvisioningUI.loadMetadataRepository(ProvisioningUI.java:440)
+	at org.eclipse.equinox.internal.p2.ui.QueryableMetadataRepositoryManager.doLoadRepository(QueryableMetadataRepositoryManager.java:46)
+	at org.eclipse.equinox.internal.p2.ui.QueryableMetadataRepositoryManager.doLoadRepository(QueryableMetadataRepositoryManager.java:1)
+	at org.eclipse.equinox.internal.p2.ui.QueryableRepositoryManager.loadRepository(QueryableRepositoryManager.java:120)
+	at org.eclipse.equinox.internal.p2.ui.QueryableRepositoryManager.query(QueryableRepositoryManager.java:157)
+	at org.eclipse.equinox.internal.p2.ui.QueryableRepositoryManager.query(QueryableRepositoryManager.java:72)
+	at org.eclipse.equinox.internal.p2.ui.ElementQueryDescriptor.performQuery(ElementQueryDescriptor.java:60)
+	at org.eclipse.equinox.internal.p2.ui.model.QueriedElement.fetchChildren(QueriedElement.java:104)
+	at org.eclipse.equinox.internal.p2.ui.model.RemoteQueriedElement.fetchDeferredChildren(RemoteQueriedElement.java:34)
+	at org.eclipse.ui.progress.DeferredTreeContentManager$1.run(DeferredTreeContentManager.java:232)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.p2\cache\http___download.eclipse.org_technology_epp_packages_mars_p2.index (Zugriff verweigert)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:148)
+	... 32 more
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 0 2016-02-16 11:14:36.822
+!MESSAGE Unexpected error loading extension: org.eclipse.equinox.p2.metadata.repository.compositeRepository
+!STACK 0
+org.eclipse.oomph.util.IORuntimeException: java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.p2\cache\http___download.eclipse.org_releases_mars_201506241002_p2.index (Zugriff verweigert)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:212)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:135)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.cacheIndexFile(CachingRepositoryManager.java:248)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:155)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:387)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:116)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:337)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:144)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:387)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.ProvisioningUI.loadMetadataRepository(ProvisioningUI.java:440)
+	at org.eclipse.equinox.internal.p2.ui.model.MetadataRepositoryElement.getMetadataRepository(MetadataRepositoryElement.java:126)
+	at org.eclipse.equinox.internal.p2.ui.model.MetadataRepositoryElement.fetchChildren(MetadataRepositoryElement.java:75)
+	at org.eclipse.equinox.internal.p2.ui.model.RemoteQueriedElement.fetchDeferredChildren(RemoteQueriedElement.java:34)
+	at org.eclipse.ui.progress.DeferredTreeContentManager$1.run(DeferredTreeContentManager.java:232)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.p2\cache\http___download.eclipse.org_releases_mars_201506241002_p2.index (Zugriff verweigert)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:148)
+	... 27 more
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 0 2016-02-16 11:15:50.538
+!MESSAGE Unexpected error loading extension: org.eclipse.equinox.p2.metadata.repository.compositeRepository
+!STACK 0
+org.eclipse.oomph.util.IORuntimeException: java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.p2\cache\http___download.eclipse.org_releases_mars_201510021000_p2.index (Zugriff verweigert)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:212)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:135)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.cacheIndexFile(CachingRepositoryManager.java:248)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:155)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:387)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at sun.reflect.GeneratedMethodAccessor60.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:116)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:337)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:144)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:387)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.ProvisioningUI.loadMetadataRepository(ProvisioningUI.java:440)
+	at org.eclipse.equinox.internal.p2.ui.QueryableMetadataRepositoryManager.doLoadRepository(QueryableMetadataRepositoryManager.java:46)
+	at org.eclipse.equinox.internal.p2.ui.QueryableMetadataRepositoryManager.doLoadRepository(QueryableMetadataRepositoryManager.java:1)
+	at org.eclipse.equinox.internal.p2.ui.QueryableRepositoryManager.loadRepository(QueryableRepositoryManager.java:120)
+	at org.eclipse.equinox.internal.p2.ui.QueryableRepositoryManager.query(QueryableRepositoryManager.java:157)
+	at org.eclipse.equinox.internal.p2.ui.QueryableRepositoryManager.query(QueryableRepositoryManager.java:72)
+	at org.eclipse.equinox.internal.p2.ui.ElementQueryDescriptor.performQuery(ElementQueryDescriptor.java:60)
+	at org.eclipse.equinox.internal.p2.ui.model.QueriedElement.fetchChildren(QueriedElement.java:104)
+	at org.eclipse.equinox.internal.p2.ui.model.RemoteQueriedElement.fetchDeferredChildren(RemoteQueriedElement.java:34)
+	at org.eclipse.ui.progress.DeferredTreeContentManager$1.run(DeferredTreeContentManager.java:232)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.p2\cache\http___download.eclipse.org_releases_mars_201510021000_p2.index (Zugriff verweigert)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:148)
+	... 31 more
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 0 2016-02-16 11:40:46.080
+!MESSAGE Unexpected error loading extension: org.eclipse.equinox.p2.metadata.repository.compositeRepository
+!STACK 0
+org.eclipse.oomph.util.IORuntimeException: java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.p2\cache\http___download.eclipse.org_eclipse_updates_4.5_categoriesMars_p2.index (Zugriff verweigert)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:212)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:135)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.cacheIndexFile(CachingRepositoryManager.java:248)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:155)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:387)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at sun.reflect.GeneratedMethodAccessor60.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:116)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:337)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:144)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:387)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:117)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:102)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$2.runModal(PreloadingRepositoryHandler.java:83)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.p2\cache\http___download.eclipse.org_eclipse_updates_4.5_categoriesMars_p2.index (Zugriff verweigert)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:148)
+	... 25 more
+
+!ENTRY org.eclipse.core.jobs 4 2 2016-02-16 11:41:48.511
+!MESSAGE An internal error occurred during: "Fetching children of GNU ARM Eclipse Plug-ins".
+!STACK 0
+org.eclipse.oomph.util.IORuntimeException: java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.p2\cache\http___gnuarmeclipse.sourceforge.net_updates_p2.index (Zugriff verweigert)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:212)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:135)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.cacheIndexFile(CachingRepositoryManager.java:248)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:155)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:387)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.ProvisioningUI.loadMetadataRepository(ProvisioningUI.java:440)
+	at org.eclipse.equinox.internal.p2.ui.model.MetadataRepositoryElement.getMetadataRepository(MetadataRepositoryElement.java:126)
+	at org.eclipse.equinox.internal.p2.ui.model.MetadataRepositoryElement.fetchChildren(MetadataRepositoryElement.java:75)
+	at org.eclipse.equinox.internal.p2.ui.model.RemoteQueriedElement.fetchDeferredChildren(RemoteQueriedElement.java:34)
+	at org.eclipse.ui.progress.DeferredTreeContentManager$1.run(DeferredTreeContentManager.java:232)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.p2\cache\http___gnuarmeclipse.sourceforge.net_updates_p2.index (Zugriff verweigert)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:148)
+	... 12 more
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2016-02-16 11:42:21.000
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://download.eclipse.org/eclipse/updates/4.5.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:116)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.fail(CachingRepositoryManager.java:281)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:184)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:387)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:117)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:102)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$2.runModal(PreloadingRepositoryHandler.java:83)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2016-02-16 11:42:21.001
+!MESSAGE No repository found at http://download.eclipse.org/eclipse/updates/4.5.
+
+!ENTRY org.eclipse.core.jobs 4 2 2016-02-16 11:43:16.364
+!MESSAGE An internal error occurred during: "Contacting Software Sites".
+!STACK 0
+org.eclipse.oomph.util.IORuntimeException: java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.p2\cache\http___download.eclipse.org_oomph_updates_milestone_latest_p2.index (Zugriff verweigert)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:212)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:135)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.cacheIndexFile(CachingRepositoryManager.java:248)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:155)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:387)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:117)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:102)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$2.runModal(PreloadingRepositoryHandler.java:83)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.p2\cache\http___download.eclipse.org_oomph_updates_milestone_latest_p2.index (Zugriff verweigert)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.oomph.util.PropertiesUtil.saveProperties(PropertiesUtil.java:148)
+	... 11 more
+!SESSION 2016-02-16 12:41:33.467 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_79
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_DE
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.epp.logging.aeri.ui 2 5 2016-02-16 12:42:22.010
+!MESSAGE The configuration download failed. Version: 1.0.1.v20150913-0716
+!STACK 0
+org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:134)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.request(AeriServer.java:57)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.refreshConfiguration(AeriServer.java:73)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:211)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.access$4(Startup.java:201)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup$1.run(Startup.java:98)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.SocketTimeoutException
+	at java.net.SocksSocketImpl.remainingMillis(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:244)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
+	... 16 more
+
+!ENTRY org.eclipse.epp.logging.aeri.ui 2 29 2016-02-16 12:42:22.062
+!MESSAGE Startup failed, AERI is disabled until next restart. Version: 1.0.1.v20150913-0716
+!STACK 0
+java.lang.RuntimeException: org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at com.google.common.base.Throwables.propagate(Throwables.java:160)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:219)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.access$4(Startup.java:201)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup$1.run(Startup.java:98)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:134)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.request(AeriServer.java:57)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.refreshConfiguration(AeriServer.java:73)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:211)
+	... 3 more
+Caused by: java.net.SocketTimeoutException
+	at java.net.SocksSocketImpl.remainingMillis(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:244)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
+	... 16 more
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-02-16 12:42:24.391
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Alexander Wilms'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.oomph.setup.core 4 0 2016-02-16 12:42:46.876
+!MESSAGE C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.setup\setups\locations.setup (Zugriff verweigert)
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.setup\setups\locations.setup (Zugriff verweigert)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl$1.<init>(FileURIHandlerImpl.java:65)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createOutputStream(FileURIHandlerImpl.java:65)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createOutputStream(ExtensibleURIConverterImpl.java:349)
+	at org.eclipse.oomph.setup.internal.core.util.UserURIHandlerImpl.createOutputStream(UserURIHandlerImpl.java:77)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createOutputStream(ExtensibleURIConverterImpl.java:349)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.save(ResourceImpl.java:996)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.associate(SetupContext.java:451)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.access$0(SetupContext.java:368)
+	at org.eclipse.oomph.setup.internal.core.SetupContext$1.run(SetupContext.java:362)
+	at org.eclipse.oomph.base.util.BaseUtil.execute(BaseUtil.java:241)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.associate(SetupContext.java:358)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.createSelf(SetupContext.java:237)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:429)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.access$3(SetupUIPlugin.java:323)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:223)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-02-16 16:29:04.301
+!MESSAGE Indexed 'exam-code-analysis-2' (112 sources, 391 headers) in 9,97 sec: 32.557 declarations; 114.860 references; 3 unresolved inclusions; 228 syntax errors; 18.338 unresolved names (11 %)
+!SESSION 2016-02-16 21:21:44.816 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_79
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_DE
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-02-16 21:22:06.469
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Alexander Wilms'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.epp.logging.aeri.ui 2 5 2016-02-16 21:22:21.426
+!MESSAGE The configuration download failed. Version: 1.0.1.v20150913-0716
+!STACK 0
+org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:134)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.request(AeriServer.java:57)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.refreshConfiguration(AeriServer.java:73)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:211)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.access$4(Startup.java:201)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup$1.run(Startup.java:98)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.SocketTimeoutException
+	at java.net.SocksSocketImpl.remainingMillis(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:244)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
+	... 16 more
+
+!ENTRY org.eclipse.epp.logging.aeri.ui 2 29 2016-02-16 21:22:21.428
+!MESSAGE Startup failed, AERI is disabled until next restart. Version: 1.0.1.v20150913-0716
+!STACK 0
+java.lang.RuntimeException: org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at com.google.common.base.Throwables.propagate(Throwables.java:160)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:219)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.access$4(Startup.java:201)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup$1.run(Startup.java:98)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:134)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.request(AeriServer.java:57)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.refreshConfiguration(AeriServer.java:73)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:211)
+	... 3 more
+Caused by: java.net.SocketTimeoutException
+	at java.net.SocksSocketImpl.remainingMillis(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:244)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
+	... 16 more
+
+!ENTRY org.eclipse.oomph.setup.core 4 0 2016-02-16 21:22:54.578
+!MESSAGE C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.setup\setups\locations.setup (Zugriff verweigert)
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.setup\setups\locations.setup (Zugriff verweigert)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl$1.<init>(FileURIHandlerImpl.java:65)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createOutputStream(FileURIHandlerImpl.java:65)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createOutputStream(ExtensibleURIConverterImpl.java:349)
+	at org.eclipse.oomph.setup.internal.core.util.UserURIHandlerImpl.createOutputStream(UserURIHandlerImpl.java:77)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createOutputStream(ExtensibleURIConverterImpl.java:349)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.save(ResourceImpl.java:996)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.associate(SetupContext.java:451)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.access$0(SetupContext.java:368)
+	at org.eclipse.oomph.setup.internal.core.SetupContext$1.run(SetupContext.java:362)
+	at org.eclipse.oomph.base.util.BaseUtil.execute(BaseUtil.java:241)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.associate(SetupContext.java:358)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.createSelf(SetupContext.java:237)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:429)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.access$3(SetupUIPlugin.java:323)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:223)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2016-02-17 03:11:31.248 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_79
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_DE
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.epp.logging.aeri.ui 2 5 2016-02-17 03:12:15.644
+!MESSAGE The configuration download failed. Version: 1.0.1.v20150913-0716
+!STACK 0
+org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:134)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.request(AeriServer.java:57)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.refreshConfiguration(AeriServer.java:73)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:211)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.access$4(Startup.java:201)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup$1.run(Startup.java:98)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.SocketTimeoutException
+	at java.net.SocksSocketImpl.remainingMillis(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:244)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
+	... 16 more
+
+!ENTRY org.eclipse.epp.logging.aeri.ui 2 29 2016-02-17 03:12:15.700
+!MESSAGE Startup failed, AERI is disabled until next restart. Version: 1.0.1.v20150913-0716
+!STACK 0
+java.lang.RuntimeException: org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at com.google.common.base.Throwables.propagate(Throwables.java:160)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:219)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.access$4(Startup.java:201)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup$1.run(Startup.java:98)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:134)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.request(AeriServer.java:57)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.refreshConfiguration(AeriServer.java:73)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:211)
+	... 3 more
+Caused by: java.net.SocketTimeoutException
+	at java.net.SocksSocketImpl.remainingMillis(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:244)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
+	... 16 more
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-02-17 03:12:19.354
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Alexander Wilms'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.oomph.setup.core 4 0 2016-02-17 03:12:50.293
+!MESSAGE C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.setup\setups\locations.setup (Zugriff verweigert)
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.setup\setups\locations.setup (Zugriff verweigert)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl$1.<init>(FileURIHandlerImpl.java:65)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createOutputStream(FileURIHandlerImpl.java:65)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createOutputStream(ExtensibleURIConverterImpl.java:349)
+	at org.eclipse.oomph.setup.internal.core.util.UserURIHandlerImpl.createOutputStream(UserURIHandlerImpl.java:77)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createOutputStream(ExtensibleURIConverterImpl.java:349)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.save(ResourceImpl.java:996)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.associate(SetupContext.java:451)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.access$0(SetupContext.java:368)
+	at org.eclipse.oomph.setup.internal.core.SetupContext$1.run(SetupContext.java:362)
+	at org.eclipse.oomph.base.util.BaseUtil.execute(BaseUtil.java:241)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.associate(SetupContext.java:358)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.createSelf(SetupContext.java:237)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:429)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.access$3(SetupUIPlugin.java:323)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:223)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-02-17 03:13:23.628
+!MESSAGE Indexed 'priority-queue' (97 sources, 352 headers) in 17,9 sec: 30.585 declarations; 105.514 references; 3 unresolved inclusions; 228 syntax errors; 18.338 unresolved names (12 %)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-02-17 03:16:34.019
+!MESSAGE Indexed 'priority-queue' (107 sources, 383 headers) in 7,19 sec: 32.509 declarations; 132.463 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+
+!ENTRY fr.ac6.mcu.debug 4 200 2016-02-17 04:24:59.705
+!MESSAGE OpenOCD Binary not found
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-02-17 04:27:54.457
+!MESSAGE Error parsing line [Error: libusb_open() failed with LIBUSB_ERROR_ACCESS]
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.core.ErrorParserManager.addProblemMarker(ErrorParserManager.java:595)
+	at org.eclipse.cdt.core.ErrorParserManager.generateExternalMarker(ErrorParserManager.java:582)
+	at org.eclipse.cdt.core.errorparsers.RegexErrorPattern.recordError(RegexErrorPattern.java:318)
+	at org.eclipse.cdt.core.errorparsers.RegexErrorPattern.processLine(RegexErrorPattern.java:284)
+	at org.eclipse.cdt.core.errorparsers.RegexErrorParser.processLine(RegexErrorParser.java:148)
+	at org.eclipse.cdt.core.ErrorParserManager.processLine(ErrorParserManager.java:354)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer.processLine(ConsoleOutputSniffer.java:178)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer.access$0(ConsoleOutputSniffer.java:174)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer$ConsoleOutputStream.checkLine(ConsoleOutputSniffer.java:99)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer$ConsoleOutputStream.write(ConsoleOutputSniffer.java:58)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.cdt.internal.core.ProcessClosure$ReaderThread.run(ProcessClosure.java:57)
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-02-17 04:27:54.458
+!MESSAGE Error parsing line [Error: open failed]
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.core.ErrorParserManager.addProblemMarker(ErrorParserManager.java:595)
+	at org.eclipse.cdt.core.ErrorParserManager.generateExternalMarker(ErrorParserManager.java:582)
+	at org.eclipse.cdt.core.errorparsers.RegexErrorPattern.recordError(RegexErrorPattern.java:318)
+	at org.eclipse.cdt.core.errorparsers.RegexErrorPattern.processLine(RegexErrorPattern.java:284)
+	at org.eclipse.cdt.core.errorparsers.RegexErrorParser.processLine(RegexErrorParser.java:148)
+	at org.eclipse.cdt.core.ErrorParserManager.processLine(ErrorParserManager.java:354)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer.processLine(ConsoleOutputSniffer.java:178)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer.access$0(ConsoleOutputSniffer.java:174)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer$ConsoleOutputStream.checkLine(ConsoleOutputSniffer.java:99)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer$ConsoleOutputStream.write(ConsoleOutputSniffer.java:58)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.cdt.internal.core.ProcessClosure$ReaderThread.run(ProcessClosure.java:57)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-02-17 15:00:54.789
+!MESSAGE Indexed 'Copy of freertos-semaphore-queue-mutex' (112 sources, 393 headers) in 8,18 sec: 33.115 declarations; 134.470 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-02-17 15:01:34.840
+!MESSAGE Indexed 'freertos-overfull-queue' (112 sources, 393 headers) in 7,42 sec: 33.115 declarations; 134.470 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+!SESSION 2016-02-17 18:22:55.368 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_79
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_DE
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product -data C:\tools\ARM\STM32F429I-DISCO -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-02-17 18:23:19.457
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Alexander Wilms'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.epp.logging.aeri.ui 2 5 2016-02-17 18:23:34.688
+!MESSAGE The configuration download failed. Version: 1.0.1.v20150913-0716
+!STACK 0
+org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:134)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.request(AeriServer.java:57)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.refreshConfiguration(AeriServer.java:73)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:211)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.access$4(Startup.java:201)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup$1.run(Startup.java:98)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.SocketTimeoutException
+	at java.net.SocksSocketImpl.remainingMillis(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:244)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
+	... 16 more
+
+!ENTRY org.eclipse.epp.logging.aeri.ui 2 29 2016-02-17 18:23:34.690
+!MESSAGE Startup failed, AERI is disabled until next restart. Version: 1.0.1.v20150913-0716
+!STACK 0
+java.lang.RuntimeException: org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at com.google.common.base.Throwables.propagate(Throwables.java:160)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:219)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.access$4(Startup.java:201)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup$1.run(Startup.java:98)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:134)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.request(AeriServer.java:57)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.refreshConfiguration(AeriServer.java:73)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:211)
+	... 3 more
+Caused by: java.net.SocketTimeoutException
+	at java.net.SocksSocketImpl.remainingMillis(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:244)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
+	... 16 more
+
+!ENTRY org.eclipse.oomph.setup.core 4 0 2016-02-17 18:23:58.342
+!MESSAGE C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.setup\setups\locations.setup (Zugriff verweigert)
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.setup\setups\locations.setup (Zugriff verweigert)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl$1.<init>(FileURIHandlerImpl.java:65)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createOutputStream(FileURIHandlerImpl.java:65)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createOutputStream(ExtensibleURIConverterImpl.java:349)
+	at org.eclipse.oomph.setup.internal.core.util.UserURIHandlerImpl.createOutputStream(UserURIHandlerImpl.java:77)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createOutputStream(ExtensibleURIConverterImpl.java:349)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.save(ResourceImpl.java:996)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.associate(SetupContext.java:451)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.access$0(SetupContext.java:368)
+	at org.eclipse.oomph.setup.internal.core.SetupContext$1.run(SetupContext.java:362)
+	at org.eclipse.oomph.base.util.BaseUtil.execute(BaseUtil.java:241)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.associate(SetupContext.java:358)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.createSelf(SetupContext.java:237)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:429)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.access$3(SetupUIPlugin.java:323)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:223)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2016-02-18 02:14:07.571 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_79
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_DE
+Framework arguments:  -product org.eclipse.epp.package.cpp.product C:\Users\Alexander Wilms\Documents\Ausbildung\Hochschule Darmstadt\5. Semester\Echtzeitprogrammierung\Beispiele\Integer overflow\integer-overflow.cpp
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product C:\Users\Alexander Wilms\Documents\Ausbildung\Hochschule Darmstadt\5. Semester\Echtzeitprogrammierung\Beispiele\Integer overflow\integer-overflow.cpp
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-02-18 02:14:33.147
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Alexander Wilms'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.epp.logging.aeri.ui 2 5 2016-02-18 02:14:50.711
+!MESSAGE The configuration download failed. Version: 1.0.1.v20150913-0716
+!STACK 0
+org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:134)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.request(AeriServer.java:57)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.refreshConfiguration(AeriServer.java:73)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:211)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.access$4(Startup.java:201)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup$1.run(Startup.java:98)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.SocketTimeoutException
+	at java.net.SocksSocketImpl.remainingMillis(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:244)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
+	... 16 more
+
+!ENTRY org.eclipse.epp.logging.aeri.ui 2 29 2016-02-18 02:14:50.714
+!MESSAGE Startup failed, AERI is disabled until next restart. Version: 1.0.1.v20150913-0716
+!STACK 0
+java.lang.RuntimeException: org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at com.google.common.base.Throwables.propagate(Throwables.java:160)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:219)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.access$4(Startup.java:201)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup$1.run(Startup.java:98)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] timed out
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:134)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.request(AeriServer.java:57)
+	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.refreshConfiguration(AeriServer.java:73)
+	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:211)
+	... 3 more
+Caused by: java.net.SocketTimeoutException
+	at java.net.SocksSocketImpl.remainingMillis(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:244)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
+	... 16 more
+
+!ENTRY org.eclipse.oomph.setup.core 4 0 2016-02-18 02:15:16.767
+!MESSAGE C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.setup\setups\locations.setup (Zugriff verweigert)
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Alexander Wilms\.eclipse\org.eclipse.oomph.setup\setups\locations.setup (Zugriff verweigert)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl$1.<init>(FileURIHandlerImpl.java:65)
+	at org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl.createOutputStream(FileURIHandlerImpl.java:65)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createOutputStream(ExtensibleURIConverterImpl.java:349)
+	at org.eclipse.oomph.setup.internal.core.util.UserURIHandlerImpl.createOutputStream(UserURIHandlerImpl.java:77)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createOutputStream(ExtensibleURIConverterImpl.java:349)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.save(ResourceImpl.java:996)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.associate(SetupContext.java:451)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.access$0(SetupContext.java:368)
+	at org.eclipse.oomph.setup.internal.core.SetupContext$1.run(SetupContext.java:362)
+	at org.eclipse.oomph.base.util.BaseUtil.execute(BaseUtil.java:241)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.associate(SetupContext.java:358)
+	at org.eclipse.oomph.setup.internal.core.SetupContext.createSelf(SetupContext.java:237)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:429)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.access$3(SetupUIPlugin.java:323)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:223)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)

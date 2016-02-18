@@ -2,8 +2,6 @@
 #include "stm32f429i_discovery.h"
 #include "stm32f429i_discovery_lcd.h"
 
-//#include "button.h"
-//#include "stm32f4xx_hal.h"
 #include <string>
 #include <sstream>
 #include <stdlib.h>

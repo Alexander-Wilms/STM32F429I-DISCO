@@ -1,0 +1,68 @@
+#include <iostream>
+#include <vector>
+#include <stdio.h>
+
+struct data{
+    int priority;
+    char data;
+};
+
+
+std::vector<data> PQ;
+data returnvalue;
+
+PQput(data * x)
+{
+    // take Mutex
+    PQ.push_back(*x);
+    // give Mutex
+}
+
+data * PQget(void)
+{
+    // take Mutex
+    int max_priority = PQ[0].priority;
+    int element_having_max_priority = 0;
+
+    for (std::vector<data>::iterator it = PQ.begin() ; it != PQ.end(); ++it)
+    {
+        if((*it).priority > PQ[element_having_max_priority].priority)
+        {
+            element_having_max_priority = it - PQ.begin();
+            max_priority = (*it).priority;
+        }
+    }
+
+    returnvalue = PQ[element_having_max_priority];
+    PQ.erase(PQ.begin()+element_having_max_priority);
+    return &returnvalue;
+    // give Mutex
+}
+
+int main (void)
+{
+    data low;
+    low.priority = 0;
+    low.data = 'a';
+    PQput(&low);
+
+    data high;
+    high.priority = 2;
+    high.data = 'c';
+    PQput(&high);
+
+    data medium;
+    medium.priority = 1;
+    medium.data = 'b';
+    PQput(&medium);
+
+    data h = *PQget();
+    data m = *PQget();
+    data l = *PQget();
+
+    printf("%c",h.data);
+    printf("%c",m.data);
+    printf("%c",l.data);
+
+    return 0;
+}

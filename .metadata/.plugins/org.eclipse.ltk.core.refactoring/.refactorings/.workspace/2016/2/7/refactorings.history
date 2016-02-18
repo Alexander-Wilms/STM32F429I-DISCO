@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;priority-queue&apos;" deleteContents="true" description="Delete resource &apos;priority-queue&apos;" element1="/priority-queue" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1455675346373"/>&#x0A;<refactoring comment="Rename resource &apos;Copy of freertos-semaphore-queue-mutex&apos; to &apos;freertos-overfull-queue&apos;" description="Rename resource &apos;Copy of freertos-semaphore-queue-mutex&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/Copy of freertos-semaphore-queue-mutex" name="freertos-overfull-queue" stamp="1455717686323" updateReferences="true"/>
+</session>

@@ -65,6 +65,7 @@ void test_task_delay_until (void *)
     }
 }
 
+// cooperative
 void led1_task (void *)
 {
   BSP_LED_Init (LED4);
@@ -81,6 +82,7 @@ void led1_task (void *)
     }
 }
 
+// cooperative
 void led2_task (void *)
 {
   BSP_LED_Init (LED3);
@@ -97,6 +99,7 @@ void led2_task (void *)
     }
 }
 
+// cooperative
 void lcd_task (void *)
 {
 
@@ -122,6 +125,12 @@ void lcd_task (void *)
 	}
 }
 
+// preemptive
+// if both ..._timeslicing tasks have the same priority, vTaskDelay(100)
+// is not needed. It's only neccessary if on tasks has a higher priority,
+// so that even the task with lower priority gets some CPU time.
+// Alternatively, one can have a blocking function call within the high
+// priority task
 void led1_task_timeslicing (void *)
 {
   BSP_LED_Init (LED3);
@@ -134,10 +143,12 @@ void led1_task_timeslicing (void *)
       BSP_LED_Toggle(LED3);
       for( volatile long int counter = 0;counter<2000000;counter++)
         ;
-      taskYIELD();
+
+  	vTaskDelay(100);
     }
 }
 
+// preemptive
 void led2_task_timeslicing (void *)
 {
   BSP_LED_Init (LED4);
@@ -150,7 +161,8 @@ void led2_task_timeslicing (void *)
       BSP_LED_Toggle(LED4);
       for( volatile long int counter = 0;counter<4000000;counter++)
         ;
-      taskYIELD();
+
+  	vTaskDelay(100);
     }
 }
 
@@ -257,8 +269,8 @@ int main(void)
 	//xTaskCreate( (pdTASK_CODE)led2_task, 	"led2", 256, 0, LED_TASK_PRIORITY, NULL);
 	//xTaskCreate( (pdTASK_CODE)lcd_task, 	"lcd", 256, 0, LCD_TASK_PRIORITY, NULL);
 
-	//xTaskCreate( (pdTASK_CODE)led1_task_timeslicing, 	"led1", 256, 0, LED_TASK_PRIORITY, NULL);
-	//xTaskCreate( (pdTASK_CODE)led2_task_timeslicing, 	"led2", 256, 0, LED_TASK_PRIORITY, NULL);
+	xTaskCreate( (pdTASK_CODE)led1_task_timeslicing, 	"led1", 256, 0, LED_TASK_PRIORITY, NULL);
+	xTaskCreate( (pdTASK_CODE)led2_task_timeslicing, 	"led2", 256, 0, LED_TASK_PRIORITY+1, NULL); // was LED_TASK_PRIORITY
 
 	//job_descriptor blink1_job_descriptor = job_descriptor(1000/3, LED3);
 	//xTaskCreate( (pdTASK_CODE)blink1_task, 	"led3", 256, &blink1_job_descriptor, LED_TASK_PRIORITY, NULL);
@@ -266,8 +278,8 @@ int main(void)
 	//job_descriptor blink2_job_descriptor = job_descriptor(2000/3, LED4);
 	//xTaskCreate( (pdTASK_CODE)blink2_task, 	"led4", 256, &blink2_job_descriptor, LED_TASK_PRIORITY, NULL);
 
-	xTaskCreate( (pdTASK_CODE)blink_task_low_priority, 	"led3", 256, 0, LED_TASK_PRIORITY_LOW, NULL);
-	xTaskCreate( (pdTASK_CODE)blink_task_high_priority, 	"led4", 256, 0, LED_TASK_PRIORITY_HIGH, NULL);
+	//xTaskCreate( (pdTASK_CODE)blink_task_low_priority, 	"led3", 256, 0, LED_TASK_PRIORITY_LOW, NULL);
+	//xTaskCreate( (pdTASK_CODE)blink_task_high_priority, 	"led4", 256, 0, LED_TASK_PRIORITY_HIGH, NULL);
 
 	vTaskStartScheduler ();
 	return 0;

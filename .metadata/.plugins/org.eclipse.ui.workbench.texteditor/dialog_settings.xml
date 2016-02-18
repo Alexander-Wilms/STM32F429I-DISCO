@@ -2,27 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
-		<item value="217" key="DIALOG_Y_ORIGIN"/>
-		<item value="1263" key="DIALOG_X_ORIGIN"/>
+		<item value="410" key="DIALOG_Y_ORIGIN"/>
 		<item value="380" key="DIALOG_HEIGHT"/>
-		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="1347" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="count" key="selection"/>
+		<item value="Queue" key="selection"/>
 		<list key="findhistory">
-			<item value="count"/>
-			<item value="pressed"/>
-			<item value="trace"/>
-			<item value="before receive"/>
-			<item value="before give"/>
-			<item value="after give"/>
-			<item value="before take"/>
-			<item value="sening"/>
+			<item value="queue"/>
+			<item value="countingsemaphore"/>
+			<item value="xqueuegenericsend"/>
+			<item value="pvbuffer"/>
+			<item value="give"/>
+			<item value="givr"/>
+			<item value="semaphoregive"/>
+			<item value="semaphoresend"/>
 		</list>
 		<list key="replacehistory">
 			<item value="before receiving"/>
